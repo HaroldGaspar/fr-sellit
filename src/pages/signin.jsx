@@ -1,17 +1,18 @@
 import React from "react";
-// import { NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 export function Singin() {
   return (
     <>
       <div className="container">
         <div className="row">
-          <div className="my-4 text-large">
-            <b>SELLIT</b>
+        <div className="my-4 text-center d-block col-12">
+            <b className="logo">SELLIT</b>
           </div>
           <div className="col-md-4 mx-auto">
             <div className="card">
-              <div className="card-header">Iniciar sesion</div>
+              <span className="form-title">Iniciar Sesión</span> 
+  
               <div className="card-body">
                 <form>
                   <div className="form-group">
@@ -26,16 +27,20 @@ export function Singin() {
                       className="form-control"
                     />
                   </div>
-                  <button className="btn btn-primary btn-block">SignUp</button>
+                  <button className="btn btn-secondary btn-block">SignUp</button>
                 </form>
               </div>
               <hr />
+              <div className="card-body form-footer">
               <p>
-                <b>No estas registrado?</b> registrate
+                <b>No estas registrado?</b> registrate             
+                <NavLink to="/register">Aqui</NavLink>
               </p>
               <p>
                 <b>Haz olvidado tu contraseña?</b> haz click
+                <NavLink to="/">Aqui</NavLink>
               </p>
+              </div>
             </div>
           </div>
         </div>

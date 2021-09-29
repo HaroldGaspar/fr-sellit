@@ -61,7 +61,7 @@ export function Nav(props) {
             ) : (
               <>
                 <li className="nav-item ml-auto">
-                  <NavLink className="nav-link" to="/singin">
+                  <NavLink className="nav-link" to="/login">
                     INGRESAR{" "}
                   </NavLink>
                 </li>
