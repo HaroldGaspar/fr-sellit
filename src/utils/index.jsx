@@ -29,4 +29,5 @@ export function disableEdit(props) {
     completed: false,
   });
   props.setshowUpdate(false);
+  props.productInput?.current?.focus();
 }

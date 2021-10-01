@@ -4,6 +4,11 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 
 export function Nav(props) {
+  const logOut = (e) => {
+    localStorage.removeItem("token");
+    localStorage.removeItem("store");
+    console.log("logout");
+  };
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
       <NavLink className="navbar-brand" to="/">
@@ -45,8 +50,8 @@ export function Nav(props) {
             </NavLink>
           </li>
           <span className="ml-auto">
-            {false ? (
-              <>
+            {localStorage.getItem("token") ? (
+              <div className="navbar">
                 <li className="nav-item">
                   <NavLink className="nav-link" to="/products">
                     CUENTA{" "}
@@ -57,7 +62,17 @@ export function Nav(props) {
                     CARRITO{" "}
                   </NavLink>
                 </li>
-              </>
+                <li className="nav-item">
+                  <NavLink
+                    className="nav-link"
+                    to="/"
+                    onClick={(e) => logOut(e)}
+                  >
+                    LOGOUT{" "}
+                  </NavLink>
+                  {/* <input value="Cancelar" type="button" className="nav-item" /> */}
+                </li>
+              </div>
             ) : (
               <>
                 <li className="nav-item ml-auto">

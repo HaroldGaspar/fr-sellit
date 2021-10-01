@@ -9,14 +9,13 @@ export const useProducts = () => {
 //Se define el estado inicial de product para el uso en el formulario
 export const useProduct = () => {
   const [product, setProduct] = useState({
-    id: 0,
-    category: "",
+    // id: 0,
+    category: 0,
     name: "",
     mark: "",
-    price: "",
+    price: 0,
     description: "",
-    stock: "",
-    completed: false,
+    stock: 0,
   });
 
   return { product, setProduct };

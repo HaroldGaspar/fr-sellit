@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { InputProduct } from ".";
 import { disableEdit, handleIChange } from "../utils";
 import { addProduct, updateProduct } from "./../services";
 
@@ -41,44 +42,25 @@ export function TaskForm(props) {
             name="category"
             onChange={(e) => handleIChange(e, props)}
             className="form-control"
-            value={props.product.category}
+            value={props.product.category?.id | 0}
             autoFocus
             ref={props.productInput}
           />
         </div>
-
-        <div className="form-group">
-          <label htmlFor="name">Nombre</label>
-          <input
-            type="text"
-            name="name"
-            onChange={(e) => handleIChange(e, props)}
-            className="form-control"
-            value={props.product.name}
-          />
-        </div>
-
-        <div className="form-group">
-          <label htmlFor="mark">Marca</label>
-          <input
-            type="text"
-            name="mark"
-            onChange={(e) => handleIChange(e, props)}
-            className="form-control"
-            value={props.product.mark}
-          />
-        </div>
-
-        <div className="form-group">
-          <label htmlFor="price">Precio</label>
-          <input
-            type="text"
-            name="price"
-            onChange={(e) => handleIChange(e, props)}
-            className="form-control"
-            value={props.product.price}
-          />
-        </div>
+        <InputProduct name={"name"} label={"Nombre"} props={props} />
+        <InputProduct name={"mark"} label={"Marca"} props={props} />
+        <InputProduct
+          name={"price"}
+          label={"Precio"}
+          props={props}
+          number={true}
+        />
+        <InputProduct
+          name={"stock"}
+          label={"Stock"}
+          props={props}
+          number={true}
+        />
 
         <div className="form-group">
           <label htmlFor="description">Descripcion</label>
@@ -90,29 +72,18 @@ export function TaskForm(props) {
           ></textarea>
         </div>
 
-        <div className="form-group">
-          <label htmlFor="stock">Stock</label>
-          <input
-            type="text"
-            name="stock"
-            onChange={(e) => handleIChange(e, props)}
-            className="form-control"
-            value={props.product.stock}
-          />
-        </div>
-
         {props.showUpdate ? (
-          <>
-            <button className="btn btn-outline-info col-6 color-black">
+          <div className="d-flex">
+            <button className="btn btn-outline-info col-6 py-2">
               Actualizar
             </button>
             <input
-              value="cancelar"
+              value="Cancelar"
               type="button"
               onClick={() => disableEdit(props)}
-              className="btn btn-secondary col-6"
+              className="btn btn-secondary col-6 ml-auto"
             />
-          </>
+          </div>
         ) : (
           <button className="btn btn-outline-success btn-block">Guardar</button>
         )}

@@ -1,9 +1,19 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { handleEdit } from "../utils";
 import { deleteProduct } from "../services";
 import "./styles.css";
+import axios from "axios";
 
 export function TaskList(props) {
+  const store = localStorage.getItem("store");
+  useEffect(() => {
+    axios.get(`http://localhost:8000/products?store=${store}`).then((res) => {
+      const data = res.data;
+      props.setProducts([...data]);
+      console.log(data);
+    });
+  }, []);
+
   return (
     <>
       {props.products.map((product) => (
@@ -24,7 +34,7 @@ export function TaskList(props) {
               onClick={() => handleEdit(product.id, props)}
               className="btn btn-block btn-info"
             >
-              Edit
+              Actualizar
             </button>
             <button
               onClick={() =>
@@ -32,7 +42,7 @@ export function TaskList(props) {
               }
               className="btn btn-block btn-outline-danger"
             >
-              Delete
+              Eliminar
             </button>
           </div>
         </div>
