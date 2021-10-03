@@ -1,7 +1,7 @@
 import "./App.css";
 import { useEffect } from "react";
 import { Route, BrowserRouter as Router, Switch } from "react-router-dom";
-import { Product, Home } from "./pages";
+import { Product, Home, Cart } from "./pages";
 import Auth from "./pages/auth";
 
 function App() {
@@ -23,10 +23,14 @@ function App() {
         </Route>
 
         <Route path="/products">
-          <Product />
+          {localStorage.getItem("store") ? <Product /> : <Home />}
         </Route>
+
         <Route path="/" exact>
           <Home />
+        </Route>
+        <Route path="/cart" exact>
+          <Cart />
         </Route>
       </Switch>
     </Router>
