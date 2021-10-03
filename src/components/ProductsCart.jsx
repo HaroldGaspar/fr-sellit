@@ -10,8 +10,8 @@ export function ProductsCart() {
   }, []);
   return (
     <div className="">
-      {productsCart.map((product) => (
-        <ProductCart product={product} />
+      {productsCart.map((productDetail) => (
+        <ProductCart productDetail={productDetail} />
       ))}
     </div>
   );

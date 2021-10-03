@@ -4,7 +4,7 @@ import { deleteProduct } from "../services";
 
 export function ProductSeller({ product, props }) {
   return (
-    <div className="col-md-4 mt-2" key={product.id}>
+    <div className="col-sm-6 col-md-6 col-lg-4 col-xl-3 mt-2" key={product.id}>
       <div className="card card-body">
         <h3>{product.name}</h3>
         <h6 className="text-right">{product.mark}</h6>

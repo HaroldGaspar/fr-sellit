@@ -1,5 +1,11 @@
 import React, { useRef } from "react";
-import { TaskForm, TaskList, Nav } from "../components";
+import {
+  TaskForm,
+  TaskList,
+  Nav,
+  ProductForm,
+  ProductList,
+} from "../components";
 import { useShowUpdate, useProduct, useProducts } from "../state";
 
 export function Product() {
@@ -14,7 +20,7 @@ export function Product() {
       <div className="container">
         <div className="row">
           <div className="col-md-4">
-            <TaskForm
+            <ProductForm
               products={products}
               setProducts={setProducts}
               product={product}
@@ -26,7 +32,8 @@ export function Product() {
           </div>
           <div className="col-md-8">
             <div className="row">
-              <TaskList
+              {/* <div className="col-md-8"> */}
+              <ProductList
                 products={products}
                 setProducts={setProducts}
                 product={product}
@@ -34,6 +41,7 @@ export function Product() {
                 showUpdate={showUpdate}
                 setshowUpdate={setshowUpdate}
               />
+              {/* </div> */}
             </div>
           </div>
         </div>

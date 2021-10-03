@@ -2,20 +2,12 @@ import React, { useEffect, useState } from "react";
 
 //nav
 import { NavLink } from "react-router-dom";
+import { SearchBar } from ".";
+import { logOutfx } from "../services";
 
 export function Nav(props) {
   const [logout, setlogout] = useState();
   const [store, setstore] = useState(false);
-  const logOutfx = (e) => {
-    localStorage.removeItem("token");
-    localStorage.removeItem("store");
-    localStorage.removeItem("cart");
-    console.log("logout");
-    setlogout(false);
-  };
-  const delay = () => {
-    setTimeout(console.log("ssss"), 2000);
-  };
 
   useEffect(() => {
     setlogout(localStorage.getItem("token"));
@@ -41,18 +33,7 @@ export function Nav(props) {
       </button>
       <div className="collapse navbar-collapse" id="navbarNav">
         <ul className="navbar-nav w-100">
-          <li className="nav-item">
-            <div className="card">
-              <form action="" className="">
-                <input
-                  className="search"
-                  type="text"
-                  placeholder="Que estas buscando..."
-                />
-                <button className="btn btn-secondary">Buscar</button>
-              </form>
-            </div>
-          </li>
+          <SearchBar />
           <li className="nav-item">
             <NavLink className="nav-link" to="/contact">
               SURPRISE ME{" "}
@@ -85,7 +66,7 @@ export function Nav(props) {
                   <NavLink
                     className="nav-link"
                     to="/"
-                    onClick={(e) => logOutfx(e)}
+                    onClick={(e) => logOutfx(e, setlogout)}
                   >
                     LOGOUT{" "}
                   </NavLink>

@@ -38,7 +38,7 @@ export async function singIn(e, history, user) {
     }
   );
   const cartD = await resCart.json();
-  console.log("cart ", cartD.id);
+  console.log("cart ", cartD[0].id);
   localStorage.setItem("cart", cartD[0].id);
 
   //isSeller

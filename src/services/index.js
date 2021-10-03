@@ -9,3 +9,5 @@ export * from "./signUp";
 export * from "./singIn";
 export * from "./addProductCart";
 export * from "./getProductsByCart";
+export * from "./logOutfx";
+export * from "./changeImageInput";
