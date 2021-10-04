@@ -4,7 +4,7 @@ export function deleteProduct(id, products, setProducts) {
   tasksF.splice(id, 1);
   const token = localStorage.getItem("token");
 
-  fetch(`http://localhost:8000/products/${id}`, {
+  fetch(`http://hakhi.xyz:8000/products/${id}`, {
     method: "delete",
     headers: new Headers({
       Authorization: `Bearer ${token}`,

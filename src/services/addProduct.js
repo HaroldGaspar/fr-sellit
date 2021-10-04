@@ -18,7 +18,7 @@ export const addProduct = (e, props) => {
   const config = {
     headers: { Authorization: `Bearer ${token}` },
   };
-  fetch("http://localhost:8000/products", {
+  fetch("http://hakhi.xyz:8000/products", {
     method: "post",
     headers: new Headers({
       Authorization: `Bearer ${token}`,

@@ -18,7 +18,7 @@ export async function singIn(e, history, user) {
 
   //fetch findCustomerByUserId
   const resCustomer = await fetch(
-    `http://localhost:8000/customers?user=${userId}`,
+    `http://hakhi.xyz:8000/customers?user=${userId}`,
     {
       headers: new Headers({
         Authorization: `Bearer ${json.jwt}`,
@@ -30,7 +30,7 @@ export async function singIn(e, history, user) {
 
   //find its cart
   const resCart = await fetch(
-    `http://localhost:8000/carts?customer=${customerD[0].id}`,
+    `http://hakhi.xyz:8000/carts?customer=${customerD[0].id}`,
     {
       headers: new Headers({
         Authorization: `Bearer ${json.jwt}`,
@@ -45,7 +45,7 @@ export async function singIn(e, history, user) {
   if (customerD[0].is_seller) {
     //find store store
     const resStore = await fetch(
-      `http://localhost:8000/stores?customer=${customerD[0].id}`,
+      `http://hakhi.xyz:8000/stores?customer=${customerD[0].id}`,
       {
         headers: new Headers({
           Authorization: `Bearer ${json.jwt}`,
@@ -62,7 +62,7 @@ export async function singIn(e, history, user) {
 
 export async function login(user, history) {
   //login
-  const res = await fetch("http://localhost:8000/auth/local", {
+  const res = await fetch("http://hakhi.xyz:8000/auth/local", {
     method: "post",
     headers: new Headers({
       "Content-Type": "application/json",

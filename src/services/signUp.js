@@ -7,7 +7,7 @@ export async function signUp(e, user, history) {
 
   //password confirm in the backend
   //persist user
-  const resUser = await fetch("http://localhost:8000/users", {
+  const resUser = await fetch("http://hakhi.xyz:8000/users", {
     method: "post",
     headers: new Headers({
       "Content-Type": "application/json",
@@ -22,7 +22,7 @@ export async function signUp(e, user, history) {
   console.log(parseJwt(json.jwt));
 
   //persist customer
-  const resCustomer = await fetch("http://localhost:8000/customers", {
+  const resCustomer = await fetch("http://hakhi.xyz:8000/customers", {
     method: "post",
     headers: new Headers({
       Authorization: `Bearer ${json.jwt}`,
@@ -37,7 +37,7 @@ export async function signUp(e, user, history) {
   console.log("customer: ", customerD.id);
 
   //persistence cart
-  const resCart = await fetch("http://localhost:8000/carts", {
+  const resCart = await fetch("http://hakhi.xyz:8000/carts", {
     method: "post",
     headers: new Headers({
       Authorization: `Bearer ${json.jwt}`,
@@ -56,7 +56,7 @@ export async function signUp(e, user, history) {
   //isSeller
   if (user.store_name) {
     //persiste store
-    const resStore = await fetch("http://localhost:8000/stores", {
+    const resStore = await fetch("http://hakhi.xyz:8000/stores", {
       method: "post",
       headers: new Headers({
         Authorization: `Bearer ${json.jwt}`,

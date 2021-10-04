@@ -16,7 +16,7 @@ export const updateProduct = (e, props) => {
     headers: { Authorization: `Bearer ${token}` },
     "Content-Type": "application/json",
   };
-  fetch(`http://localhost:8000/products/${props.product.id}`, {
+  fetch(`http://hakhi.xyz:8000/products/${props.product.id}`, {
     method: "put",
     headers: new Headers({
       Authorization: `Bearer ${token}`,
