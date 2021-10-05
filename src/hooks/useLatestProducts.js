@@ -1,6 +1,5 @@
 import ProductsContext from "context/ProductsContext"
-import { useContext, useEffect } from "react"
-import { useState } from "react/cjs/react.development"
+import { useContext, useEffect, useState } from "react"
 import { getLatestProducts } from "services"
 
 // const INITIAL_PAGE = 0
