@@ -1,10 +1,10 @@
 import { useState } from "react"
 
-export const useProducts = () => {
-  const [products, setProducts] = useState([])
+// export const useProducts = () => {
+//   const [products, setProducts] = useState([])
 
-  return { products, setProducts }
-}
+//   return { products, setProducts }
+// }
 
 //Se define el estado inicial de product para el uso en el formulario
 export const useProduct = () => {

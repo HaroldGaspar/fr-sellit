@@ -1,12 +1,16 @@
-import React, { useRef } from "react"
-import { Nav, ProductForm, ProductList } from "components"
-import { useShowUpdate, useProduct, useProducts } from "state"
+import React, { useRef, useState } from "react"
+import { Nav, ProductForm, ProductsSeller } from "components"
+import {
+  useShowUpdate,
+  useProduct
+  // , useProducts
+} from "state"
 
 export function Product() {
   const productInput = useRef()
 
-  const { products, setProducts } = useProducts()
-  const { product, setProduct } = useProduct()
+  // const [products, setProducts] = useState()
+  // const { product, setProduct } = useProduct()
   const { showUpdate, setshowUpdate } = useShowUpdate()
   return (
     <>
@@ -15,10 +19,10 @@ export function Product() {
         <div className="row">
           <div className="col-md-4">
             <ProductForm
-              products={products}
-              setProducts={setProducts}
-              product={product}
-              setProduct={setProduct}
+              // products={products}
+              // setProducts={setProducts}
+              // product={product}
+              // setProduct={setProduct}
               productInput={productInput}
               showUpdate={showUpdate}
               setshowUpdate={setshowUpdate}
@@ -27,11 +31,11 @@ export function Product() {
           <div className="col-md-8">
             <div className="row">
               {/* <div className="col-md-8"> */}
-              <ProductList
-                products={products}
-                setProducts={setProducts}
-                product={product}
-                setProduct={setProduct}
+              <ProductsSeller
+                // products={products}
+                // setProducts={setProducts}
+                // product={product}
+                // setProduct={setProduct}
                 showUpdate={showUpdate}
                 setshowUpdate={setshowUpdate}
               />

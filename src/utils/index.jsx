@@ -1,32 +1,29 @@
 //state
 
-export const handleIChange = (e, props) => {
+export const handleIChange = (e, product, setProduct) => {
   const { name, value } = e.target
-  props.setProduct({ ...props.product, [name]: value })
+  setProduct({ ...product, [name]: value })
   // if (!props.task.id)
   //     document.title= 'creating task'
 }
 
-export function handleEdit(id, props) {
-  const productFiltered = props.products.filter(
-    (product) => product.id === id
-  )[0]
-  props.setProduct(productFiltered)
+export function handleEdit(id, props, products, setProduct) {
+  const productFiltered = products.filter((product) => product.id === id)[0]
+  setProduct(productFiltered)
   props.setshowUpdate(true)
   //ref
   props.productInput?.current?.focus() //?????????????????
 }
 
-export function disableEdit(props) {
-  props.setProduct({
+export function disableEdit(props, setProduct) {
+  setProduct({
     id: 0,
     category: "",
     name: "",
     mark: "",
     price: "",
     description: "",
-    stock: "",
-    completed: false
+    stock: ""
   })
   props.setshowUpdate(false)
   props.productInput?.current?.focus()
@@ -39,6 +36,8 @@ export const headerAuthx = (token) => {
     "Content-Type": "application/json"
   })
 }
+
+//===============================================
 
 export const headerAuth = new Headers({
   Authorization: `Bearer ${token}`,

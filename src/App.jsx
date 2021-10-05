@@ -3,6 +3,8 @@ import { useEffect } from "react"
 import { Route, BrowserRouter as Router, Switch } from "react-router-dom"
 import { Product, Home, Cart } from "pages"
 import Auth from "pages/auth"
+import { ProductsContextProvider } from "context"
+import { ProductContextProvider } from "context/ProductContext"
 
 function App() {
   useEffect(() => {
@@ -21,17 +23,19 @@ function App() {
         <Route path="/register" exact>
           <Auth login={false} />
         </Route>
-
-        <Route path="/products">
-          {localStorage.getItem("store") ? <Product /> : <Home />}
-        </Route>
-
-        <Route path="/" exact>
-          <Home />
-        </Route>
-        <Route path="/cart" exact>
-          <Cart />
-        </Route>
+        <ProductContextProvider>
+          <ProductsContextProvider>
+            <Route path="/products">
+              {localStorage.getItem("store") ? <Product /> : <Home />}
+            </Route>
+            <Route path="/" exact>
+              <Home />
+            </Route>
+          </ProductsContextProvider>
+          <Route path="/cart" exact>
+            <Cart />
+          </Route>
+        </ProductContextProvider>
       </Switch>
     </Router>
   )

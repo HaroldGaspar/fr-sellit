@@ -1,8 +1,12 @@
 import React from "react"
 import { handleEdit } from "utils"
 import { deleteProduct } from "services"
+import ProductContext from "context/ProductContext"
+import { useContext } from "react"
 
-export function ProductSeller({ product, props }) {
+export function ProductSeller({ product, props, products, setProducts }) {
+  const { setProduct } = useContext(ProductContext)
+
   return (
     <div className="col-sm-6 col-md-6 col-lg-4 col-xl-3 mt-2" key={product.id}>
       <div className="card card-body">
@@ -18,15 +22,13 @@ export function ProductSeller({ product, props }) {
         </div>
 
         <button
-          onClick={() => handleEdit(product.id, props)}
+          onClick={() => handleEdit(product.id, props, products, setProduct)}
           className="btn btn-block btn-info"
         >
           Actualizar
         </button>
         <button
-          onClick={() =>
-            deleteProduct(product.id, props.products, props.setProducts)
-          }
+          onClick={() => deleteProduct(product.id, products, setProducts)}
           className="btn btn-block btn-outline-danger"
         >
           Eliminar

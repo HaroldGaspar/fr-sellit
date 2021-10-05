@@ -1,9 +1,9 @@
 import React from "react"
 import { disableEdit } from "utils"
 
-export function Buttons({ props }) {
+export function Buttons({ props, setProduct }) {
   console.log("button", props.showUpdate)
-  console.log("button", props)
+  console.log("button", setProduct)
   return (
     <>
       {props.showUpdate ? (
@@ -14,7 +14,7 @@ export function Buttons({ props }) {
           <input
             value="Cancelar"
             type="button"
-            onClick={() => disableEdit(props)}
+            onClick={() => disableEdit(props, setProduct)}
             className="btn btn-secondary col-6 ml-auto"
           />
         </div>

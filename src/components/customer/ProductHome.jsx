@@ -9,6 +9,7 @@ export function ProductHome({ product }) {
   return (
     <>
       <div className="card card-body">
+        <img src="" alt="" height="120" />
         <h3>{product.name}</h3>
         <h6 className="text-right">{product.mark}</h6>
 

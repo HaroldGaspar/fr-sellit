@@ -6,7 +6,7 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 0 15px;
-  min-height: 100vh;
+  /* min-height: 100vh; */
   align-items: center;
 }
 
@@ -30,7 +30,7 @@
 }
 
 .ListOfHome-item {
-  background-color: #eee;
-  display: inline-block;
+  background-color: red;
+  /* display: inline-block; */
   width: 100%;
 }

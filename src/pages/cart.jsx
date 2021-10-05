@@ -1,6 +1,5 @@
 import React from "react"
-import { Nav, ProductsCart } from "components"
-import OrderCart from "components/OrderCart"
+import { Nav, ProductsCart, OrderCart } from "components"
 
 export function Cart() {
   return (

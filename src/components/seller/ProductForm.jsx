@@ -5,18 +5,15 @@ import { addProduct, updateProduct } from "services"
 import InputImage from "components/form/InputImage"
 import "components/form/Form.css"
 
-export function ProductForm(props) {
-  useEffect(() => {
-    //si hay un id = se esta actualizando
-    //si hay algo en los inputs = se esta creando
-    //y si no hay nada = sin interacciones
-    document.title = props.product.id
-      ? `updating ${props.product.id}`
-      : props.product.name.length | props.product.description.length
-      ? "creating..."
-      : "productos"
-  })
+import ProductContext from "context/ProductContext"
+import { useContext } from "react"
+import { useStoreProducts } from "hooks"
 
+export function ProductForm(props) {
+  const { product, setProduct } = useContext(ProductContext)
+  const { products, setProducts } = useStoreProducts()
+
+  console.log("form")
   return (
     <div
       className={
@@ -28,8 +25,17 @@ export function ProductForm(props) {
       <form
         onSubmit={
           props.showUpdate
-            ? (e) => updateProduct(e, props)
-            : (e) => addProduct(e, props)
+            ? (e) =>
+                updateProduct(
+                  e,
+                  props,
+                  product,
+                  setProduct,
+                  products,
+                  setProducts
+                )
+            : (e) =>
+                addProduct(e, props, product, setProduct, products, setProducts)
         }
       >
         <h2 className="form__title">
@@ -41,41 +47,57 @@ export function ProductForm(props) {
           <input
             type="text"
             name="category"
-            onChange={(e) => handleIChange(e, props)}
+            onChange={(e) => handleIChange(e, product, setProduct)}
             className="form__control"
-            value={props.product.category?.id | 0}
+            value={product.category?.id | 0}
             autoFocus
             ref={props.productInput}
           />
         </div>
-        <InputProduct name={"name"} label={"Nombre"} props={props} />
-        <InputProduct name={"mark"} label={"Marca"} props={props} />
+        <InputProduct
+          name={"name"}
+          label={"Nombre"}
+          props={props}
+          product={product}
+          setProduct={setProduct}
+        />
+        <InputProduct
+          name={"mark"}
+          label={"Marca"}
+          props={props}
+          product={product}
+          setProduct={setProduct}
+        />
         <InputProduct
           name={"price"}
           label={"Precio"}
           props={props}
           number={true}
+          product={product}
+          setProduct={setProduct}
         />
         <InputProduct
           name={"stock"}
           label={"Stock"}
           props={props}
           number={true}
+          product={product}
+          setProduct={setProduct}
         />
 
         <div className="form__group">
           <label htmlFor="description">Descripcion</label>
           <textarea
             name="description"
-            onChange={(e) => handleIChange(e, props)}
+            onChange={(e) => handleIChange(e, product, setProduct)}
             className="form__control"
-            value={props.product.description}
+            value={product.description}
           ></textarea>
         </div>
 
         {/* <InputImage props={props} /> */}
 
-        <Buttons props={props} />
+        <Buttons props={props} setProduct={setProduct} />
       </form>
     </div>
   )

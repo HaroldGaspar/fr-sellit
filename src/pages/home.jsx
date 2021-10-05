@@ -1,16 +1,16 @@
 import React from "react"
 import { Nav, PopularProducts, LastProducts } from "components"
-import { useProducts } from "state"
-
+import "./Home.css"
 export function Home() {
-  const { products, setProducts } = useProducts()
-
   return (
     <>
       <Nav />
+      <div className="container-home">
+        <PopularProducts />
+        <LastProducts />
+      </div>
       <div className="container">
-        <PopularProducts products={products} setProducts={setProducts} />
-        <LastProducts products={products} setProducts={setProducts} />
+        <button className="btn mx-auto">next page</button>
       </div>
     </>
   )
