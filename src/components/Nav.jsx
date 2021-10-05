@@ -1,20 +1,20 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react"
 
 //nav
-import { NavLink } from "react-router-dom";
-import { SearchBar } from ".";
-import { logOutfx } from "../services";
+import { NavLink } from "react-router-dom"
+import { SearchBar } from "."
+import { logOutfx } from "services"
 
 export function Nav(props) {
-  const [logout, setlogout] = useState();
-  const [store, setstore] = useState(false);
+  const [logout, setlogout] = useState()
+  const [store, setstore] = useState(false)
 
   useEffect(() => {
-    setlogout(localStorage.getItem("token"));
-    setstore(localStorage.getItem("store"));
+    setlogout(localStorage.getItem("token"))
+    setstore(localStorage.getItem("store"))
 
-    console.log("logout", logout);
-  }, [logout, store]);
+    console.log("logout", logout)
+  }, [logout, store])
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
       <NavLink className="navbar-brand" to="/">
@@ -86,5 +86,5 @@ export function Nav(props) {
         </ul>
       </div>
     </nav>
-  );
+  )
 }

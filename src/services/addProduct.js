@@ -1,6 +1,6 @@
 export const addProduct = (e, props) => {
-  e.preventDefault();
-  console.log("saving ", props.product);
+  e.preventDefault()
+  console.log("saving ", props.product)
 
   const newProduct = {
     // id: getCurrentTimeStamp(),
@@ -10,23 +10,21 @@ export const addProduct = (e, props) => {
     price: props.product.price,
     stock: props.product.stock,
     description: props.product.description,
-    store: localStorage.getItem("store"),
-  };
+    store: localStorage.getItem("store")
+  }
 
   //persisten
-  const token = localStorage.getItem("token");
-  const config = {
-    headers: { Authorization: `Bearer ${token}` },
-  };
+  const token = localStorage.getItem("token")
+
   fetch("http://hakhi.xyz:8000/products", {
     method: "post",
     headers: new Headers({
       Authorization: `Bearer ${token}`,
-      "Content-Type": "application/json",
+      "Content-Type": "application/json"
     }),
-    body: JSON.stringify(newProduct),
-  });
-  props.setProducts([...props.products, newProduct]);
+    body: JSON.stringify(newProduct)
+  })
+  props.setProducts([...props.products, newProduct])
   //format
   props.setProduct({
     category: "",
@@ -34,8 +32,8 @@ export const addProduct = (e, props) => {
     mark: "",
     price: "",
     description: "",
-    stock: "",
-  });
+    stock: ""
+  })
   //ref
-  props.productInput?.current?.focus();
-};
+  props.productInput?.current?.focus()
+}

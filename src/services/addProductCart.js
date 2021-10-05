@@ -1,10 +1,8 @@
-import React from "react";
-
 export async function addProductCart(product) {
-  const cart = localStorage.getItem("cart");
-  const token = localStorage.getItem("token");
+  const cart = localStorage.getItem("cart")
+  const token = localStorage.getItem("token")
 
-  //PROBLEMS WITH CORS?
+  // //PROBLEMS WITH CORS?
   // fetch("http://hakhi.xyz/:8000/product-details/", {
   //   method: "post",
   //   headers: new Headers({
@@ -23,12 +21,12 @@ export async function addProductCart(product) {
     method: "post",
     headers: new Headers({
       Authorization: `Bearer ${token}`,
-      "Content-Type": "application/json",
+      "Content-Type": "application/json"
     }),
     body: JSON.stringify({
       cart,
       qty: 1,
-      product,
-    }),
-  });
+      product
+    })
+  })
 }

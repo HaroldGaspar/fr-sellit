@@ -1,0 +1,36 @@
+:root {
+  --results-columns: 2;
+}
+
+.list-latest {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 0 15px;
+  min-height: 100vh;
+  align-items: center;
+}
+
+@media (min-width: 600px) {
+  :root {
+    --results-columns: 3;
+  }
+  .ListOfGifs {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 800px) {
+  :root {
+    --results-columns: 4;
+  }
+  .ListOfGifs {
+    grid-template-columns: repeat(4, 1fr);
+    max-width: 1000px;
+  }
+}
+
+.ListOfHome-item {
+  background-color: #eee;
+  display: inline-block;
+  width: 100%;
+}

@@ -1,21 +1,21 @@
-import React from "react";
-import { NavLink, useHistory } from "react-router-dom";
-import { Input } from "../components";
-import { signUp } from "../services";
+import React from "react"
+import { NavLink, useHistory } from "react-router-dom"
+import { Input } from "components"
+import { signUp } from "services"
 
 export function Singup({ user, setUser }) {
-  let history = useHistory();
+  let history = useHistory()
 
   //handle
   const handleChange = (e) => {
-    const { name, value } = e.target;
-    setUser({ ...user, [name]: value });
-  };
+    const { name, value } = e.target
+    setUser({ ...user, [name]: value })
+  }
 
   //
   const onSubmit = async (e) => {
-    signUp(e, user, history);
-  };
+    signUp(e, user, history)
+  }
   return (
     <div className="card col-md-4 mx-auto">
       <span className="form-title">Crear cuenta</span>
@@ -56,5 +56,5 @@ export function Singup({ user, setUser }) {
         </div>
       </div>
     </div>
-  );
+  )
 }

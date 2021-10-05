@@ -1,7 +1,9 @@
-import React from "react";
-import { disableEdit } from "../../utils";
+import React from "react"
+import { disableEdit } from "utils"
 
-export function Buttons(props) {
+export function Buttons({ props }) {
+  console.log("button", props.showUpdate)
+  console.log("button", props)
   return (
     <>
       {props.showUpdate ? (
@@ -20,5 +22,5 @@ export function Buttons(props) {
         <button className="btn btn-outline-success btn-block">Guardar</button>
       )}
     </>
-  );
+  )
 }

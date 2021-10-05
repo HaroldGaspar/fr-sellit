@@ -1,6 +1,6 @@
-import React from "react";
-import { Nav, ProductsCart } from "../components";
-import OrderCart from "../components/OrderCart";
+import React from "react"
+import { Nav, ProductsCart } from "components"
+import OrderCart from "components/OrderCart"
 
 export function Cart() {
   return (
@@ -17,5 +17,5 @@ export function Cart() {
         </div>
       </div>
     </>
-  );
+  )
 }

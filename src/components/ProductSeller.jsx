@@ -1,6 +1,6 @@
-import React from "react";
-import { handleEdit } from "../utils";
-import { deleteProduct } from "../services";
+import React from "react"
+import { handleEdit } from "utils"
+import { deleteProduct } from "services"
 
 export function ProductSeller({ product, props }) {
   return (
@@ -33,5 +33,5 @@ export function ProductSeller({ product, props }) {
         </button>
       </div>
     </div>
-  );
+  )
 }

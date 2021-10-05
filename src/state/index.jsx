@@ -1,10 +1,10 @@
-import { useState } from "react";
+import { useState } from "react"
 
 export const useProducts = () => {
-  const [products, setProducts] = useState([]);
+  const [products, setProducts] = useState([])
 
-  return { products, setProducts };
-};
+  return { products, setProducts }
+}
 
 //Se define el estado inicial de product para el uso en el formulario
 export const useProduct = () => {
@@ -15,13 +15,13 @@ export const useProduct = () => {
     mark: "",
     price: 0,
     description: "",
-    stock: 0,
-  });
+    stock: 0
+  })
 
-  return { product, setProduct };
-};
+  return { product, setProduct }
+}
 
 export const useShowUpdate = () => {
-  const [showUpdate, setshowUpdate] = useState(false);
-  return { showUpdate, setshowUpdate };
-};
+  const [showUpdate, setshowUpdate] = useState(false)
+  return { showUpdate, setshowUpdate }
+}

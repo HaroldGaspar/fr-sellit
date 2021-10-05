@@ -1,14 +1,14 @@
-import "./App.css";
-import { useEffect } from "react";
-import { Route, BrowserRouter as Router, Switch } from "react-router-dom";
-import { Product, Home, Cart } from "./pages";
-import Auth from "./pages/auth";
+import "./App.css"
+import { useEffect } from "react"
+import { Route, BrowserRouter as Router, Switch } from "react-router-dom"
+import { Product, Home, Cart } from "pages"
+import Auth from "pages/auth"
 
 function App() {
   useEffect(() => {
-    console.log("start");
+    console.log("start")
     // return alert('mngmnt tasks ending')//just when the component is killing
-  }, []);
+  }, [])
 
   return (
     <Router>
@@ -34,7 +34,7 @@ function App() {
         </Route>
       </Switch>
     </Router>
-  );
+  )
 }
 
-export default App;
+export default App

@@ -1,57 +1,57 @@
-import { login, parseJwt } from ".";
+import { login, parseJwt } from "services"
 
 export async function signUp(e, user, history) {
-  e.preventDefault();
-  console.log("registrado");
-  console.log(user);
+  e.preventDefault()
+  console.log("registrado")
+  console.log(user)
 
   //password confirm in the backend
   //persist user
   const resUser = await fetch("http://hakhi.xyz:8000/users", {
     method: "post",
     headers: new Headers({
-      "Content-Type": "application/json",
+      "Content-Type": "application/json"
     }),
-    body: JSON.stringify({ ...user, is_seller: Boolean(user.store_name) }),
-  });
-  const userD = await resUser.json();
-  console.log("user ", userD);
+    body: JSON.stringify({ ...user, is_seller: Boolean(user.store_name) })
+  })
+  const userD = await resUser.json()
+  console.log("user ", userD)
 
   //login
-  const json = await login(user, history);
-  console.log(parseJwt(json.jwt));
+  const json = await login(user, history)
+  console.log(parseJwt(json.jwt))
 
   //persist customer
   const resCustomer = await fetch("http://hakhi.xyz:8000/customers", {
     method: "post",
     headers: new Headers({
       Authorization: `Bearer ${json.jwt}`,
-      "Content-Type": "application/json",
+      "Content-Type": "application/json"
     }),
     body: JSON.stringify({
       is_seller: Boolean(user.store_name),
-      user: userD.id,
-    }),
-  });
-  const customerD = await resCustomer.json();
-  console.log("customer: ", customerD.id);
+      user: userD.id
+    })
+  })
+  const customerD = await resCustomer.json()
+  console.log("customer: ", customerD.id)
 
   //persistence cart
   const resCart = await fetch("http://hakhi.xyz:8000/carts", {
     method: "post",
     headers: new Headers({
       Authorization: `Bearer ${json.jwt}`,
-      "Content-Type": "application/json",
+      "Content-Type": "application/json"
     }),
     body: JSON.stringify({
       is_actual: true,
-      customer: customerD.id,
-    }),
-  });
+      customer: customerD.id
+    })
+  })
 
-  const cartD = await resCart.json();
+  const cartD = await resCart.json()
   // console.log("cart", cartD.id)
-  localStorage.setItem("cart", cartD.id);
+  localStorage.setItem("cart", cartD.id)
 
   //isSeller
   if (user.store_name) {
@@ -60,16 +60,16 @@ export async function signUp(e, user, history) {
       method: "post",
       headers: new Headers({
         Authorization: `Bearer ${json.jwt}`,
-        "Content-Type": "application/json",
+        "Content-Type": "application/json"
       }),
       body: JSON.stringify({
         name: user.store_name,
-        customer: customerD.id,
-      }),
-    });
-    const storeD = await resStore.json();
-    console.log("store ", storeD.id);
-    localStorage.setItem("store", storeD.id); //filtrar los productos por tienda para la vista del seller
+        customer: customerD.id
+      })
+    })
+    const storeD = await resStore.json()
+    console.log("store ", storeD.id)
+    localStorage.setItem("store", storeD.id) //filtrar los productos por tienda para la vista del seller
   }
-  history.push("/");
+  history.push("/")
 }

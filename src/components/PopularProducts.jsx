@@ -1,12 +1,12 @@
-import React, { useEffect, useState } from "react";
-import { ProductHome } from ".";
-import { getPopularProducts } from "../services";
+import React, { useEffect, useState } from "react"
+import { ProductHome } from "components"
+import { getPopularProducts } from "services"
 
 export function PopularProducts() {
-  const [homeProducts, sethomeProducts] = useState([]);
+  const [homeProducts, sethomeProducts] = useState([])
   useEffect(() => {
-    getPopularProducts(homeProducts, sethomeProducts);
-  }, []);
+    getPopularProducts(homeProducts, sethomeProducts)
+  }, [])
 
   return (
     <>
@@ -17,5 +17,5 @@ export function PopularProducts() {
         ))}
       </div>
     </>
-  );
+  )
 }

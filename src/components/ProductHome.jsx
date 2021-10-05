@@ -1,13 +1,13 @@
-import React from "react";
-import { addProductCart } from "../services";
+import React from "react"
+import { addProductCart } from "services"
 
 export function ProductHome({ product }) {
   const handleEdit = () => {
-    console.log("palcarro", product.id);
-    addProductCart(product.id);
-  };
+    console.log("palcarro", product.id)
+    addProductCart(product.id)
+  }
   return (
-    <div className="col-md-4 mt-2">
+    <>
       <div className="card card-body">
         <h3>{product.name}</h3>
         <h6 className="text-right">{product.mark}</h6>
@@ -24,6 +24,6 @@ export function ProductHome({ product }) {
           Añadir
         </button>
       </div>
-    </div>
-  );
+    </>
+  )
 }

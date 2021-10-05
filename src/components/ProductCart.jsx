@@ -1,12 +1,12 @@
-import React, { useEffect, useState } from "react";
-import { getProduct } from "../services";
+import React, { useEffect, useState } from "react"
+import { getProduct } from "services"
 
 export function ProductCart({ productDetail }) {
-  const [actualProduct, setactualProduct] = useState({});
+  const [actualProduct, setactualProduct] = useState({})
 
   useEffect(() => {
-    getProduct(productDetail.product, setactualProduct);
-  }, []);
+    getProduct(productDetail.product, setactualProduct)
+  }, [])
   return (
     <>
       <div className="card">
@@ -15,5 +15,5 @@ export function ProductCart({ productDetail }) {
         <p>{productDetail.qty}</p>
       </div>
     </>
-  );
+  )
 }

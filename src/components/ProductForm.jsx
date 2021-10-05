@@ -1,9 +1,9 @@
-import { useEffect } from "react";
-import { Buttons, InputProduct } from ".";
-import { handleIChange } from "../utils";
-import { addProduct, updateProduct } from "../services";
-import InputImage from "./form/InputImage";
-import "./form/Form.css";
+import { useEffect } from "react"
+import { Buttons, InputProduct } from "components"
+import { handleIChange } from "utils"
+import { addProduct, updateProduct } from "services"
+import InputImage from "components/form/InputImage"
+import "components/form/Form.css"
 
 export function ProductForm(props) {
   useEffect(() => {
@@ -14,8 +14,8 @@ export function ProductForm(props) {
       ? `updating ${props.product.id}`
       : props.product.name.length | props.product.description.length
       ? "creating..."
-      : "productos";
-  });
+      : "productos"
+  })
 
   return (
     <div
@@ -75,8 +75,8 @@ export function ProductForm(props) {
 
         {/* <InputImage props={props} /> */}
 
-        <Buttons />
+        <Buttons props={props} />
       </form>
     </div>
-  );
+  )
 }

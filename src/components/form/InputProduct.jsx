@@ -1,5 +1,5 @@
-import React from "react";
-import { handleIChange } from "../../utils";
+import React from "react"
+import { handleIChange } from "utils"
 // import "./Form.css";
 
 export function InputProduct({ name, label, number, autofocus, props }) {
@@ -17,5 +17,5 @@ export function InputProduct({ name, label, number, autofocus, props }) {
         className="form__control"
       />
     </div>
-  );
+  )
 }

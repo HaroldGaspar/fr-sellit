@@ -1,19 +1,13 @@
-import React, { useRef } from "react";
-import {
-  TaskForm,
-  TaskList,
-  Nav,
-  ProductForm,
-  ProductList,
-} from "../components";
-import { useShowUpdate, useProduct, useProducts } from "../state";
+import React, { useRef } from "react"
+import { Nav, ProductForm, ProductList } from "components"
+import { useShowUpdate, useProduct, useProducts } from "state"
 
 export function Product() {
-  const productInput = useRef();
+  const productInput = useRef()
 
-  const { products, setProducts } = useProducts();
-  const { product, setProduct } = useProduct();
-  const { showUpdate, setshowUpdate } = useShowUpdate();
+  const { products, setProducts } = useProducts()
+  const { product, setProduct } = useProduct()
+  const { showUpdate, setshowUpdate } = useShowUpdate()
   return (
     <>
       <Nav />
@@ -47,5 +41,5 @@ export function Product() {
         </div>
       </div>
     </>
-  );
+  )
 }

@@ -1,9 +1,9 @@
-import React, { useState } from "react";
-import { Singin, Singup } from ".";
-import { Footer } from "../components";
+import React, { useState } from "react"
+import { Singin, Singup } from "pages"
+import { Footer } from "components"
 
 export default function Auth({ login }) {
-  const [user, setUser] = useState({});
+  const [user, setUser] = useState({})
   return (
     <>
       <div className="container">
@@ -20,5 +20,5 @@ export default function Auth({ login }) {
         </div>
       </div>
     </>
-  );
+  )
 }

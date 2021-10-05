@@ -1,21 +1,21 @@
-import React from "react";
-import { NavLink, useHistory } from "react-router-dom";
-import { Input } from "../components";
-import { singIn } from "../services";
+import React from "react"
+import { NavLink, useHistory } from "react-router-dom"
+import { Input } from "components"
+import { singIn } from "services"
 
 export function Singin({ user, setUser }) {
-  let history = useHistory();
+  let history = useHistory()
   // const [user, setUser] = useState({});
   const login = async (e) => {
-    singIn(e, history, user);
-  };
+    singIn(e, history, user)
+  }
 
   const handleChange = (e) => {
-    const { name, value } = e.target;
-    setUser({ ...user, [name]: value });
+    const { name, value } = e.target
+    setUser({ ...user, [name]: value })
     // if (!props.task.id)
     //     document.title= 'creating task'
-  };
+  }
 
   return (
     <div className="card col-md-4 mx-auto">
@@ -52,5 +52,5 @@ export function Singin({ user, setUser }) {
         </div>
       </div>
     </div>
-  );
+  )
 }
