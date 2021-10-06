@@ -3,7 +3,7 @@ import { NavLink, useHistory } from "react-router-dom"
 import { Input } from "components"
 import { signUp } from "services"
 
-export function Singup({ user, setUser }) {
+export function Singup({ user, setUser, setloading }) {
   let history = useHistory()
 
   //handle
@@ -12,15 +12,11 @@ export function Singup({ user, setUser }) {
     setUser({ ...user, [name]: value })
   }
 
-  //
-  const onSubmit = async (e) => {
-    signUp(e, user, history)
-  }
   return (
     <div className="card col-md-4 mx-auto">
       <span className="form-title">Crear cuenta</span>
       <div className="card-body">
-        <form onSubmit={(e) => onSubmit(e)}>
+        <form onSubmit={(e) => signUp(e, user, history, setloading)}>
           <Input
             name={"username"}
             label={"Nombre de usuario"}

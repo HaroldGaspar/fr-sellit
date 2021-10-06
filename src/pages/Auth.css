@@ -1,0 +1,16 @@
+.spinner-globainer {
+  height: 100vh;
+  display: grid;
+  align-items: center;
+  margin: 0 auto;
+}
+
+.text-spiner {
+  margin: 0 auto;
+  padding: 0 auto;
+  /* display: block; */
+}
+.sp-txt {
+  /* align-items: initial; */
+  align-items: initial;
+}

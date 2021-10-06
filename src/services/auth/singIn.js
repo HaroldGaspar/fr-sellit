@@ -6,13 +6,13 @@ export const parseJwt = (token) => {
   }
 }
 
-export async function singIn(e, history, user) {
+export async function singIn(e, history, user, setloading) {
   e.preventDefault()
-
+  setloading(true)
   console.log("data ", JSON.stringify(user))
 
   //login
-  const json = await login(user, history)
+  const json = await login(user)
   console.log("jwt", json)
   const userId = parseJwt(json.jwt).id
 
@@ -56,11 +56,12 @@ export async function singIn(e, history, user) {
     console.log("store ", storeD.id)
     localStorage.setItem("store", storeD[0].id)
   }
+  setloading(false)
   history.push("/")
   console.log("login succesfully")
 }
 
-export async function login(user, history) {
+export async function login(user) {
   //login
   const res = await fetch("http://hakhi.xyz:8000/auth/local", {
     method: "post",

@@ -1,7 +1,8 @@
 import { login, parseJwt } from "services"
 
-export async function signUp(e, user, history) {
+export async function signUp(e, user, history, setloading) {
   e.preventDefault()
+  setloading(true)
   console.log("registrado")
   console.log(user)
 
@@ -71,5 +72,6 @@ export async function signUp(e, user, history) {
     console.log("store ", storeD.id)
     localStorage.setItem("store", storeD.id) //filtrar los productos por tienda para la vista del seller
   }
+  setloading(false)
   history.push("/")
 }
