@@ -1,10 +1,13 @@
+import React from "react"
 import "./App.css"
-import { useEffect } from "react"
+import { Suspense, useEffect } from "react"
 import { Route, BrowserRouter as Router, Switch } from "react-router-dom"
-import { Product, Home, Cart } from "pages"
+import { Home, Cart, Product } from "pages"
 import Auth from "pages/auth"
 import { ProductsContextProvider } from "context"
 import { ProductContextProvider } from "context/ProductContext"
+
+// const Product = React.lazy(() => import("pages"))
 
 function App() {
   useEffect(() => {
@@ -15,6 +18,7 @@ function App() {
   return (
     <Router>
       <Switch>
+        {/* <Suspense fallback={null}> */}
         <Route path="/about">"about"</Route>
         <Route path="/contact">"Users"</Route>
         <Route path="/login" exact>
@@ -36,6 +40,7 @@ function App() {
             <Cart />
           </Route>
         </ProductContextProvider>
+        {/* </Suspense> */}
       </Switch>
     </Router>
   )

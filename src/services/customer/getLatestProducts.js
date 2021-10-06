@@ -1,6 +1,10 @@
-export async function getLatestProducts() {
-  const latestRes = await fetch(
-    "http://hakhi.xyz:8000/products?_sort=created_at:DESC&_limit=5"
-  )
+import { API_URL } from "../settings"
+const limit = 6
+
+export async function getLatestProducts(page = 0) {
+  const url = `${API_URL}/products?_sort=created_at:DESC&_limit=${limit}&_start=${
+    page * limit
+  }`
+  const latestRes = await fetch(url)
   return await latestRes.json()
 }
