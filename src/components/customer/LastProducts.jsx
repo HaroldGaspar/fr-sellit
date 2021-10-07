@@ -1,9 +1,10 @@
-import { ProductHome, Spinner } from "components"
+import { Spinner } from "components"
 import { useLastestProducts } from "hooks"
 import { useNearScreen } from "hooks/useNearScreen"
 import debounce from "just-debounce-it"
 import { useCallback, useEffect, useRef } from "react"
 import "./LastProducts.css"
+import ProductHome from "./ProductHome"
 
 export function LastProducts() {
   const { loading, products, setPage } = useLastestProducts()

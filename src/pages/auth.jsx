@@ -1,8 +1,8 @@
 import React, { useState } from "react"
 import { Singin, Singup } from "pages"
-import { Footer } from "components"
 import { Spinner } from "components/Spinner"
 import "./Auth.css"
+import Footer from "components/Footer"
 
 export default function Auth({ login }) {
   const [loading, setloading] = useState()

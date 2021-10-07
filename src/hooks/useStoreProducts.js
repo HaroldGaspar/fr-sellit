@@ -7,7 +7,8 @@ import { getProductsByStore } from "services"
 
 export function useStoreProducts() {
   //STATE HANDLER
-  const { products, setProducts } = useContext(ProductsContext)
+  // const [ products, setProducts ] = useContext(ProductsContext)
+  const [products, setProducts] = useState([])
   const [loading, setLoading] = useState(false) //new fx
   //   const [page, setPage] = useState(INITIAL_PAGE)
 

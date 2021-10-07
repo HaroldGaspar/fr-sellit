@@ -1,16 +1,18 @@
+import { API_URL } from "../settings"
 import { headerAuth } from "utils"
 
 export const updateProduct = (
   e,
-  props,
   product,
   setProduct,
   products,
-  setProducts
+  setProducts,
+  productInput,
+  setshowUpdate
 ) => {
   e.preventDefault()
   const newProduct = {
-    category: product.category.id, //no soportaba un objeto
+    category: product.category?.id, //no soportaba un objeto
     name: product.name,
     mark: product.mark,
     price: product.price, //
@@ -18,7 +20,7 @@ export const updateProduct = (
     stock: product.stock //
   }
 
-  fetch(`http://hakhi.xyz:8000/products/${product.id}`, {
+  fetch(`${API_URL}/products/${product.id}`, {
     method: "put",
     headers: headerAuth,
     body: JSON.stringify(newProduct)
@@ -35,9 +37,9 @@ export const updateProduct = (
 
   //form
   // console.log("updated index", productFiltered, "=>", productsEdited)
-  props.setshowUpdate(false)
+  setshowUpdate(false)
   setProduct({
-    ...props.product,
+    ...product,
     category: "",
     name: "",
     mark: "",
@@ -46,5 +48,5 @@ export const updateProduct = (
     stock: ""
   })
   //ref
-  props.productInput?.current?.focus()
+  productInput?.current?.focus()
 }

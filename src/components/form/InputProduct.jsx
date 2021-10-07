@@ -2,14 +2,7 @@ import React from "react"
 import { handleIChange } from "utils"
 // import "./Form.css";
 
-export function InputProduct({
-  name,
-  label,
-  number,
-  autofocus,
-  product,
-  setProduct
-}) {
+function InputProduct({ name, label, number, autofocus, product, setProduct }) {
   return (
     <div className="form__group">
       <label htmlFor={name} className="form__label">
@@ -26,3 +19,4 @@ export function InputProduct({
     </div>
   )
 }
+export default React.memo(InputProduct)

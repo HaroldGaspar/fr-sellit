@@ -6,6 +6,7 @@ import { Home, Cart, Product } from "pages"
 import Auth from "pages/auth"
 import { ProductsContextProvider } from "context"
 import { ProductContextProvider } from "context/ProductContext"
+import { Nav } from "components/Nav"
 
 // const Product = React.lazy(() => import("pages"))
 
@@ -27,19 +28,24 @@ function App() {
         <Route path="/register" exact>
           <Auth login={false} />
         </Route>
-        <ProductContextProvider>
-          <ProductsContextProvider>
-            <Route path="/products">
-              {localStorage.getItem("store") ? <Product /> : <Home />}
-            </Route>
-            <Route path="/" exact>
-              <Home />
-            </Route>
-          </ProductsContextProvider>
-          <Route path="/cart" exact>
-            <Cart />
-          </Route>
-        </ProductContextProvider>
+        <Route path="/products">
+          {localStorage.getItem("store") ? (
+            <>
+              <Nav />
+              {/* <ProductsContextProvider> */}
+              <Product />
+              {/* </ProductsContextProvider> */}
+            </>
+          ) : (
+            <Home />
+          )}
+        </Route>
+        <Route path="/" exact>
+          <Home />
+        </Route>
+        <Route path="/cart" exact>
+          <Cart />
+        </Route>
         {/* </Suspense> */}
       </Switch>
     </Router>

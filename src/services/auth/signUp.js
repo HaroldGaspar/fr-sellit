@@ -1,3 +1,4 @@
+import { API_URL } from "../settings"
 import { login, parseJwt } from "services"
 
 export async function signUp(e, user, history, setloading) {
@@ -8,7 +9,7 @@ export async function signUp(e, user, history, setloading) {
 
   //password confirm in the backend
   //persist user
-  const resUser = await fetch("http://hakhi.xyz:8000/users", {
+  const resUser = await fetch(`${API_URL}/users`, {
     method: "post",
     headers: new Headers({
       "Content-Type": "application/json"
@@ -23,7 +24,7 @@ export async function signUp(e, user, history, setloading) {
   console.log(parseJwt(json.jwt))
 
   //persist customer
-  const resCustomer = await fetch("http://hakhi.xyz:8000/customers", {
+  const resCustomer = await fetch(`${API_URL}/customers`, {
     method: "post",
     headers: new Headers({
       Authorization: `Bearer ${json.jwt}`,
@@ -38,7 +39,7 @@ export async function signUp(e, user, history, setloading) {
   console.log("customer: ", customerD.id)
 
   //persistence cart
-  const resCart = await fetch("http://hakhi.xyz:8000/carts", {
+  const resCart = await fetch(`${API_URL}/carts`, {
     method: "post",
     headers: new Headers({
       Authorization: `Bearer ${json.jwt}`,
@@ -57,7 +58,7 @@ export async function signUp(e, user, history, setloading) {
   //isSeller
   if (user.store_name) {
     //persiste store
-    const resStore = await fetch("http://hakhi.xyz:8000/stores", {
+    const resStore = await fetch(`${API_URL}/stores`, {
       method: "post",
       headers: new Headers({
         Authorization: `Bearer ${json.jwt}`,

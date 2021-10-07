@@ -1,3 +1,4 @@
+import { API_URL } from "../settings"
 export const parseJwt = (token) => {
   try {
     return JSON.parse(atob(token.split(".")[1]))
@@ -17,26 +18,20 @@ export async function singIn(e, history, user, setloading) {
   const userId = parseJwt(json.jwt).id
 
   //fetch findCustomerByUserId
-  const resCustomer = await fetch(
-    `http://hakhi.xyz:8000/customers?user=${userId}`,
-    {
-      headers: new Headers({
-        Authorization: `Bearer ${json.jwt}`
-      })
-    }
-  )
+  const resCustomer = await fetch(`${API_URL}/customers?user=${userId}`, {
+    headers: new Headers({
+      Authorization: `Bearer ${json.jwt}`
+    })
+  })
   const customerD = await resCustomer.json()
   console.log("customer: ", customerD)
 
   //find its cart
-  const resCart = await fetch(
-    `http://hakhi.xyz:8000/carts?customer=${customerD[0].id}`,
-    {
-      headers: new Headers({
-        Authorization: `Bearer ${json.jwt}`
-      })
-    }
-  )
+  const resCart = await fetch(`${API_URL}/carts?customer=${customerD[0].id}`, {
+    headers: new Headers({
+      Authorization: `Bearer ${json.jwt}`
+    })
+  })
   const cartD = await resCart.json()
   console.log("cart ", cartD[0].id)
   localStorage.setItem("cart", cartD[0].id)
@@ -45,7 +40,7 @@ export async function singIn(e, history, user, setloading) {
   if (customerD[0].is_seller) {
     //find store store
     const resStore = await fetch(
-      `http://hakhi.xyz:8000/stores?customer=${customerD[0].id}`,
+      `${API_URL}/stores?customer=${customerD[0].id}`,
       {
         headers: new Headers({
           Authorization: `Bearer ${json.jwt}`
@@ -63,7 +58,7 @@ export async function singIn(e, history, user, setloading) {
 
 export async function login(user) {
   //login
-  const res = await fetch("http://hakhi.xyz:8000/auth/local", {
+  const res = await fetch(`${API_URL}/auth/local`, {
     method: "post",
     headers: new Headers({
       "Content-Type": "application/json"

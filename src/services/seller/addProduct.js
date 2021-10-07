@@ -1,3 +1,5 @@
+import { API_URL } from "../settings"
+
 export const addProduct = (
   e,
   props,
@@ -11,7 +13,7 @@ export const addProduct = (
 
   const newProduct = {
     // id: getCurrentTimeStamp(),
-    category: product.category,
+    category: product.category | 0,
     name: product.name,
     mark: product.mark,
     price: product.price | 0,
@@ -23,7 +25,7 @@ export const addProduct = (
   //persisten
   const token = localStorage.getItem("token")
 
-  fetch("http://hakhi.xyz:8000/products", {
+  fetch(`${API_URL}/products`, {
     method: "post",
     headers: new Headers({
       Authorization: `Bearer ${token}`,
@@ -31,7 +33,8 @@ export const addProduct = (
     }),
     body: JSON.stringify(newProduct)
   }).catch((e) => console.log(e))
-  setProducts([...products, newProduct])
+  // setProducts([...products, newProduct])
+  setProducts((prevProducts) => prevProducts.concat(newProduct))
   //format
   setProduct({
     category: "",

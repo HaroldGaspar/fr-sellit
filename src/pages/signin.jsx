@@ -9,8 +9,6 @@ export function Singin({ user, setUser, setloading }) {
   const handleChange = (e) => {
     const { name, value } = e.target
     setUser({ ...user, [name]: value })
-    // if (!props.task.id)
-    //     document.title= 'creating task'
   }
 
   return (

@@ -6,7 +6,7 @@ const INITIAL_PAGE = 0
 
 export function useLastestProducts() {
   //STATE HANDLER
-  const { products, setProducts } = useContext(ProductsContext)
+  const [products, setProducts] = useState([])
   const [loading, setLoading] = useState(false) //new fx
 
   const [loadingNextPage, setLoadingNextPage] = useState(false)
@@ -30,9 +30,10 @@ export function useLastestProducts() {
     getLatestProducts(page).then((nextProducts) => {
       setProducts((prevProducts) => prevProducts.concat(nextProducts))
       setLoadingNextPage(false)
+      console.log("setting", products)
     })
   }, [page, setProducts])
 
   //RESULTS
-  return { loading, loadingNextPage, products, setPage }
+  return { loading, products, setPage, loadingNextPage }
 }
