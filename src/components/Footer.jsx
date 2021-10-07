@@ -1,7 +1,7 @@
-import React from "react";
-import { NavLink } from "react-router-dom";
+import React from "react"
+import { NavLink } from "react-router-dom"
 
-export function Footer() {
+function Footer() {
   return (
     <>
       <div className="col-10 mt-4 pt-4 mx-auto">
@@ -13,5 +13,7 @@ export function Footer() {
         </div>
       </div>
     </>
-  );
+  )
 }
+
+export default React.memo(Footer)

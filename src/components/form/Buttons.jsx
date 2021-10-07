@@ -1,12 +1,31 @@
 import React from "react"
-import { disableEdit } from "utils"
 
-export function Buttons({ props, setProduct }) {
-  console.log("button", props.showUpdate)
-  console.log("button", setProduct)
+function Buttons({
+  props,
+  setProduct,
+  setshowUpdate,
+  productInput,
+  showUpdate
+}) {
+  function disableEdit() {
+    setProduct({
+      id: 0,
+      category: "",
+      name: "",
+      mark: "",
+      price: "",
+      description: "",
+      stock: ""
+    })
+    setshowUpdate(false)
+    productInput?.current?.focus()
+  }
+
+  // console.log("button", showUpdate)
+  // console.log("button", setProduct)
   return (
     <>
-      {props.showUpdate ? (
+      {showUpdate ? (
         <div className="d-flex">
           <button className="btn btn-outline-info col-6 py-2">
             Actualizar
@@ -24,3 +43,5 @@ export function Buttons({ props, setProduct }) {
     </>
   )
 }
+
+export default React.memo(Buttons)

@@ -1,7 +1,7 @@
 import React from "react"
 import { addProductCart } from "services"
 
-export function ProductHome({ product }) {
+function ProductHome({ product }) {
   const handleEdit = () => {
     console.log("palcarro", product.id)
     addProductCart(product.id)
@@ -28,3 +28,4 @@ export function ProductHome({ product }) {
     </>
   )
 }
+export default React.memo(ProductHome)

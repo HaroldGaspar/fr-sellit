@@ -20,8 +20,3 @@ export const useProduct = () => {
 
   return { product, setProduct }
 }
-
-export const useShowUpdate = () => {
-  const [showUpdate, setshowUpdate] = useState(false)
-  return { showUpdate, setshowUpdate }
-}

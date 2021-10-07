@@ -1,25 +1,37 @@
-import { ProductSeller } from "components"
 import { useStoreProducts } from "hooks"
 import { Spinner } from "components/Spinner"
+import React from "react"
+import ProductSeller from "./ProductSeller"
 
-export function ProductsSeller(props) {
-  const { loading, products, setProducts } = useStoreProducts()
+function ProductsSeller({
+  setshowUpdate,
+  setProduct,
+  loading,
+  products,
+  setProducts
+}) {
+  // const { loading, products, setProducts } = useStoreProducts()
 
   return (
     <>
       {loading ? (
         <Spinner />
       ) : (
-        products.map((product, id) => (
+        products.map((productMap, id) => (
           <ProductSeller
-            product={product}
+            productMap={productMap}
             products={products}
             setProducts={setProducts}
-            props={props}
+            setshowUpdate={setshowUpdate}
             key={id}
+            setProduct={setProduct}
           />
         ))
       )}
     </>
   )
 }
+export default React.memo(ProductsSeller)
+// ,(prevProps, nextProps)=>{
+//   props===
+// }
