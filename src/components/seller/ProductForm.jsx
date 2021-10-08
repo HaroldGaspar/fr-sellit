@@ -53,7 +53,15 @@ function ProductForm({
                   productInput,
                   setshowUpdate
                 )
-            : (e) => addProduct(e, product, setProduct, products, setProducts)
+            : (e) =>
+                addProduct(
+                  e,
+                  product,
+                  setProduct,
+                  products,
+                  setProducts,
+                  productInput
+                )
         }
       >
         <h2 className="form__title">

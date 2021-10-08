@@ -2,18 +2,19 @@ import { API_URL } from "../settings"
 
 export const addProduct = (
   e,
-  props,
+
   product,
   setProduct,
   products,
-  setProducts
+  setProducts,
+  productInput
 ) => {
   e.preventDefault()
-  console.log("saving ", product)
+  console.log("saving ", product, " in ", products)
 
   const newProduct = {
     // id: getCurrentTimeStamp(),
-    category: product.category | 0,
+    category: product.category?.id | 0,
     name: product.name,
     mark: product.mark,
     price: product.price | 0,
@@ -34,7 +35,7 @@ export const addProduct = (
     body: JSON.stringify(newProduct)
   }).catch((e) => console.log(e))
   // setProducts([...products, newProduct])
-  setProducts((prevProducts) => prevProducts.concat(newProduct))
+  setProducts([...products, newProduct])
   //format
   setProduct({
     category: "",
@@ -45,5 +46,5 @@ export const addProduct = (
     stock: ""
   })
   //ref
-  props.productInput?.current?.focus()
+  productInput?.current?.focus()
 }

@@ -7,6 +7,7 @@ import Auth from "pages/auth"
 import { ProductsContextProvider } from "context"
 import { ProductContextProvider } from "context/ProductContext"
 import { Nav } from "components/Nav"
+import { SearchResults } from "components/customer/SearchResult"
 
 // const Product = React.lazy(() => import("pages"))
 
@@ -45,6 +46,9 @@ function App() {
         </Route>
         <Route path="/cart" exact>
           <Cart />
+        </Route>
+        <Route path="/search/:keyword" exact>
+          <SearchResults />
         </Route>
         {/* </Suspense> */}
       </Switch>
