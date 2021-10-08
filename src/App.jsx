@@ -8,6 +8,7 @@ import { ProductsContextProvider } from "context"
 import { ProductContextProvider } from "context/ProductContext"
 import { Nav } from "components/Nav"
 import { SearchResults } from "components/customer/SearchResult"
+import { Detail } from "components/customer/Detail"
 
 // const Product = React.lazy(() => import("pages"))
 
@@ -49,6 +50,9 @@ function App() {
         </Route>
         <Route path="/search/:keyword" exact>
           <SearchResults />
+        </Route>
+        <Route path="/product/:id" exact>
+          <Detail />
         </Route>
         {/* </Suspense> */}
       </Switch>
