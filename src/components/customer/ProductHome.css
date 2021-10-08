@@ -1,0 +1,19 @@
+/* a {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: none;
+} */
+.Product-link {
+  /* color: #000; */
+  /* display: block; */
+  text-decoration: none;
+  /* position: relative; */
+  /* width: 100%;
+  max-height: 200px; */
+  /* overflow: hidden; */
+}
+img {
+  background-color: lightblue;
+}

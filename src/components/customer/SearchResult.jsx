@@ -7,8 +7,8 @@ import { useHistory, useParams } from "react-router"
 import ProductHome from "./ProductHome"
 import { Nav } from "components/Nav"
 
-export function SearchResults(props) {
-  console.log("props ", props)
+export function SearchResults() {
+  // console.log("props ", props)
   const { keyword } = useParams()
   const [products, setProducts] = useState([])
   const [loading, setLoading] = useState(false)

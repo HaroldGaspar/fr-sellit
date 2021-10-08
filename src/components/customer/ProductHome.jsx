@@ -1,6 +1,7 @@
 import React from "react"
+import { Link } from "react-router-dom"
 import { addProductCart } from "services"
-
+import "./ProductHome.css"
 function ProductHome({ product }) {
   const handleEdit = () => {
     console.log("palcarro", product.id)
@@ -9,7 +10,11 @@ function ProductHome({ product }) {
   return (
     <>
       <div className="card card-body">
-        <img src="" alt="" height="120" />
+        <Link to={`/product/${product.id}`} className="Product-link">
+          <div className="card">
+            <img src="" alt="" height="120" />
+          </div>
+        </Link>
         <h3>{product.name}</h3>
         <h6 className="text-right">{product.mark}</h6>
 
