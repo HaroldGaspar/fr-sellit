@@ -5,6 +5,9 @@ export function Home() {
   return (
     <>
       <Nav />
+
+      <div className="nav__false"></div>
+
       <div className="container-home">
         <PopularProducts />
         <LastProducts />

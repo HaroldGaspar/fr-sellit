@@ -9,8 +9,9 @@ function InputProduct({ name, label, number, autofocus, product, setProduct }) {
         {label}
       </label>
       <input
-        type={number ? "number" : "text"}
+        type={number ? "number" : number ? number : "text"}
         name={name}
+        step={0.01}
         onChange={(e) => handleIChange(e, product, setProduct)}
         value={eval(`product.${name}`)}
         autoFocus={autofocus ? true : false}

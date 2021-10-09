@@ -15,8 +15,8 @@ export function PopularProducts() {
 
   return (
     <>
-      <h2 className="d-block">Producto Populares</h2>
-      <div className=" d-flex w-100 list-popular">
+      <h2 className="section__title">Producto Populares</h2>
+      <div className=" list-popular">
         {loading ? (
           <Spinner />
         ) : (

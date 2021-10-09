@@ -6,5 +6,10 @@
   padding: 0 11px;
 }
 
+@media (max-width: 500px) {
+  .container-home {
+    padding: 0 20px;
+  }
+}
 button {
 }

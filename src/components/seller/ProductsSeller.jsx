@@ -13,7 +13,7 @@ function ProductsSeller({
   // const { loading, products, setProducts } = useStoreProducts()
 
   return (
-    <>
+    <div className="list-seller">
       {loading ? (
         <Spinner />
       ) : (
@@ -28,7 +28,7 @@ function ProductsSeller({
           />
         ))
       )}
-    </>
+    </div>
   )
 }
 export default React.memo(ProductsSeller)

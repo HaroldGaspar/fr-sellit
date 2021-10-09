@@ -38,3 +38,16 @@ textarea .form__control {
 .input-image__btn-sumbit {
   display: none;
 }
+
+.form-addp {
+  padding: 1rem;
+  /* word-wrap: break-word; */
+  border: 1px solid rgba(0, 0, 0, 0.125);
+  border-radius: 0.25rem;
+  margin-top: 0.5em;
+  height: fit-content;
+}
+
+.form-editp {
+  background: #f8f9fa;
+}

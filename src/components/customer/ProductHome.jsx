@@ -10,11 +10,15 @@ function ProductHome({ product }) {
   }
   return (
     <>
-      <div className="card card-body">
+      <div className="card-ls">
         <Link to={`/product/${product.id}`} className="Product-link">
-          <div className="card">
+          <div className="card__img">
             <img
-              src={API_URL + product.photo}
+              src={
+                product.photo
+                  ? API_URL + product.photo
+                  : API_URL + "/uploads/nia_33d10d0dba.jpg"
+              }
               alt=""
               height="120"
               loading={"lazy"}
@@ -22,20 +26,39 @@ function ProductHome({ product }) {
             />
           </div>
         </Link>
-        <h3>{product.name}</h3>
-        <h6 className="text-right">{product.mark}</h6>
+        <div className="card__data">
+          {product.name ? (
+            <h5>
+              {product.name.length > 16
+                ? product.name.substr(0, 14).concat("...")
+                : product.name}
+            </h5>
+          ) : (
+            <div className="err">without name</div>
+          )}
+          <div className="card__subtitle">
+            <div class="card__stars">{"★".repeat(product.rating)}</div>
+            <div class="card__nostars">{"★".repeat(5 - product.rating)}</div>
+            <span className="card__mark">{product.mark}</span>
+          </div>
 
-        <div className="row justify-content-between">
-          <span className="col-6">stock: {product.stock}</span>
-          <p className="col-4 pl-0 price">
-            <span className="align-top currency">S/</span>
-            {product.price}
+          <p className="price">
+            <span className="price__currency">S/</span>
+            {parseFloat(product.price).toFixed(2).toString().split(".", 1)[0]}
+            <span className="price__decimal">
+              {parseFloat(product.price).toFixed(2).toString().split(".", 2)[1]}
+            </span>
           </p>
-        </div>
+          {product.stock < 1 ? (
+            <div className="err">agotado</div>
+          ) : (
+            <div className="d__none">_</div>
+          )}
 
-        <button onClick={() => handleEdit()} className="btn btn-block btn-info">
+          {/* <button onClick={() => handleEdit()} className="btn btn-block btn-info">
           Añadir
-        </button>
+          </button> */}
+        </div>
       </div>
     </>
   )

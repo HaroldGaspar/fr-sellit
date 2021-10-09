@@ -1,0 +1,42 @@
+:root {
+  --results-columns: 2;
+}
+
+.list-seller {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 0 15px;
+  /* min-height: 100vh; */
+  align-items: center;
+}
+
+.ListOfHome-item {
+  background-color: red;
+  /* display: inline-block; */
+  width: 100%;
+}
+
+.product-mng {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 2fr));
+  gap: 0 15px;
+  /* min-height: 100vh; */
+}
+
+@media (min-width: 750px) {
+  .product-mng {
+    grid-template-columns: 1fr 2fr;
+  }
+}
+@media (min-width: 1150px) {
+  .product-mng {
+    grid-template-columns: 1fr 3fr;
+  }
+}
+
+.nav__false {
+  display: block;
+  width: 100%;
+  height: 3em;
+  background: #b998c7;
+}

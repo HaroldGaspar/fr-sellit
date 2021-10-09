@@ -16,6 +16,7 @@ export const addProduct = async (
 
   // new upload()
   // imgSS.current.click()
+
   document.getElementById(imgid).remove()
   const formData = new FormData(document.getElementById("upload-form"))
 
@@ -28,14 +29,13 @@ export const addProduct = async (
   })
   console.log(resImg.data[0].url)
   const imgUrl = resImg.data[0].url
-
   //newProduct
   const newProduct = {
     // id: getCurrentTimeStamp(),
     category: product.category?.id | 0,
     name: product.name,
     mark: product.mark,
-    price: product.price | 0,
+    price: parseFloat(product.price).toFixed(2),
     stock: product.stock | 0,
     description: product.description,
     store: localStorage.getItem("store"),

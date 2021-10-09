@@ -1,3 +1,29 @@
 .list-popular {
   min-height: 200px;
 }
+
+:root {
+  --results-columns: 2;
+}
+
+.list-popular {
+  display: flex;
+  /* grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); */
+  gap: 0 15px;
+  align-items: center;
+}
+@media (max-width: 800px) {
+  .list-popular {
+    display: block;
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+.section__title {
+  display: block;
+  /* background-color: #b998c7; */
+  padding: 7px;
+  color: #888;
+}

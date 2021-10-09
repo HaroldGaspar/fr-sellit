@@ -10,7 +10,7 @@
   align-items: center;
 }
 
-@media (min-width: 600px) {
+/* @media (min-width: 600px) {
   :root {
     --results-columns: 3;
   }
@@ -27,7 +27,7 @@
     grid-template-columns: repeat(4, 1fr);
     max-width: 1000px;
   }
-}
+} */
 
 .ListOfHome-item {
   background-color: red;
