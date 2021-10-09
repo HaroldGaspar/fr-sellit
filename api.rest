@@ -1,5 +1,5 @@
 ###
-GET http://localhost:8000/products
+GET http://hakhi.xyz:8000/products
 
 ###
 GET http://localhost:8000/products?name=first
@@ -8,4 +8,4 @@ GET http://localhost:8000/products?name=first
 GET http://localhost:8000/products?store=1
 
 ###
-GET http://localhost:8000/products?_q=first
+GET http://hakhi.xyz:8000/products?_q=first
