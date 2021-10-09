@@ -14,3 +14,33 @@
   /* align-items: initial; */
   align-items: initial;
 }
+
+.qstn {
+  display: block;
+  border: none;
+  margin-left: auto;
+  background-color: transparent;
+  font-weight: 700;
+}
+
+.qstn:hover {
+  color: blue;
+  text-decoration-line: underline;
+}
+.form__title {
+  display: flex;
+  font-size: 25px;
+  font-weight: 700;
+  padding: 15px 0 0 20px;
+}
+b {
+  font-size: small;
+  padding: auto;
+}
+.form__subtitle {
+  /* margin: 0 0 0 5em; */
+  font-size: large;
+}
+.iscustomer {
+  display: none;
+}

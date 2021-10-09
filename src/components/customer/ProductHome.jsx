@@ -13,7 +13,13 @@ function ProductHome({ product }) {
       <div className="card card-body">
         <Link to={`/product/${product.id}`} className="Product-link">
           <div className="card">
-            <img src={API_URL + product.photo} alt="" height="120" />
+            <img
+              src={API_URL + product.photo}
+              alt=""
+              height="120"
+              loading={"lazy"}
+              className="img-fluid"
+            />
           </div>
         </Link>
         <h3>{product.name}</h3>

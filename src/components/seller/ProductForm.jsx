@@ -5,12 +5,8 @@ import { addProduct, handleUploadFormSubmit, updateProduct } from "services"
 import InputImage from "components/form/InputImage"
 import "components/form/Form.css"
 
-import ProductContext from "context/ProductContext"
-import { useContext } from "react"
-import { useStoreProducts } from "hooks"
 import InputProduct from "components/form/InputProduct"
 import Buttons from "components/form/Buttons"
-import axios from "axios"
 
 function ProductForm({
   setshowUpdate,
@@ -21,24 +17,12 @@ function ProductForm({
   productInput,
   showUpdate
 }) {
-  // const { product, setProduct } = useContext(ProductContext)
-  // const { products, setProducts } = useStoreProducts()
-
   console.log("form")
-  const imgSS = useRef()
+  const [imgid, setImgid] = useState()
 
   const handleIChange = (e, product, setProduct) => {
     const { name, value } = e.target
     setProduct({ ...product, [name]: value })
-    // if (!props.task.id)
-    //     document.title= 'creating task'
-  }
-
-  const [formData, setFormData] = useState()
-
-  function getFormData(file) {
-    const formData = new FormData(file)
-    return formData
   }
 
   return (
@@ -52,13 +36,7 @@ function ProductForm({
       <h2 className="form__title">
         {showUpdate ? "Modificar Producto" : "Agregar Producto"}
       </h2>
-      <>
-        <InputImage
-          handleUploadFormSubmit={handleUploadFormSubmit}
-          setFormData={setFormData}
-          imgSS={imgSS}
-        />
-      </>
+      {showUpdate ? null : <InputImage setImgid={setImgid} />}
       <form
         onSubmit={
           showUpdate
@@ -81,7 +59,7 @@ function ProductForm({
                   setProducts,
                   productInput,
                   // formData,
-                  imgSS
+                  imgid
                 )
         }
       >
@@ -133,9 +111,6 @@ function ProductForm({
             value={product.description}
           ></textarea>
         </div>
-        <form name="files" id="iii">
-          <input type="file" name="file" />
-        </form>
         <Buttons
           setshowUpdate={setshowUpdate}
           setProduct={setProduct}
@@ -143,12 +118,6 @@ function ProductForm({
           showUpdate={showUpdate}
         />
       </form>
-      {/* <form id="upload-form" onSubmit={handleUploadFormSubmit}>
-        <input type="file" name="files" />
-        <button type="submit" ref={imgSS}>
-          upl
-        </button>
-      </form> */}
     </div>
   )
 }

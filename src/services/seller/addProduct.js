@@ -1,28 +1,6 @@
 import axios from "axios"
 import { API_URL } from "../settings"
 
-// export async function handleUploadFormSubmit(e) {
-//   e.preventDefault()
-//   console.log("target", e.target)
-//   const formData = new FormData(e.target)
-//   console.log(formData)
-//   const token = localStorage.getItem("token")
-
-//   try {
-//     const uploadHeaders = {
-//       "Content-Type": "multippart/form-data",
-//       Authorization: `Bearer ${token}`
-//     }
-//     const resImg = await axios.post(`${API_URL}/upload`, formData, {
-//       headers: uploadHeaders
-//     })
-//     console.log(resImg.data[0].url)
-//     // imgUrl = resImg.data[0].url
-//   } catch (e) {
-//     console.log(e)
-//   }
-// }
-
 export const addProduct = async (
   e,
   product,
@@ -31,14 +9,14 @@ export const addProduct = async (
   setProducts,
   productInput,
   // formData,
-  imgSS
+  imgid
 ) => {
   e.preventDefault()
   const token = localStorage.getItem("token")
 
   // new upload()
   // imgSS.current.click()
-
+  document.getElementById(imgid).remove()
   const formData = new FormData(document.getElementById("upload-form"))
 
   const uploadHeaders = {
