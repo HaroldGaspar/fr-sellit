@@ -34,3 +34,7 @@ textarea .form__control {
   outline: 0;
   box-shadow: 0 0 0 0.1rem rgb(70 50 255 / 45%);
 }
+
+.input-image__btn-sumbit {
+  display: none;
+}

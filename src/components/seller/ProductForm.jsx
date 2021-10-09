@@ -1,7 +1,7 @@
-import React from "react"
+import React, { useRef, useState } from "react"
 // import { Buttons } from "components"
 // import { handleIChange } from "utils"
-import { addProduct, updateProduct } from "services"
+import { addProduct, handleUploadFormSubmit, updateProduct } from "services"
 import InputImage from "components/form/InputImage"
 import "components/form/Form.css"
 
@@ -10,6 +10,7 @@ import { useContext } from "react"
 import { useStoreProducts } from "hooks"
 import InputProduct from "components/form/InputProduct"
 import Buttons from "components/form/Buttons"
+import axios from "axios"
 
 function ProductForm({
   setshowUpdate,
@@ -24,12 +25,20 @@ function ProductForm({
   // const { products, setProducts } = useStoreProducts()
 
   console.log("form")
+  const imgSS = useRef()
 
   const handleIChange = (e, product, setProduct) => {
     const { name, value } = e.target
     setProduct({ ...product, [name]: value })
     // if (!props.task.id)
     //     document.title= 'creating task'
+  }
+
+  const [formData, setFormData] = useState()
+
+  function getFormData(file) {
+    const formData = new FormData(file)
+    return formData
   }
 
   return (
@@ -40,6 +49,16 @@ function ProductForm({
           : "card card-body bg-muted mt-2"
       }
     >
+      <h2 className="form__title">
+        {showUpdate ? "Modificar Producto" : "Agregar Producto"}
+      </h2>
+      <>
+        <InputImage
+          handleUploadFormSubmit={handleUploadFormSubmit}
+          setFormData={setFormData}
+          imgSS={imgSS}
+        />
+      </>
       <form
         onSubmit={
           showUpdate
@@ -60,14 +79,12 @@ function ProductForm({
                   setProduct,
                   products,
                   setProducts,
-                  productInput
+                  productInput,
+                  // formData,
+                  imgSS
                 )
         }
       >
-        <h2 className="form__title">
-          {showUpdate ? "Modificar Producto" : "Agregar Producto"}
-        </h2>
-
         <div className="form__group">
           <label htmlFor="category">Categoria</label>
           <input
@@ -116,9 +133,9 @@ function ProductForm({
             value={product.description}
           ></textarea>
         </div>
-
-        {/* <InputImage props={props} /> */}
-
+        <form name="files" id="iii">
+          <input type="file" name="file" />
+        </form>
         <Buttons
           setshowUpdate={setshowUpdate}
           setProduct={setProduct}
@@ -126,6 +143,12 @@ function ProductForm({
           showUpdate={showUpdate}
         />
       </form>
+      {/* <form id="upload-form" onSubmit={handleUploadFormSubmit}>
+        <input type="file" name="files" />
+        <button type="submit" ref={imgSS}>
+          upl
+        </button>
+      </form> */}
     </div>
   )
 }

@@ -1,3 +1,4 @@
+import { API_URL } from "services/settings"
 import React from "react"
 import { Link } from "react-router-dom"
 import { addProductCart } from "services"
@@ -12,7 +13,7 @@ function ProductHome({ product }) {
       <div className="card card-body">
         <Link to={`/product/${product.id}`} className="Product-link">
           <div className="card">
-            <img src="" alt="" height="120" />
+            <img src={API_URL + product.photo} alt="" height="120" />
           </div>
         </Link>
         <h3>{product.name}</h3>

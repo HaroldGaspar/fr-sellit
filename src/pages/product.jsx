@@ -13,7 +13,8 @@ export function Product() {
     mark: "",
     price: 0,
     description: "",
-    stock: 0
+    stock: 0,
+    photo: ""
   }) //register df values
 
   const [showUpdate, setshowUpdate] = useState()
