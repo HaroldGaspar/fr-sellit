@@ -1,9 +1,9 @@
 import { API_URL } from "../settings"
-export async function getProductsByCart(setproductsCart, setloading) {
+export async function getCartById(setproductsCart, setloading) {
   setloading(true)
   const cart = localStorage.getItem("cart")
   const token = localStorage.getItem("token")
-  const resCartProduct = await fetch(
+  const resFetch = await fetch(
     `${API_URL}/carts/${cart}?_sort=published_at:DESC`,
     {
       method: "get",
@@ -13,10 +13,9 @@ export async function getProductsByCart(setproductsCart, setloading) {
     }
   )
 
-  const resD = await resCartProduct.json()
+  const resD = await resFetch.json()
   setloading(false)
-
   console.log("cart", resD.product_details)
 
-  setproductsCart(resD.product_details)
+  setproductsCart(resD)
 }

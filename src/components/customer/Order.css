@@ -1,0 +1,9 @@
+.tt {
+  padding: 1em;
+  text-align: end;
+  background: #ebebeb;
+}
+
+.tt b {
+  font-size: 1.5em;
+}

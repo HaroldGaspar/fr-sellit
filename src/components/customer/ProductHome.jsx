@@ -3,6 +3,7 @@ import React from "react"
 import { Link } from "react-router-dom"
 import { addProductCart } from "services"
 import "./ProductHome.css"
+import { Price } from "components"
 function ProductHome({ product }) {
   const handleEdit = () => {
     console.log("palcarro", product.id)
@@ -42,13 +43,7 @@ function ProductHome({ product }) {
             <span className="card__mark">{product.mark}</span>
           </div>
 
-          <p className="price">
-            <span className="price__currency">S/</span>
-            {parseFloat(product.price).toFixed(2).toString().split(".", 1)[0]}
-            <span className="price__decimal">
-              {parseFloat(product.price).toFixed(2).toString().split(".", 2)[1]}
-            </span>
-          </p>
+          <Price price={product.price} />
           {product.stock < 1 ? (
             <div className="err">agotado</div>
           ) : (

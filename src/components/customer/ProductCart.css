@@ -2,3 +2,67 @@
   min-height: 50px;
   display: flex;
 }
+
+.cartdt {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+
+  /* flex-direction: column; */
+  border: 1px solid rgba(0, 0, 0, 0.125);
+  border-radius: 0.25rem;
+  margin-bottom: 15px;
+}
+
+.cartdt__img {
+  max-width: 100%;
+  height: auto;
+}
+.cardt__name {
+  margin: 0;
+}
+.cartdt__detail {
+  padding: 2em 1em;
+  background-color: #fbfbfb;
+}
+
+.cardt__mark {
+  text-align: end;
+  margin-bottom: 2em;
+}
+
+.cardt__qty {
+  display: flex;
+  text-align: center;
+  background: #c6c6c6;
+  justify-content: space-between;
+}
+
+.cardt__qty p {
+  margin: 8px 0;
+}
+
+.cardt__btn {
+  border: none;
+  padding: 0 15px;
+  background: #4c4c4c;
+  color: #eee;
+  border-radius: 4px;
+  transition: 0.3s ease all;
+}
+.cardt__btn:hover {
+  color: #4c4c4c;
+  background: #eee;
+}
+.cardt__end {
+  padding: 1em;
+  display: flex;
+  justify-content: space-between;
+}
+.card__delete {
+  border: none;
+  background-color: transparent;
+}
+.card__delete:hover {
+  color: #44d;
+  text-decoration: underline;
+}

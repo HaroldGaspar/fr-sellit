@@ -1,4 +1,5 @@
-h2 {
+.cart__h2 {
   padding: 15px;
   background-color: #b998c7;
+  display: block;
 }

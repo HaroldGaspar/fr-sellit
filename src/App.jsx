@@ -4,7 +4,7 @@ import { Suspense, useEffect } from "react"
 import { Route, BrowserRouter as Router, Switch } from "react-router-dom"
 import { Home, Cart, Product } from "pages"
 import Auth from "pages/auth"
-import { ProductsContextProvider } from "context"
+import { ProductsDtContextProvider } from "context"
 import { ProductContextProvider } from "context/ProductContext"
 import { Nav } from "components/Nav"
 import { SearchResults } from "components/customer/SearchResult"
@@ -46,7 +46,9 @@ function App() {
           <Home />
         </Route>
         <Route path="/cart" exact>
-          <Cart />
+          <ProductsDtContextProvider>
+            <Cart />
+          </ProductsDtContextProvider>
         </Route>
         <Route path="/search/:keyword" exact>
           <SearchResults />

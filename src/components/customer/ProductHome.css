@@ -40,22 +40,6 @@ img {
   margin-left: auto;
 }
 
-.price {
-  text-align: end;
-  font-size: 20px;
-  font-weight: 700;
-  margin: 0;
-}
-
-.price__currency {
-  font-size: small;
-  vertical-align: top;
-}
-
-.price__decimal {
-  vertical-align: top;
-  font-size: small;
-}
 .err {
   color: #f55;
   text-align: end;
