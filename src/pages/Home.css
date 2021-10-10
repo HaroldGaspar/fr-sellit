@@ -13,3 +13,19 @@
 }
 button {
 }
+
+* ::-webkit-scrollbar {
+  width: 10px;
+  border-radius: 5px;
+  background-color: #5d5d5d;
+  transition-duration: 0s;
+}
+
+*::-webkit-scrollbar-button {
+  background-color: #5d5d5d;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.7);
+  border-radius: 3px;
+}

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react"
 import { ProductCart } from "components"
 import { getProduct, getProductsByCart } from "services"
 import { Spinner } from "components/Spinner"
-
+import "./ProductsCart.css"
 export function ProductsCart() {
   const [productsCart, setproductsCart] = useState([])
   const [loading, setloading] = useState()
@@ -12,6 +12,7 @@ export function ProductsCart() {
   }, [])
   return (
     <div className="">
+      <h2>Carrito</h2>
       {loading ? (
         <Spinner />
       ) : (

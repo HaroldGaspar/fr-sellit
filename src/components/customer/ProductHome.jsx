@@ -55,9 +55,12 @@ function ProductHome({ product }) {
             <div className="d__none">_</div>
           )}
 
-          {/* <button onClick={() => handleEdit()} className="btn btn-block btn-info">
-          Añadir
-          </button> */}
+          <button
+            onClick={() => handleEdit()}
+            className="btn btn-block btn-info"
+          >
+            Añadir
+          </button>
         </div>
       </div>
     </>
