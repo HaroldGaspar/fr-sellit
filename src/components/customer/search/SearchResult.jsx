@@ -4,8 +4,8 @@ import { useGifs, useNearScreen } from "hooks"
 import debounce from "just-debounce-it"
 import { searchProduct } from "services"
 import { useHistory, useParams } from "react-router"
-import ProductHome from "./ProductHome"
-import { Nav } from "components/Nav"
+import ProductHome from "../home/ProductHome"
+import { Nav } from "components/customer/search/Nav"
 
 export function SearchResults() {
   // console.log("props ", props)

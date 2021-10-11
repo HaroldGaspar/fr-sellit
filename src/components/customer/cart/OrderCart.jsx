@@ -1,8 +1,8 @@
 import ProductContext from "context/ProductsDtContex"
 import { Suspense, useState } from "react"
 import { useContext, useEffect } from "react"
-import { InvoiceDetail } from "./InvoiceDetail"
-import { ProductCart } from "./ProductCart"
+import { InvoiceDetail } from "components"
+import { ProductCart } from "components"
 
 import "./Order.css"
 

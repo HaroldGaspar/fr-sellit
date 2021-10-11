@@ -1,29 +1,19 @@
-import React from "react"
-import "./App.css"
-import { Suspense, useEffect } from "react"
+import React, { Suspense } from "react"
 import { Route, BrowserRouter as Router, Switch } from "react-router-dom"
 import { Home, Cart, Product } from "pages"
-import Auth from "pages/auth"
+import { Auth } from "pages"
 import { ProductsDtContextProvider } from "context"
 import { ProductContextProvider } from "context/ProductContext"
-import { Nav } from "components/Nav"
-import { SearchResults } from "components/customer/SearchResult"
-import { Detail } from "components/customer/Detail"
+import { Nav, SearchResults, Detail } from "components"
+import "./App.css"
 
 // const Product = React.lazy(() => import("pages"))
 
 function App() {
-  useEffect(() => {
-    console.log("start")
-    // return alert('mngmnt tasks ending')//just when the component is killing
-  }, [])
-
   return (
     <Router>
       <Switch>
         {/* <Suspense fallback={null}> */}
-        <Route path="/about">"about"</Route>
-        <Route path="/contact">"Users"</Route>
         <Route path="/login" exact>
           <Auth login={true} />
         </Route>
@@ -42,20 +32,18 @@ function App() {
             <Home />
           )}
         </Route>
-        <Route path="/" exact>
-          <Home />
-        </Route>
+        <Route path="/" exact component={Home} />
         <Route path="/cart" exact>
           <ProductsDtContextProvider>
             <Cart />
           </ProductsDtContextProvider>
         </Route>
-        <Route path="/search/:keyword" exact>
-          <SearchResults />
-        </Route>
-        <Route path="/product/:id" exact>
-          <Detail />
-        </Route>
+        <Route path="/about">"about"</Route>
+        <Route path="/contact">"Users"</Route>
+        <Route path="/search/:keyword" exact component={SearchResults} />
+
+        <Route path="/product/:id" exact component={Detail} />
+
         {/* </Suspense> */}
       </Switch>
     </Router>

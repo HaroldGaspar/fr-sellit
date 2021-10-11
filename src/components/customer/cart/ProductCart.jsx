@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react"
 import { API_URL } from "services/settings"
-import { Price } from "./Price"
+import { Price } from "components"
 import "./ProductCart.css"
 
 export function ProductCart({

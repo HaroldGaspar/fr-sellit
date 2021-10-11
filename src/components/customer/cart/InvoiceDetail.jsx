@@ -1,4 +1,4 @@
-import { Price } from "./Price"
+import { Price } from "components"
 import "./Invoice.css"
 
 export function InvoiceDetail({ productDetail, setProductDetail }) {

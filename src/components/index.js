@@ -1,20 +1,30 @@
-export * from "./Nav"
-export * from "./seller/ProductForm"
-export * from "./seller/ProductsSeller"
-export * from "./Footer"
+//
+export * from "./Spinner"
+//form
+export * from "./form/Footer"
 export * from "./form/Input"
-export * from "./customer/PopularProducts"
-export * from "./customer/LastProducts"
 export * from "./form/InputProduct"
 export * from "./form/InputImage"
-export * from "./customer/ProductHome"
-export * from "./seller/ProductSeller"
-export * from "./customer/ProductsCart"
-export * from "./customer/Detail"
-export * from "./customer/OrderCart"
-export * from "./customer/ProductCart"
-export * from "./SearchBar"
 export * from "./form/Buttons"
-export * from "./Spinner"
+
+//seller
+export * from "./seller/ProductsSeller"
+export * from "./seller/ProductSeller"
+export * from "./seller/ProductForm"
+
+//customer
+//--home
+export * from "./customer/home/ProductHome"
+export * from "./customer/home/PopularProducts"
+export * from "./customer/home/LastProducts"
+export * from "./customer/home/Detail"
 export * from "./customer/Price"
-export * from "./customer/InvoiceDetail"
+//--search
+export * from "./customer/search/Nav"
+export * from "./customer/search/SearchBar"
+export * from "./customer/search/SearchResult"
+//--cart
+export * from "./customer/cart/ProductsCart"
+export * from "./customer/cart/ProductCart"
+export * from "./customer/cart/OrderCart"
+export * from "./customer/cart/InvoiceDetail"

@@ -1,6 +1,6 @@
 import React, { useEffect, useContext } from "react"
 import { ProductCart } from "components"
-import { Spinner } from "components/Spinner"
+import { Spinner } from "components"
 import "./ProductsCart.css"
 import { useCartProducts } from "hooks"
 
