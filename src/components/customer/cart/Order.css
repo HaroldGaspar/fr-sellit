@@ -1,9 +1,47 @@
-.tt {
-  padding: 1em;
-  text-align: end;
-  background: #ebebeb;
+.order {
+  /* position: relative; */
+}
+.order__title {
+  text-align: center;
+}
+.invoicecart {
+  /* position: absolute; */
+
+  background-color: #fbfbfb;
+  margin: 1em;
+  padding: 0.5em 1em;
+  border: 1px solid rgba(0, 0, 0, 0.125);
+  border-radius: 4px;
 }
 
-.tt b {
+.tt {
+  padding: 1.5em;
+  text-align: center;
+  /* background: #ebebeb; */
   font-size: 1.5em;
+}
+
+.tt .price {
+  display: flex;
+  margin: 0 auto;
+  /* text-align: center; */
+  width: 3em;
+  font-size: 30px;
+}
+
+.order__btn {
+  background: #b998c7;
+  color: #fbfbfb;
+  font-weight: 700;
+  border-radius: 4px;
+  border: none;
+  padding: 0.35em 0.5em;
+  transition: 0.5s ease all;
+  margin: 2em auto;
+}
+
+.order__btn:hover {
+  color: #b998c7;
+  background: #fbfbfb;
+  /* border: 2px solid #999; */
 }

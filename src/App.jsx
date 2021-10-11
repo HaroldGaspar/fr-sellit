@@ -20,6 +20,7 @@ function App() {
         <Route path="/register" exact>
           <Auth login={false} />
         </Route>
+        <Route path="/" exact component={Home} />
         <Route path="/products">
           {localStorage.getItem("store") ? (
             <>
@@ -32,7 +33,6 @@ function App() {
             <Home />
           )}
         </Route>
-        <Route path="/" exact component={Home} />
         <Route path="/cart" exact>
           <ProductsDtContextProvider>
             <Cart />

@@ -3,7 +3,7 @@ import "./Invoice.css"
 
 export function InvoiceDetail({ productDetail, setProductDetail }) {
   return (
-    <div className="invoicecart">
+    <div className="invoicecard">
       <div className="cartdt__invoice">
         <div className="cardt__name">
           {productDetail.productName || "noreceive name"} -

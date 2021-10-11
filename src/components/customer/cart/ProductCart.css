@@ -6,7 +6,6 @@
 .cartdt {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-
   /* flex-direction: column; */
   border: 1px solid rgba(0, 0, 0, 0.125);
   border-radius: 0.25rem;
@@ -14,20 +13,21 @@
 }
 
 .cartdt__img {
-  max-width: 100%;
+  max-width: 170px;
   height: auto;
+  margin: 0 auto;
 }
 .cardt__name {
   margin: 0;
 }
 .cartdt__detail {
-  padding: 2em 1em;
+  padding: 1em 1em 0 1em;
   background-color: #fbfbfb;
 }
 
 .cardt__mark {
   text-align: end;
-  margin-bottom: 2em;
+  margin-bottom: 1em;
 }
 
 .cardt__qty {
