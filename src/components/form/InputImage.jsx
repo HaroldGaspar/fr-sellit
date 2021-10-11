@@ -79,7 +79,9 @@ export default function InputImage({ setImgid }) {
 
   return (
     <div className="form-group">
-      <label htmlFor="category">Imagen</label>
+      <label htmlFor="category">
+        Imagen <span className="text-danger">*selecciona una imagen</span>{" "}
+      </label>
 
       <div className="drop-area">
         <button type="button" onClick={() => clickButton()}>
@@ -93,6 +95,7 @@ export default function InputImage({ setImgid }) {
             hidden
             multiple
             onChange={(e) => changeImageInput(e, files)}
+            required
           />
         </form>
       </div>

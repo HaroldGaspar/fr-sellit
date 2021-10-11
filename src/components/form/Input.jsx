@@ -1,9 +1,9 @@
-import React, { useEffect } from "react";
+import React, { useEffect } from "react"
 
 export function Input({ name, label, password, autofocus, handleChange }) {
   useEffect(() => {
-    console.log("Input component");
-  }, []);
+    console.log("Input component")
+  }, [])
   return (
     <div className="form-group">
       <label htmlFor={name}>{label}</label>
@@ -13,7 +13,8 @@ export function Input({ name, label, password, autofocus, handleChange }) {
         onChange={(e) => handleChange(e)}
         className="form-control"
         autoFocus={autofocus ? true : false}
+        required={true}
       />
     </div>
-  );
+  )
 }

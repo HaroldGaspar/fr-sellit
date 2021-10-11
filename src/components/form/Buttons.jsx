@@ -25,21 +25,21 @@ function Buttons({
   // console.log("button", setProduct)
   return (
     <>
-      {showUpdate ? (
-        <div className="d-flex">
-          <button className="btn btn-outline-info col-6 py-2">
-            Actualizar
-          </button>
-          <input
-            value="Cancelar"
-            type="button"
-            onClick={() => disableEdit(props, setProduct)}
-            className="btn btn-secondary col-6 ml-auto"
-          />
-        </div>
-      ) : (
-        <button className="btn btn-outline-success btn-block">Guardar</button>
-      )}
+      <div className="d-flex">
+        {showUpdate ? (
+          <>
+            <button className="form__btn-update">Actualizar</button>
+            <input
+              value="Cancelar"
+              type="button"
+              onClick={() => disableEdit(props, setProduct)}
+              className="form__btn-cancel"
+            />
+          </>
+        ) : (
+          <button className="form__btn-add">Guardar</button>
+        )}
+      </div>
     </>
   )
 }

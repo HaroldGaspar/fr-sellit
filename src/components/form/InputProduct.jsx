@@ -16,6 +16,7 @@ function InputProduct({ name, label, number, autofocus, product, setProduct }) {
         value={eval(`product.${name}`)}
         autoFocus={autofocus ? true : false}
         className="form__control"
+        required
       />
     </div>
   )

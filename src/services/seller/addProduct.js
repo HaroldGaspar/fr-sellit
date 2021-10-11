@@ -16,8 +16,11 @@ export const addProduct = async (
 
   // new upload()
   // imgSS.current.click()
+  console.log(document.getElementById(imgid))
+  document.getElementById(imgid)
+    ? document.getElementById(imgid).remove()
+    : console.log("therisnt image")
 
-  document.getElementById(imgid).remove()
   const formData = new FormData(document.getElementById("upload-form"))
 
   const uploadHeaders = {
