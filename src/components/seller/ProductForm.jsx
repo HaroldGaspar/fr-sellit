@@ -47,7 +47,6 @@ function ProductForm({
                 products,
                 setProducts,
                 productInput,
-                // formData,
                 imgid
               )
       }

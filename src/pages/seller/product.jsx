@@ -21,7 +21,7 @@ export function Product() {
 
   return (
     <>
-      <div className="container-home">
+      <div className="container-sellerproducts">
         {/* <ProductContextProvider> */}
         <div className="product-mng">
           {/* <div className="col-md-4"> */}

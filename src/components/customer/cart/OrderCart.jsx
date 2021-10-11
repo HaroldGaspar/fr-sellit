@@ -12,13 +12,15 @@ export function OrderCart() {
     <>
       <div className="invoicecart">
         <h2 className="order__title">Estas comprando</h2>
-        {productsDetail.map((productDetail, id) => (
-          <InvoiceDetail
-            productDetail={productDetail}
-            setProductsDetail={setProductsDetail}
-            key={id}
-          />
-        ))}
+        <div className="order__invoicels">
+          {productsDetail.map((productDetail, id) => (
+            <InvoiceDetail
+              productDetail={productDetail}
+              setProductsDetail={setProductsDetail}
+              key={id}
+            />
+          ))}
+        </div>
         <div className="tt">
           Total a pagar:
           <Price

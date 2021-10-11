@@ -2,6 +2,13 @@
   --results-columns: 2;
 }
 
+.container-sellerproducts {
+  max-width: 1140px;
+  width: 100%;
+  margin: 0 auto;
+  /* padding: 0 11px; */
+}
+
 .list-seller {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
@@ -9,8 +16,16 @@
   /* min-height: 100vh; */
   align-items: center;
   padding: 0 1em;
+
+  height: 85vh;
+  overflow: auto;
 }
 
+@media (max-height: 770px) {
+  .list-seller {
+    height: 670px;
+  }
+}
 .ListOfHome-item {
   background-color: red;
   /* display: inline-block; */

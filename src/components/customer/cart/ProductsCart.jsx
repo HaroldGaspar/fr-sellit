@@ -8,7 +8,6 @@ export function ProductsCart() {
 
   return (
     <>
-      <h2 className="cart__h2">Carrito</h2>
       {loading ? (
         <Spinner />
       ) : (

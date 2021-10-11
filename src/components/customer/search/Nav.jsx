@@ -65,11 +65,9 @@ export function Nav(props) {
               </div>
             ) : (
               <>
-                <li className="nav-item ml-auto">
-                  <NavLink className="nav-link" to="/login">
-                    INGRESAR{" "}
-                  </NavLink>
-                </li>
+                <NavLink className="nav__a" to="/login">
+                  INGRESAR{" "}
+                </NavLink>
               </>
             )}
           </span>

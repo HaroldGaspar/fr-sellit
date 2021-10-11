@@ -1,0 +1,34 @@
+.form__control {
+  display: block;
+  width: 100%;
+  padding: 0.25rem 0.5rem;
+  border: 1px solid #ced4da;
+  border-radius: 0.25rem;
+}
+
+.form__control:focus {
+  color: #495057;
+  background-color: #fff;
+  border-color: #b69ebb;
+  outline: 0;
+  box-shadow: 0 0 0 0.1rem rgb(70 50 255 / 45%);
+}
+
+.form__label {
+  margin-bottom: 0.1rem;
+  font-weight: 700;
+}
+.form__group {
+  margin-bottom: 0.3rem;
+}
+
+input .form__control {
+  height: 2.5em;
+}
+
+textarea .form__control {
+  height: 6em;
+}
+.input-image__btn-sumbit {
+  display: none;
+}

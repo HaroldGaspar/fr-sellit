@@ -1,5 +1,18 @@
 .cart__h2 {
-  padding: 15px;
+  padding: 10px;
+  /* margin: 0 15px; */
   background-color: #b998c7;
-  display: block;
 }
+/* .container__h2 {
+  margin: 0 auto;
+  max-width: 1200px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+@media (max-width: 800px) {
+  .cart__h2 {
+    width: 100vw;
+    margin: 0;
+  }
+} */

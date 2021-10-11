@@ -51,8 +51,8 @@ export async function singIn(e, history, user, setloading) {
     console.log("store ", storeD.id)
     localStorage.setItem("store", storeD[0].id)
   }
-  setloading(false)
   history.push("/")
+  setloading(false)
   console.log("login succesfully")
 }
 

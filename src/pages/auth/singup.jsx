@@ -18,12 +18,12 @@ export function Singup({ user, setUser, setloading }) {
   }
 
   return (
-    <div className="card col-md-4 mx-auto">
+    <div className="cardauth">
       <span className="form__title">
         Crear cuenta{" "}
         {seller ? <span className="form__subtitle">vendedor</span> : null}{" "}
       </span>
-      <div className="card-body">
+      <div className="cardauth__body">
         <form onSubmit={(e) => signUp(e, user, history, setloading)}>
           <Input
             name={"username"}
@@ -54,12 +54,12 @@ export function Singup({ user, setUser, setloading }) {
               handleChange={handleChange}
             />
           </span>
-          <button className="btn btn-secondary btn-block my-4">
-            Registrate
+          <button className="cardauth__btn">
+            <span className="over">Registrate</span>
           </button>
         </form>
         <hr />
-        <div className="card-body form-footer">
+        <div className="form-footer">
           <p>
             <b>Ya estas registrado?</b> Haz click
             <NavLink to="/login"> aqui</NavLink>

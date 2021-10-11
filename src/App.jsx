@@ -1,4 +1,4 @@
-import React, { Suspense } from "react"
+import React, { Suspense, useEffect, useState } from "react"
 import { Route, BrowserRouter as Router, Switch } from "react-router-dom"
 import { Home, Cart, Product } from "pages"
 import { Auth } from "pages"
@@ -8,8 +8,11 @@ import { Nav, SearchResults, Detail } from "components"
 import "./App.css"
 
 // const Product = React.lazy(() => import("pages"))
+document.title = "sellit | store"
 
 function App() {
+  const [changed, setChanged] = useState(false)
+  // useEffect(console.log("eru"), [])
   return (
     <Router>
       <Switch>
@@ -22,16 +25,14 @@ function App() {
         </Route>
         <Route path="/" exact component={Home} />
         <Route path="/products">
-          {localStorage.getItem("store") ? (
-            <>
-              <Nav />
-              {/* <ProductsContextProvider> */}
-              <Product />
-              {/* </ProductsContextProvider> */}
-            </>
-          ) : (
+          {/* {localStorage.getItem("store") ? ( */}
+          <>
+            <Nav />
+            <Product />
+          </>
+          {/* ) : (
             <Home />
-          )}
+          )} */}
         </Route>
         <Route path="/cart" exact>
           <ProductsDtContextProvider>

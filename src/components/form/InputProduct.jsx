@@ -1,6 +1,6 @@
 import React from "react"
 import { handleIChange } from "utils"
-// import "./Form.css";
+import "./InputProduct.css"
 
 function InputProduct({ name, label, number, autofocus, product, setProduct }) {
   return (

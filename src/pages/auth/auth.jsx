@@ -16,17 +16,15 @@ export function Auth({ login }) {
             <span className="text-spiner">Cargando tu usuario</span>
           </span>
         ) : (
-          <div className="row">
-            <div className="my-4 text-center d-block col-12">
-              <b className="logo">SELLIT</b>
-            </div>
+          <>
+            <div className="auth__logo">SELLIT</div>
             {login ? (
               <Singin user={user} setUser={setUser} setloading={setloading} />
             ) : (
               <Singup user={user} setUser={setUser} setloading={setloading} />
             )}
             <Footer />
-          </div>
+          </>
         )}
       </div>
     </>

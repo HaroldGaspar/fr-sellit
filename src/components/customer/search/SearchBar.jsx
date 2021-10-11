@@ -10,7 +10,7 @@ export function SearchBar() {
   }
 
   return (
-    <form onSubmit={(e) => handleSearch(e)} className="">
+    <form onSubmit={(e) => handleSearch(e)} className="search">
       <input
         className="search__input"
         type="text"

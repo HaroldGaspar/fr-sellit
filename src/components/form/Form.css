@@ -2,43 +2,6 @@
   text-align: center;
 }
 
-.form__group {
-  margin-bottom: 0.5rem;
-}
-label {
-  margin-bottom: 0.15rem;
-  font-weight: 700;
-}
-
-.form__control {
-  display: block;
-  width: 100%;
-  padding: 0.25rem 0.5rem;
-  counter: #495057;
-  border: 1px solid #ced4da;
-  border-radius: 0.25rem;
-}
-
-input .form__control {
-  height: 2.5em;
-}
-
-textarea .form__control {
-  height: 6em;
-}
-
-.form__control:focus {
-  color: #495057;
-  background-color: #fff;
-  border-color: #d44def;
-  outline: 0;
-  box-shadow: 0 0 0 0.1rem rgb(70 50 255 / 45%);
-}
-
-.input-image__btn-sumbit {
-  display: none;
-}
-
 .form-addp {
   padding: 1rem;
   /* word-wrap: break-word; */

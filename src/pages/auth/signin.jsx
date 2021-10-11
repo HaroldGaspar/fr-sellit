@@ -13,10 +13,10 @@ export function Singin({ user, setUser, setloading }) {
 
   return (
     <>
-      <div className="card col-md-4 mx-auto">
-        <span className="form-title">Iniciar Sesión</span>
+      <div className="cardauth">
+        <div className="cardauth__title">Iniciar Sesión</div>
 
-        <div className="card-body">
+        <div className="cardauth__body">
           <form onSubmit={(e) => singIn(e, history, user, setloading)}>
             <Input
               name={"email"}
@@ -30,12 +30,10 @@ export function Singin({ user, setUser, setloading }) {
               password={true}
               handleChange={handleChange}
             />
-            <button className="btn btn-secondary btn-block my-4">
-              Iniciar sesion
-            </button>
+            <button className="cardauth__btn">Iniciar sesion</button>
           </form>
           <hr />
-          <div className="card-body form-footer">
+          <div className="form-footer">
             <p>
               <b>No estas registrado?</b> registrate
               <NavLink to="/register"> Aqui</NavLink>
