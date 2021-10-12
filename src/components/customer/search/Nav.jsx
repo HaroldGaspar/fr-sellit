@@ -20,6 +20,7 @@ export function Nav(props) {
       <NavLink className="nav__brand " to="/">
         SELLIT
       </NavLink>
+          <SearchBar />
       <button
         className="navbar-toggler"
         type="button"
@@ -33,7 +34,6 @@ export function Nav(props) {
       </button>
       <div className="collapse navbar-collapse nab__sub" id="navbarNav">
         <ul className="nav__sub navbar-nav">
-          <SearchBar />
           <NavLink className="nav__a" to="/contact">
             SURPRISE ME{" "}
           </NavLink>
