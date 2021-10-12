@@ -38,8 +38,10 @@ function ProductHome({ product }) {
             <div className="err">without name</div>
           )}
           <div className="card__subtitle">
-            <div class="card__stars">{"★".repeat(product.rating)}</div>
-            <div class="card__nostars">{"★".repeat(5 - product.rating)}</div>
+            <div className="card__stars">{"★".repeat(product.rating)}</div>
+            <div className="card__nostars">
+              {"★".repeat(5 - product.rating)}
+            </div>
             <span className="card__mark">{product.mark}</span>
           </div>
 

@@ -7,6 +7,7 @@ export * from "./customer/getProductsDetailByCart"
 export * from "./customer/addProductCart"
 export * from "./customer/searchProduct"
 export * from "./customer/changeImageInput"
+export * from "./customer/getCategories"
 
 //seller
 export * from "./seller/getProductsByStore"

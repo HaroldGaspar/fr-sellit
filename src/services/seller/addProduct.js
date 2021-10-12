@@ -9,10 +9,13 @@ export const addProduct = async (
   setProducts,
   productInput,
   // formData,
-  imgid
+  imgid,
+  dfProduct
 ) => {
   e.preventDefault()
   const token = localStorage.getItem("token")
+
+  console.log("dfProduct", dfProduct)
 
   // new upload()
   // imgSS.current.click()
@@ -35,7 +38,7 @@ export const addProduct = async (
   //newProduct
   const newProduct = {
     // id: getCurrentTimeStamp(),
-    category: product.category?.id | 0,
+    category: product.category | 0,
     name: product.name,
     mark: product.mark,
     price: parseFloat(product.price).toFixed(2),
@@ -61,12 +64,12 @@ export const addProduct = async (
   setProducts([...products, newProduct])
   //format
   setProduct({
-    category: "",
-    name: "",
-    mark: "",
-    price: "",
-    description: "",
-    stock: ""
+    category: product.category || "",
+    name: dfProduct.name || "",
+    mark: dfProduct.mark || "",
+    price: dfProduct.price || "",
+    description: dfProduct.description || "",
+    stock: dfProduct.stock || ""
   })
   //ref
   productInput?.current?.focus()

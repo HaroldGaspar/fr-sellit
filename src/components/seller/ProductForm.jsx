@@ -1,7 +1,12 @@
-import React, { useRef, useState } from "react"
+import React, { useEffect, useRef, useState } from "react"
 // import { Buttons } from "components"
 // import { handleIChange } from "utils"
-import { addProduct, handleUploadFormSubmit, updateProduct } from "services"
+import {
+  addProduct,
+  getCategories,
+  handleUploadFormSubmit,
+  updateProduct
+} from "services"
 import InputImage from "components/form/InputImage"
 import "components/form/Form.css"
 
@@ -15,15 +20,25 @@ function ProductForm({
   products,
   product,
   productInput,
-  showUpdate
+  showUpdate,
+  dfProduct,
+  setDfProduct
 }) {
-  console.log("form")
   const [imgid, setImgid] = useState()
+  const [categoris, setCategories] = useState([])
 
   const handleIChange = (e, product, setProduct) => {
     const { name, value } = e.target
     setProduct({ ...product, [name]: value })
   }
+
+  useEffect(() => {
+    getCategories(setCategories)
+    // setCategories(cat)
+    return () => {
+      console.log("UNMOUNT")
+    }
+  }, [setCategories])
 
   return (
     <form
@@ -47,7 +62,8 @@ function ProductForm({
                 products,
                 setProducts,
                 productInput,
-                imgid
+                imgid,
+                dfProduct
               )
       }
       className={showUpdate ? " form-addp form-editp" : "form-addp"}
@@ -55,30 +71,47 @@ function ProductForm({
       <h2 className="form__title">
         {showUpdate ? "Modificar Producto" : "Agregar Producto"}
       </h2>
+      {/* image */}
       {showUpdate ? null : <InputImage setImgid={setImgid} />}
+      {/* category */}
+
       <div className="form__group">
-        <label htmlFor="category">Categoria</label>
-        <input
-          type="text"
-          name="category"
-          onChange={(e) => handleIChange(e, product, setProduct)}
-          className="form__control"
-          value={product.category?.id}
-          autoFocus
-          ref={productInput}
-        />
+        <label>
+          Categoria
+          <select
+            name="category"
+            onChange={(e) => handleIChange(e, product, setProduct)}
+            className="form__control"
+            value={product.category?.id || 0}
+            autoFocus
+            ref={productInput}
+          >
+            <option key={0} value={0}>
+              sin categoria
+            </option>
+            {categoris.map((e, i) => (
+              <option key={i + 1} value={i + 1}>
+                {e}
+              </option>
+            ))}
+          </select>
+        </label>
       </div>
       <InputProduct
         name={"name"}
         label={"Nombre"}
         product={product}
         setProduct={setProduct}
+        dfProduct={dfProduct}
+        setDfProduct={setDfProduct}
       />
       <InputProduct
         name={"mark"}
         label={"Marca"}
         product={product}
         setProduct={setProduct}
+        dfProduct={dfProduct}
+        setDfProduct={setDfProduct}
       />
       <InputProduct
         name={"price"}
@@ -86,6 +119,8 @@ function ProductForm({
         number={true}
         product={product}
         setProduct={setProduct}
+        dfProduct={dfProduct}
+        setDfProduct={setDfProduct}
       />
       <InputProduct
         name={"stock"}
@@ -93,6 +128,8 @@ function ProductForm({
         number={true}
         product={product}
         setProduct={setProduct}
+        dfProduct={dfProduct}
+        setDfProduct={setDfProduct}
       />
 
       <div className="form__group">

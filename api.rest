@@ -9,3 +9,8 @@ GET http://localhost:8000/products?store=1
 
 ###
 GET http://hakhi.xyz:8000/products?_q=first
+
+###
+GET http://hakhi.xyz:8000/categories
+###
+GET http://hakhi.xyz:8000/products?category=1

@@ -15,6 +15,7 @@ export function Product() {
     stock: 0,
     photo: ""
   }) //register df values
+  const [dfProduct, setDfProduct] = useState({})
 
   const [showUpdate, setshowUpdate] = useState()
   const { loading, products, setProducts } = useStoreProducts()
@@ -33,6 +34,8 @@ export function Product() {
             product={product}
             setProducts={setProducts}
             products={products}
+            dfProduct={dfProduct}
+            setDfProduct={setDfProduct}
           />
           {/* </div>
           <div className="col-md-8"> */}

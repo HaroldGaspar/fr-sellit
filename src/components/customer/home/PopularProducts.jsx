@@ -17,7 +17,7 @@ export function PopularProducts() {
   return (
     <>
       <h2 className="section__title">Producto Populares</h2>
-      <i class="bi bi-cart-dash"></i>
+      <i className="bi bi-cart-dash"></i>
       <div
         id="carouselPr"
         className="carousel slide popular"
@@ -34,13 +34,16 @@ export function PopularProducts() {
         </ol>
         <div className="carousel-inner">
           {homeProducts.map((product, id) => (
-            <div class={id === 1 ? "carousel-item active" : "carousel-item"}>
+            <div
+              className={id === 1 ? "carousel-item active" : "carousel-item"}
+              key={id}
+            >
               <img
-                class="d-block w-100 popular__img img-fluid "
+                className="d-block w-100 popular__img img-fluid "
                 src={API_URL + product.photo}
                 alt="First slide"
               />
-              <div class="carousel__text carousel-caption d-none d-md-block ">
+              <div className="carousel__text carousel-caption d-none d-md-block ">
                 <h5>{product.name}</h5>
                 <p>{product.mark}</p>
                 <p>{product.description}</p>
@@ -49,25 +52,31 @@ export function PopularProducts() {
           ))}
         </div>
         <a
-          class="carousel-control-prev"
+          className="carousel-control-prev"
           href="#carouselPr"
           role="button"
           data-slide="prev"
         >
           <span className="popular__inv">
-            <span class="carousel-control-prev-icon " aria-hidden="true"></span>
-            <span class="popular__inv sr-only">Previous</span>
+            <span
+              className="carousel-control-prev-icon "
+              aria-hidden="true"
+            ></span>
+            <span className="popular__inv sr-only">Previous</span>
           </span>
         </a>
         <a
-          class="carousel-control-next "
+          className="carousel-control-next "
           href="#carouselPr"
           role="button"
           data-slide="next"
         >
           <span className="popular__inv">
-            <span class="carousel-control-next-icon " aria-hidden="true"></span>
-            <span class="sr-only">Next</span>
+            <span
+              className="carousel-control-next-icon "
+              aria-hidden="true"
+            ></span>
+            <span className="sr-only">Next</span>
           </span>
         </a>
       </div>
