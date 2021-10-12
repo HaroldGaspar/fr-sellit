@@ -1,6 +1,6 @@
 import ProductContext from "context/ProductsDtContex"
 import { useContext, useEffect, useState } from "react"
-import { getProductsDetailByCart } from "services"
+import { getProductsDetailByCart, updateProductDetail } from "services"
 
 export function useCartProducts() {
   const { productsDetail, setProductsDetail } = useContext(ProductContext)

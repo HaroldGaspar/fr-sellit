@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react"
 import { API_URL } from "services/settings"
 import { Price } from "components"
 import "./ProductCart.css"
+import { updateProductDetail } from "services"
 
 export function ProductCart({
   productDetail,
@@ -29,6 +30,8 @@ export function ProductCart({
     //replace my current productDetail changed with the original
     productsDetail.splice(id, 1, pdtlLess) //activate useEffect
     setProductsDetail([...productsDetail])
+
+    updateProductDetail(pdtlLess)
   }
   useEffect(() => {}, [productsDetail])
 

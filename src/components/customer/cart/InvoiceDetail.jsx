@@ -10,7 +10,7 @@ export function InvoiceDetail({ productDetail, setProductDetail }) {
           {productDetail.mark || "noreceive mark"} -
           <b> X {productDetail.qty}</b>
         </div>
-        <Price price={productDetail.totalPrice} />
+        <Price price={productDetail.productPrice * productDetail.qty} />
       </div>
     </div>
   )

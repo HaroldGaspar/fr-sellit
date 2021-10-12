@@ -14,14 +14,11 @@
   box-shadow: 0 0 0 0.1rem rgb(70 50 255 / 45%);
 }
 
-.form__label {
-  margin-bottom: 0.1rem;
-  font-weight: 700;
-  /* width: 100%; */
-}
-
 .form__group {
   margin-bottom: 0.3rem;
+  padding: 0 auto;
+  display: flex;
+  /* justify-content: center; */
 }
 
 input .form__control {
@@ -36,11 +33,16 @@ textarea .form__control {
 }
 
 /* input button */
+.form__label {
+  margin-bottom: 0.1rem;
+  font-weight: 700;
+  /* width: 100%; */
+}
 
 .inputproduct__btn {
   border: none;
   padding: 0.6em 1em;
-  margin: auto 0.3em;
+  margin: auto 0.3em 0.1em 0.3em;
   height: 100%;
   font-size: 13px;
 }
@@ -48,4 +50,16 @@ textarea .form__control {
 .inputproduct__btn:hover {
   background-color: rgba(0, 0, 0, 0.4);
   color: #eee;
+}
+
+@media (max-height: 770px) {
+  .form__label {
+    /* width: 100%; */
+  }
+}
+
+@media (min-width: 1150px) {
+  .form__label {
+    /* width: 100%; */
+  }
 }

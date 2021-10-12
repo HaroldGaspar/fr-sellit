@@ -78,27 +78,26 @@ export default function InputImage({ setImgid }) {
   //===================================================
 
   return (
-    <div className="form-group">
-      <label htmlFor="category">
-        Imagen <span className="text-danger">*selecciona una imagen</span>{" "}
+    <div className="form__group">
+      <label className="form__label">
+        Imagen <small className="text-danger">*selecciona una imagen</small>{" "}
+        <div className="drop-area">
+          <button type="button" onClick={() => clickButton()}>
+            Selecciona tu archivo
+          </button>
+          <form id="upload-form">
+            <input
+              type="file"
+              name="files"
+              ref={input_i}
+              hidden
+              multiple
+              onChange={(e) => changeImageInput(e, files)}
+              required
+            />
+          </form>
+        </div>
       </label>
-
-      <div className="drop-area">
-        <button type="button" onClick={() => clickButton()}>
-          Selecciona tu archivo
-        </button>
-        <form id="upload-form">
-          <input
-            type="file"
-            name="files"
-            ref={input_i}
-            hidden
-            multiple
-            onChange={(e) => changeImageInput(e, files)}
-            required
-          />
-        </form>
-      </div>
       <div id="preview" ref={preview_i}></div>
     </div>
   )

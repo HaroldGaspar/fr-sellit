@@ -1,4 +1,4 @@
-import { API_URL } from "../settings"
+import { API_URL } from "services/settings"
 const limit = 6
 
 export async function getLatestProducts(page = 0) {

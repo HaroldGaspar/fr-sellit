@@ -1,12 +1,24 @@
 import ProductContext from "context/ProductsDtContex"
-import { useContext } from "react"
+import { useContext, useEffect } from "react"
 import { InvoiceDetail } from "components"
 
 import "./Order.css"
 import { Price } from "../Price"
+import { addCartWithOrderDetail } from "services"
 
 export function OrderCart() {
   const { productsDetail, setProductsDetail } = useContext(ProductContext)
+
+  const handleSellCart = () => {
+    const num =
+      productsDetail.length === 0
+        ? "0"
+        : productsDetail.map((p) => p.totalPrice).reduce((p, n) => p + n)
+
+    const tp = parseFloat(num).toFixed(2)
+    addCartWithOrderDetail(tp)
+  }
+
   console.log("lengt", productsDetail.length)
   return (
     <>
@@ -32,7 +44,9 @@ export function OrderCart() {
                     .reduce((p, n) => p + n)
             }
           />
-          <button className="order__btn">Comprar ahora</button>
+          <button onClick={() => handleSellCart()} className="order__btn">
+            Comprar ahora
+          </button>
         </div>
       </div>
     </>

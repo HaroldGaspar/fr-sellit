@@ -28,3 +28,13 @@ export * from "./customer/cart/ProductsCart"
 export * from "./customer/cart/ProductCart"
 export * from "./customer/cart/OrderCart"
 export * from "./customer/cart/InvoiceDetail"
+//--find
+export * from "./customer/find/ProductDetail"
+export * from "./customer/find/ProductsByCategory"
+export * from "./customer/find/ProductCategory"
+export * from "./customer/find/ProductsByStore"
+export * from "./customer/find/ProductStore"
+//--review
+export * from "./customer/review/ReviewForm"
+export * from "./customer/review/ReviewsList"
+export * from "./customer/review/Review"

@@ -1,4 +1,4 @@
-import { API_URL } from "../settings"
+import { API_URL } from "services/settings"
 export async function getProductsDetailByCart(setState) {
   const cart = localStorage.getItem("cart")
   const token = localStorage.getItem("token")
@@ -15,11 +15,12 @@ export async function getProductsDetailByCart(setState) {
   const resD = await resFetch.json()
 
   //adapter
+
   let resFormat = resD.map((resU) => {
     return {
       qty: resU.qty,
       productPrice: resU.product.price,
-      totalPrice: resU.product.price,
+      totalPrice: resU.product.price * resU.qty,
       productDetailId: resU.id,
       productId: resU.product.id,
       mark: resU.product.mark,

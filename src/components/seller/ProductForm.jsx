@@ -76,7 +76,7 @@ function ProductForm({
       {/* category */}
 
       <div className="form__group">
-        <label>
+        <label className="form__label">
           Categoria
           <select
             name="category"
@@ -133,13 +133,15 @@ function ProductForm({
       />
 
       <div className="form__group">
-        <label htmlFor="description">Descripcion</label>
-        <textarea
-          name="description"
-          onChange={(e) => handleIChange(e, product, setProduct)}
-          className="form__control"
-          value={product.description}
-        ></textarea>
+        <label className="form__label">
+          Descripcion
+          <textarea
+            name="description"
+            onChange={(e) => handleIChange(e, product, setProduct)}
+            className="form__control"
+            value={product.description}
+          ></textarea>
+        </label>
       </div>
       <Buttons
         setshowUpdate={setshowUpdate}

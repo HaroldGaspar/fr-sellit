@@ -1,4 +1,4 @@
-import { API_URL } from "../settings"
+import { API_URL } from "services/settings"
 export async function addProductCart(product) {
   const cart = localStorage.getItem("cart")
   const token = localStorage.getItem("token")

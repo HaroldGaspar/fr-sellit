@@ -24,8 +24,8 @@ function ProductSeller({
         <Link to={`/product/${productMap.id}`} className="Product-link">
           <h5 className="productseller__name">
             {" "}
-            {productMap.name.length > 20
-              ? productMap.name.substr(0, 18).concat("...")
+            {productMap.name.length > 15
+              ? productMap.name.substr(0, 12).concat("...")
               : productMap.name}
           </h5>
         </Link>

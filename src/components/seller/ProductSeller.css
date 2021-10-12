@@ -8,6 +8,9 @@
   border-radius: 0.25rem;
   margin-bottom: 1em;
 }
+
+@media (min-width: 950px) {
+}
 .productseller__stock {
   padding-left: 1em;
 }

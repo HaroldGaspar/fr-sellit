@@ -1,4 +1,4 @@
-import { API_URL } from "../settings"
+import { API_URL } from "services/settings"
 
 export async function getCategories(setCategories) {
   const res = await fetch(`${API_URL}/categories`).catch((e) => console.log(e))

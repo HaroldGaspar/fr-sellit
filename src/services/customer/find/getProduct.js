@@ -1,4 +1,4 @@
-import { API_URL } from "../settings"
+import { API_URL } from "services/settings"
 export async function getProduct(id, setactualProduct, setloading) {
   if (id === null) return
   setloading(true)
