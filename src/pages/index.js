@@ -9,4 +9,4 @@ export * from "./customer/cart"
 export * from "./customer/category"
 
 //seller
-export * from "./seller/product"
+export * from "./seller/product.tsx"

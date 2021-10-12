@@ -1,12 +1,18 @@
 import React from "react"
 
+interface props{
+  setshowUpdate:any,
+  setProduct:any,
+  productInput:any,
+  showUpdate:any
+}
+
 function Buttons({
-  props,
-  setProduct,
   setshowUpdate,
+  setProduct,
   productInput,
   showUpdate
-}) {
+}:props) {
   function disableEdit() {
     setProduct({
       id: 0,
@@ -32,7 +38,7 @@ function Buttons({
             <input
               value="Cancelar"
               type="button"
-              onClick={() => disableEdit(props, setProduct)}
+              onClick={() => disableEdit()}
               className="form__btn-cancel"
             />
           </>

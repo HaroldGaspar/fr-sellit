@@ -1,23 +1,26 @@
 import React, { useRef, useState } from "react"
 import ProductsSeller from "components/seller/ProductsSeller"
-import ProductForm from "components/seller/ProductForm"
 import { useStoreProducts } from "hooks"
 import "./Page.css"
+import ProductForm from "components/seller/ProductForm"
+import { Iproduct } from "models/Product"
+
+
 
 export function Product() {
   const productInput = useRef()
-  const [product, setProduct] = useState({
+  const [product, setProduct] = useState<Iproduct>({
     category: 0,
-    name: "",
+    name:"",
     mark: "",
-    price: 0.0,
+    price: 0.00,
     description: "",
     stock: 0,
     photo: ""
   }) //register df values
   const [dfProduct, setDfProduct] = useState({})
 
-  const [showUpdate, setshowUpdate] = useState()
+  const [showUpdate, setshowUpdate] = useState<boolean>()
   const { loading, products, setProducts } = useStoreProducts()
 
   return (

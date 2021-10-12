@@ -51,7 +51,7 @@ export const addProduct = async (
 
   //persisten
 
-  fetch(`${API_URL}/products`, {
+  const res = await fetch(`${API_URL}/products`, {
     method: "post",
     headers: new Headers({
       Authorization: `Bearer ${token}`,
@@ -59,11 +59,12 @@ export const addProduct = async (
     }),
     body: JSON.stringify(newProduct)
   }).catch((e) => console.log(e))
-
+  const {id} = await res.json()
   // setProducts([...products, newProduct])
   setProducts([...products, newProduct])
   //format
   setProduct({
+    id,
     category: product.category || "",
     name: dfProduct.name || "",
     mark: dfProduct.mark || "",

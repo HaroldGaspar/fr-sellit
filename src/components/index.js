@@ -5,12 +5,12 @@ export * from "./form/Footer"
 export * from "./form/Input"
 export * from "./form/InputProduct"
 export * from "./form/InputImage"
-export * from "./form/Buttons"
+// export * from "./form/Buttons.tsx"
 
 //seller
 export * from "./seller/ProductsSeller"
 export * from "./seller/ProductSeller"
-export * from "./seller/ProductForm"
+export * from "./seller/ProductForm.tsx"
 
 //customer
 //--home

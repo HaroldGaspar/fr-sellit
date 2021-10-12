@@ -1,17 +1,30 @@
-import React, { useEffect, useRef, useState } from "react"
+import React, { Dispatch, SetStateAction, useEffect, useRef, useState } from "react"
 // import { Buttons } from "components"
 // import { handleIChange } from "utils"
 import {
   addProduct,
   getCategories,
-  handleUploadFormSubmit,
+  // handleUploadFormSubmit,
   updateProduct
 } from "services"
 import InputImage from "components/form/InputImage"
 import "components/form/Form.css"
 
 import InputProduct from "components/form/InputProduct"
+import { Iproduct } from "models/Product"
 import Buttons from "components/form/Buttons"
+
+interface props{
+  setshowUpdate:any,
+  setProduct:any,
+  setProducts:any,
+  products:any,
+  product:Iproduct,
+  productInput:any,
+  showUpdate:any,
+  dfProduct:any,
+  setDfProduct:any
+}
 
 function ProductForm({
   setshowUpdate,
@@ -23,11 +36,11 @@ function ProductForm({
   showUpdate,
   dfProduct,
   setDfProduct
-}) {
+}:props) {
   const [imgid, setImgid] = useState()
   const [categoris, setCategories] = useState([])
 
-  const handleIChange = (e, product, setProduct) => {
+  const handleIChange = (e:React.ChangeEvent<any>, product:Iproduct, setProduct:Dispatch<SetStateAction<Iproduct>>) => {
     const { name, value } = e.target
     setProduct({ ...product, [name]: value })
   }
@@ -82,7 +95,7 @@ function ProductForm({
             name="category"
             onChange={(e) => handleIChange(e, product, setProduct)}
             className="form__control"
-            value={product.category?.id || 0}
+            value={product.category || 0} //?.id
             autoFocus
             ref={productInput}
           >
