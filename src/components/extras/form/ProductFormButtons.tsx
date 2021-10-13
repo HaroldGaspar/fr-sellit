@@ -1,10 +1,11 @@
 import React from "react"
+import "./ProdBtnForm.css"
 
-interface props{
-  setshowUpdate:any,
-  setProduct:any,
-  productInput:any,
-  showUpdate:any
+interface props {
+  setshowUpdate: any
+  setProduct: any
+  productInput: any
+  showUpdate: any
 }
 
 function Buttons({
@@ -12,7 +13,7 @@ function Buttons({
   setProduct,
   productInput,
   showUpdate
-}:props) {
+}: props) {
   function disableEdit() {
     setProduct({
       id: 0,

@@ -1,10 +1,11 @@
 //
-export * from "./Spinner"
+export * from "./extras/Spinner"
 //form
-export * from "./form/Footer"
-export * from "./form/Input"
-export * from "./form/InputProduct"
-export * from "./form/InputImage"
+export * from "./extras/form/AuthFooter"
+export * from "./extras/form/AuthInput"
+export * from "./extras/form/InputProduct"
+export * from "./extras/form/InputImage"
+export * from "./extras/Price"
 // export * from "./form/Buttons.tsx"
 
 //seller
@@ -18,7 +19,6 @@ export * from "./customer/home/ProductHome"
 export * from "./customer/home/PopularProducts"
 export * from "./customer/home/LastProducts"
 export * from "./customer/home/Detail"
-export * from "./customer/Price"
 //--search
 export * from "./customer/search/Nav"
 export * from "./customer/search/SearchBar"

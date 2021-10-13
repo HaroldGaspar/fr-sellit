@@ -1,0 +1,16 @@
+.form__title {
+  text-align: center;
+}
+
+.form-addp {
+  padding: 1.5rem;
+  /* word-wrap: break-word; */
+  border: 1px solid rgba(0, 0, 0, 0.125);
+  border-radius: 0.25rem;
+  height: fit-content;
+  width: fit-content;
+}
+
+.form-editp {
+  background: #f8f9fa;
+}

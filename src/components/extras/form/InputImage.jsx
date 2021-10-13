@@ -1,8 +1,8 @@
 import React, { useEffect, useRef } from "react"
 // import { changeImageInput, showFiles } from "../../services";
-import "./DragAndDrop.css"
+import "./InputImage.css"
 
-export default function InputImage({ setImgid }) {
+export function InputImage({ setImgid }) {
   // const preview = useRef()
 
   let files

@@ -1,19 +1,17 @@
 import React, { useRef, useState } from "react"
 import ProductsSeller from "components/seller/ProductsSeller"
 import { useStoreProducts } from "hooks"
-import "./Page.css"
+import "./Product.css"
 import ProductForm from "components/seller/ProductForm"
 import { Iproduct } from "models/Product"
-
-
 
 export function Product() {
   const productInput = useRef()
   const [product, setProduct] = useState<Iproduct>({
     category: 0,
-    name:"",
+    name: "",
     mark: "",
-    price: 0.00,
+    price: 0.0,
     description: "",
     stock: 0,
     photo: ""

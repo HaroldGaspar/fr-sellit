@@ -1,5 +1,5 @@
 import { useStoreProducts } from "hooks"
-import { Spinner } from "components/Spinner"
+import { Spinner } from "components"
 import React from "react"
 import ProductSeller from "./ProductSeller"
 

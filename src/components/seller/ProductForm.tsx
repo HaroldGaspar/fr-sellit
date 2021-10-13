@@ -1,4 +1,10 @@
-import React, { Dispatch, SetStateAction, useEffect, useRef, useState } from "react"
+import React, {
+  Dispatch,
+  SetStateAction,
+  useEffect,
+  useRef,
+  useState
+} from "react"
 // import { Buttons } from "components"
 // import { handleIChange } from "utils"
 import {
@@ -7,23 +13,24 @@ import {
   // handleUploadFormSubmit,
   updateProduct
 } from "services"
-import InputImage from "components/form/InputImage"
-import "components/form/Form.css"
+import { InputImage } from "components"
 
-import InputProduct from "components/form/InputProduct"
+import InputProduct from "components/extras/form/InputProduct"
+import Buttons from "components/extras/form/ProductFormButtons"
 import { Iproduct } from "models/Product"
-import Buttons from "components/form/Buttons"
 
-interface props{
-  setshowUpdate:any,
-  setProduct:any,
-  setProducts:any,
-  products:any,
-  product:Iproduct,
-  productInput:any,
-  showUpdate:any,
-  dfProduct:any,
-  setDfProduct:any
+import "./ProductForm.css"
+
+interface props {
+  setshowUpdate: any
+  setProduct: any
+  setProducts: any
+  products: any
+  product: Iproduct
+  productInput: any
+  showUpdate: any
+  dfProduct: any
+  setDfProduct: any
 }
 
 function ProductForm({
@@ -36,11 +43,15 @@ function ProductForm({
   showUpdate,
   dfProduct,
   setDfProduct
-}:props) {
+}: props) {
   const [imgid, setImgid] = useState()
   const [categoris, setCategories] = useState([])
 
-  const handleIChange = (e:React.ChangeEvent<any>, product:Iproduct, setProduct:Dispatch<SetStateAction<Iproduct>>) => {
+  const handleIChange = (
+    e: React.ChangeEvent<any>,
+    product: Iproduct,
+    setProduct: Dispatch<SetStateAction<Iproduct>>
+  ) => {
     const { name, value } = e.target
     setProduct({ ...product, [name]: value })
   }

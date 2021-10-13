@@ -1,4 +1,4 @@
-import { Price } from "components/customer/Price"
+import { Price } from "components"
 import React, { useCallback } from "react"
 import { Link } from "react-router-dom"
 import { deleteProduct } from "services"

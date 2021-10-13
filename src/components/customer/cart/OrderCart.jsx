@@ -1,10 +1,9 @@
 import ProductContext from "context/ProductsDtContex"
 import { useContext, useEffect } from "react"
-import { InvoiceDetail } from "components"
+import { InvoiceDetail, Price } from "components"
+import { addCartWithOrderDetail } from "services"
 
 import "./Order.css"
-import { Price } from "../Price"
-import { addCartWithOrderDetail } from "services"
 
 export function OrderCart() {
   const { productsDetail, setProductsDetail } = useContext(ProductContext)

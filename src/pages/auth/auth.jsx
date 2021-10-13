@@ -1,7 +1,7 @@
 import React, { useState } from "react"
 import { Singin, Singup } from "pages"
-import { Spinner } from "components/Spinner"
-import Footer from "components/form/Footer"
+import { Spinner } from "components"
+import Footer from "components/extras/form/AuthFooter"
 import "./Auth.css"
 
 export function Auth({ login }) {

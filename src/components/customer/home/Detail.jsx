@@ -1,4 +1,4 @@
-import { Spinner } from "components/Spinner"
+import { Spinner } from "components"
 import React, { useEffect, useState } from "react"
 import { useParams } from "react-router"
 import { getProduct } from "services"

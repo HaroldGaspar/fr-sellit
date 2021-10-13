@@ -1,5 +1,5 @@
 import { NavLink, useHistory } from "react-router-dom"
-import { Input } from "components"
+import { AuthInput } from "components"
 import { singIn } from "services"
 
 export function Singin({ user, setUser, setloading }) {
@@ -18,13 +18,13 @@ export function Singin({ user, setUser, setloading }) {
 
         <div className="cardauth__body">
           <form onSubmit={(e) => singIn(e, history, user, setloading)}>
-            <Input
+            <AuthInput
               name={"email"}
               label={"Email"}
               autofocus={true}
               handleChange={handleChange}
             />
-            <Input
+            <AuthInput
               name={"password"}
               label={"Contraseña"}
               password={true}

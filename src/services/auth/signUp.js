@@ -1,76 +1,45 @@
-import { API_URL } from "../settings"
-import { login, parseJwt } from "services"
+import { login, persistEntity } from "services"
 
 export async function signUp(e, user, history, setloading) {
   e.preventDefault()
   setloading(true)
-  console.log("registrado")
-  console.log(user)
 
-  //password confirm in the backend
-  //persist user
-  const resUser = await fetch(`${API_URL}/users`, {
-    method: "post",
-    headers: new Headers({
-      "Content-Type": "application/json"
-    }),
-    body: JSON.stringify({ ...user, is_seller: Boolean(user.store_name) })
-  })
-  const userD = await resUser.json()
-  console.log("user ", userD)
+  const userD = await persistEntity("users", "", user)
+  console.log("create user ", userD)
 
   //login
-  const json = await login(user, history)
-  console.log(parseJwt(json.jwt))
+  const json = await login(user)
+  console.log("jwt", json.jwt)
 
   //persist customer
-  const resCustomer = await fetch(`${API_URL}/customers`, {
-    method: "post",
-    headers: new Headers({
-      Authorization: `Bearer ${json.jwt}`,
-      "Content-Type": "application/json"
-    }),
-    body: JSON.stringify({
-      is_seller: Boolean(user.store_name),
-      user: userD.id
-    })
-  })
-  const customerD = await resCustomer.json()
-  console.log("customer: ", customerD.id)
+  const customer = {
+    is_seller: Boolean(user.store_name),
+    user: userD.id
+  }
+  const customerD = await persistEntity("customers", json.jwt, customer)
+  console.log(
+    `create ${Boolean(user.store_name) ? "seller" : "customer"}: `,
+    customerD //.id
+  )
 
   //persistence cart
-  const resCart = await fetch(`${API_URL}/carts`, {
-    method: "post",
-    headers: new Headers({
-      Authorization: `Bearer ${json.jwt}`,
-      "Content-Type": "application/json"
-    }),
-    body: JSON.stringify({
-      is_actual: true,
-      customer: customerD.id
-    })
-  })
-
-  const cartD = await resCart.json()
-  // console.log("cart", cartD.id)
+  const cart = {
+    is_actual: true,
+    customer: customerD.id
+  }
+  const cartD = await persistEntity("carts", json.jwt, cart)
+  console.log("create cart", cartD) //.id)
   localStorage.setItem("cart", cartD.id)
 
-  //isSeller
+  //isSeller ? persist store
   if (user.store_name) {
-    //persiste store
-    const resStore = await fetch(`${API_URL}/stores`, {
-      method: "post",
-      headers: new Headers({
-        Authorization: `Bearer ${json.jwt}`,
-        "Content-Type": "application/json"
-      }),
-      body: JSON.stringify({
-        name: user.store_name,
-        customer: customerD.id
-      })
-    })
-    const storeD = await resStore.json()
-    console.log("store ", storeD.id)
+    const store = {
+      name: user.store_name,
+      customer: customerD.id
+    }
+
+    const storeD = await persistEntity("stores", json.jwt, store)
+    console.log("create store ", storeD) //.id)
     localStorage.setItem("store", storeD.id) //filtrar los productos por tienda para la vista del seller
   }
   setloading(false)

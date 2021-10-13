@@ -1,6 +1,6 @@
 import React, { useState } from "react"
 import { NavLink, useHistory } from "react-router-dom"
-import { Input } from "components"
+import { AuthInput } from "components"
 import { signUp } from "services"
 
 export function Singup({ user, setUser, setloading }) {
@@ -25,20 +25,24 @@ export function Singup({ user, setUser, setloading }) {
       </span>
       <div className="cardauth__body">
         <form onSubmit={(e) => signUp(e, user, history, setloading)}>
-          <Input
+          <AuthInput
             name={"username"}
             label={"Nombre de usuario"}
             autofocus={true}
             handleChange={handleChange}
           />
-          <Input name={"email"} label={"Email"} handleChange={handleChange} />
-          <Input
+          <AuthInput
+            name={"email"}
+            label={"Email"}
+            handleChange={handleChange}
+          />
+          <AuthInput
             name={"password"}
             label={"Contraseña"}
             password={true}
             handleChange={handleChange}
           />
-          <Input
+          <AuthInput
             name={"password-confirm"}
             label={"Confirma tu contraseña"}
             password={true}
@@ -48,7 +52,7 @@ export function Singup({ user, setUser, setloading }) {
             {seller ? "Soy usuario" : "Eres vendedor?"}
           </button>
           <span className={seller ? "isseller" : "iscustomer"}>
-            <Input
+            <AuthInput
               name={"store_name"}
               label={"Nombre de tu tienda"}
               handleChange={handleChange}
