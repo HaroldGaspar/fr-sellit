@@ -23,7 +23,7 @@ export function LastProducts() {
   //this is in lop for that requires an debounce
   useEffect(() => {
     if (isNearScreen) debounceHandleNextPage()
-    console.log(isNearScreen)
+    // console.log('isNearScreen',isNearScreen)
   }, [debounceHandleNextPage, isNearScreen])
 
   return (

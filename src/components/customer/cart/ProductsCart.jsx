@@ -10,16 +10,6 @@ export function ProductsCart() {
   // With dependency productsDetail exec every change
   // Without dont consider hook going it  empty
 
-  // useEffect(() => {
-  //   //
-  //   return () => {
-  //     console.log("====order==send cart-details updated", productsDetail)
-  //     productsDetail.map((p) => {
-  //       updateProductDetail(p)
-  //     })
-  //   }
-  // }, [])
-
   return (
     <>
       {loading ? (

@@ -4,13 +4,12 @@ import "./ProdBtnForm.css"
 import ProductContext from "context/ProductContext"
 
 interface props {
-  setshowUpdate: Dispatch<SetStateAction<boolean>>
   productInput: any
-  showUpdate: boolean
 }
 
-function Buttons({ setshowUpdate, productInput, showUpdate }: props) {
-  const { setProduct }: any = useContext(ProductContext)
+function Buttons({ productInput }: props) {
+  const { showUpdate, setshowUpdate, setProduct }: any =
+    useContext(ProductContext)
 
   //cancel showUpdate
   function disableEdit() {

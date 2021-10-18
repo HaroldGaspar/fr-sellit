@@ -14,7 +14,7 @@ export function AuthInput({
         onChange={(e) => handleChange(e)}
         className="form-control"
         autoFocus={autofocus ? true : false}
-        required={true}
+        required={name === "store_name" ? false : true}
       />
     </div>
   )

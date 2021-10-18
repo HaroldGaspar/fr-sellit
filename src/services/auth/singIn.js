@@ -7,6 +7,7 @@ export async function singIn(e, history, user, setloading) {
 
   //login
   const json = await login(user)
+  console.log(json.jwt)
   const userId = parseJwt(json.jwt).id
 
   //findCustomer ByUserId
@@ -17,7 +18,7 @@ export async function singIn(e, history, user, setloading) {
   localStorage.setItem("cart", cartsF[0].id)
 
   //setStoreId in LocalStorage
-  if (customerD[0].store.id) {
+  if (customerD[0].store?.id) {
     localStorage.setItem("store", customerD[0].store.id)
   }
 

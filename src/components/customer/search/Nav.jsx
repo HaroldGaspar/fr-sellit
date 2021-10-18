@@ -13,14 +13,14 @@ export function Nav(props) {
     setlogout(localStorage.getItem("token"))
     setstore(localStorage.getItem("store"))
 
-    console.log("logout", logout)
+    // console.log("logout", logout)
   }, [logout, store])
   return (
     <nav className="nav navbar-expand-lg navbar-light">
       <NavLink className="nav__brand " to="/">
         SELLIT
       </NavLink>
-          <SearchBar />
+      <SearchBar />
       <button
         className="navbar-toggler"
         type="button"

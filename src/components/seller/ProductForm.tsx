@@ -133,11 +133,7 @@ function ProductForm({ productInput }: props) {
           ></textarea>
         </label>
       </div>
-      <Buttons
-        setshowUpdate={setshowUpdate}
-        productInput={productInput}
-        showUpdate={showUpdate}
-      />
+      <Buttons productInput={productInput} />
     </form>
   )
 }

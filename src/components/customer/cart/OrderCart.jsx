@@ -8,14 +8,15 @@ import "./Order.css"
 export function OrderCart() {
   const { productsDetail, setProductsDetail } = useContext(ProductContext)
 
-  const handleSellCart = () => {
+  const handleSellCart = async () => {
     const num =
       productsDetail.length === 0
         ? "0"
         : productsDetail.map((p) => p.totalPrice).reduce((p, n) => p + n)
 
-    const tp = parseFloat(num).toFixed(2)
-    addCartWithOrderDetail(tp)
+    // const tp = parseFloat(num).toFixed(2)
+    const res = await addCartWithOrderDetail(num, "credit_card")
+    console.log("res updt cart to: ", res)
   }
 
   console.log("lengt", productsDetail.length)

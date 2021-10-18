@@ -32,5 +32,6 @@ export * from "./auth/login"
 
 //utils
 export * from "./utils/persistEntity"
+export * from "./utils/persistEntityNT"
 export * from "./utils/findByField"
 export * from "./utils/uploadImage"
