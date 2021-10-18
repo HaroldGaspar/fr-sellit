@@ -1,20 +1,17 @@
 import { Iproduct } from "models/Product"
-import React, { Dispatch, SetStateAction } from "react"
+import React, { Dispatch, SetStateAction, useContext } from "react"
 import "./ProdBtnForm.css"
+import ProductContext from "context/ProductContext"
 
 interface props {
   setshowUpdate: Dispatch<SetStateAction<boolean>>
-  setProduct: Dispatch<SetStateAction<Iproduct>>
   productInput: any
   showUpdate: boolean
 }
 
-function Buttons({
-  setshowUpdate,
-  setProduct,
-  productInput,
-  showUpdate
-}: props) {
+function Buttons({ setshowUpdate, productInput, showUpdate }: props) {
+  const { setProduct }: any = useContext(ProductContext)
+
   //cancel showUpdate
   function disableEdit() {
     setProduct({

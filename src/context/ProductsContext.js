@@ -6,7 +6,7 @@ export function ProductsContextProvider({ children }) {
   const [products, setProducts] = useState([])
 
   return (
-    <Context.Provider value={{ products, setProducts }} class>
+    <Context.Provider value={{ products, setProducts }}>
       {children}
     </Context.Provider>
   )

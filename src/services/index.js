@@ -16,7 +16,6 @@ export * from "./customer/find/getStore"
 // export * from "./customer/find/getProductsByStore" //alrready in seller fx
 
 export * from "./customer/searchProduct"
-export * from "./customer/changeImageInput"
 export * from "./customer/cart/updateProductDetail"
 
 //seller

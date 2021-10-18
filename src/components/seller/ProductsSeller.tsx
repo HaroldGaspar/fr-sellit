@@ -4,37 +4,22 @@ import React, { Dispatch, SetStateAction } from "react"
 import ProductSeller from "./ProductSeller"
 import { Iproduct } from "models/Product"
 
-interface Iprops {
-  setshowUpdate: Dispatch<SetStateAction<boolean>>
-  setProduct: Dispatch<SetStateAction<Iproduct>>
+interface Ihook {
   loading: boolean
   products: Iproduct[]
-  setProducts: Dispatch<SetStateAction<Iproduct[]>>
+  setProducts?: Dispatch<SetStateAction<Iproduct[]>>
 }
 
-function ProductsSeller({
-  setshowUpdate,
-  setProduct,
-  loading,
-  products,
-  setProducts
-}: Iprops) {
-  // const { loading, products, setProducts } = useStoreProducts()
+function ProductsSeller() {
+  const { loading, products }: Ihook = useStoreProducts()
 
   return (
     <div className="list-seller">
       {loading ? (
         <Spinner />
       ) : (
-        products.map((productMap, id) => (
-          <ProductSeller
-            productMap={productMap}
-            products={products}
-            setProducts={setProducts}
-            setshowUpdate={setshowUpdate}
-            key={id}
-            setProduct={setProduct}
-          />
+        products.map((productMap: Iproduct, id: number) => (
+          <ProductSeller productMap={productMap} key={id} />
         ))
       )}
     </div>

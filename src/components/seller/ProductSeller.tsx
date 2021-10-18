@@ -1,29 +1,25 @@
 import { Price } from "components"
 import { Iproduct } from "models/Product"
-import React, { useCallback } from "react"
+import React, { useCallback, useContext } from "react"
 import { Link } from "react-router-dom"
 import { deleteProduct } from "services"
+
+import ProductsContext from "context/ProductsContext"
+import ProductContext from "context/ProductContext"
 import "./ProductSeller.css"
 
 interface props {
   productMap: any
-  setshowUpdate: any
-  products: Iproduct[]
-  setProducts: any
-  setProduct: any
 }
 
-function ProductSeller({
-  productMap,
-  setshowUpdate,
-  products,
-  setProducts,
-  setProduct
-}: props) {
-  // const { setProduct } = useContext(ProductContext)
+function ProductSeller({ productMap }: props) {
+  const { setProduct, setshowUpdate }: any = useContext(ProductContext)
+  const { products, setProducts }: any = useContext(ProductsContext)
 
   const handleEdit = () => {
-    const productFiltered = products.filter((p) => p.id === productMap.id)[0]
+    const productFiltered = products.filter(
+      (p: Iproduct) => p.id === productMap.id
+    )[0]
     setProduct(productFiltered)
     setshowUpdate(true)
   }

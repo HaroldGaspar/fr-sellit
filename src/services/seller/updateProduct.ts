@@ -19,7 +19,7 @@ export const updateProduct = (
   setshowUpdate: Dispatch<SetStateAction<boolean>>
 ) => {
   const newProduct = {
-    category: product.category, //?.id, //no soportaba un objeto
+    category: product.category, //no soportaba un objeto
     name: product.name,
     mark: product.mark,
     price: product.price, //

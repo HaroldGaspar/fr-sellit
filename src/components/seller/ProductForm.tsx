@@ -1,23 +1,23 @@
-import React, { Dispatch, SetStateAction, useEffect, useState } from "react"
+import React, {
+  Dispatch,
+  SetStateAction,
+  useContext,
+  useEffect,
+  useState
+} from "react"
 import { addProduct, getCategories, updateProduct } from "services"
 import { InputImage } from "components"
+import ProductsContext from "context/ProductsContext"
+import ProductContext from "context/ProductContext"
 
 import InputProduct from "components/seller/seller-form/InputProduct"
 import Buttons from "components/seller/seller-form/ProductFormButtons"
-import { Icategory, IdfProduct, Iproduct } from "models/Product"
+import { Iproduct } from "models/Product"
 
 import "./ProductForm.css"
 
 interface props {
-  setshowUpdate: Dispatch<SetStateAction<boolean>>
-  setProduct: Dispatch<SetStateAction<Iproduct>>
-  setProducts: Dispatch<SetStateAction<Iproduct[]>>
-  product: Iproduct
-  products: Iproduct[]
   productInput: any
-  showUpdate: boolean
-  dfProduct: IdfProduct
-  setDfProduct: Dispatch<SetStateAction<IdfProduct>>
 }
 
 type HandleInputChange =
@@ -25,17 +25,11 @@ type HandleInputChange =
   | HTMLSelectElement
   | HTMLTextAreaElement
 
-function ProductForm({
-  setshowUpdate,
-  setProduct,
-  setProducts,
-  products,
-  product,
-  productInput,
-  showUpdate,
-  dfProduct,
-  setDfProduct
-}: props) {
+function ProductForm({ productInput }: props) {
+  const { products, setProducts }: any = useContext(ProductsContext)
+  const { product, setProduct, showUpdate, setshowUpdate, dfProduct }: any =
+    useContext(ProductContext)
+
   //update state which send to add/upd SERVICE
   const handleIChange = (
     e: React.ChangeEvent<HandleInputChange>,
@@ -106,16 +100,12 @@ function ProductForm({
         label={"Nombre"}
         product={product}
         setProduct={setProduct}
-        dfProduct={dfProduct}
-        setDfProduct={setDfProduct}
       />
       <InputProduct
         name={"mark"}
         label={"Marca"}
         product={product}
         setProduct={setProduct}
-        dfProduct={dfProduct}
-        setDfProduct={setDfProduct}
       />
       <InputProduct
         name={"price"}
@@ -123,8 +113,6 @@ function ProductForm({
         number={"decimal"}
         product={product}
         setProduct={setProduct}
-        dfProduct={dfProduct}
-        setDfProduct={setDfProduct}
       />
       <InputProduct
         name={"stock"}
@@ -132,8 +120,6 @@ function ProductForm({
         number={"number"}
         product={product}
         setProduct={setProduct}
-        dfProduct={dfProduct}
-        setDfProduct={setDfProduct}
       />
 
       <div className="form__group">
@@ -149,7 +135,6 @@ function ProductForm({
       </div>
       <Buttons
         setshowUpdate={setshowUpdate}
-        setProduct={setProduct}
         productInput={productInput}
         showUpdate={showUpdate}
       />

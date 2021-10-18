@@ -1,6 +1,7 @@
 import { Iproduct } from "models/Product"
-import React, { useState } from "react"
+import React, { useContext, useState } from "react"
 import { handleIChange } from "utils"
+import ProductContext from "context/ProductContext"
 import "./InputProduct.css"
 
 interface props {
@@ -9,20 +10,12 @@ interface props {
   number?: any
   product: Iproduct
   setProduct: any
-  dfProduct: any
-  setDfProduct: any
 }
 
-function InputProduct({
-  name,
-  label,
-  number,
-  product,
-  setProduct,
-  dfProduct,
-  setDfProduct
-}: props) {
+function InputProduct({ name, label, number, product, setProduct }: props) {
   const [isSet, setIsSet] = useState(false)
+  const { dfProduct, setDfProduct }: any = useContext(ProductContext)
+
   const setField = (e: React.MouseEvent<HTMLButtonElement>, ev: string) => {
     setIsSet(!isSet)
     if (!isSet) {
