@@ -1,11 +1,12 @@
-import React from "react"
+import { Iproduct } from "models/Product"
+import React, { Dispatch, SetStateAction } from "react"
 import "./ProdBtnForm.css"
 
 interface props {
-  setshowUpdate: any
-  setProduct: any
+  setshowUpdate: Dispatch<SetStateAction<boolean>>
+  setProduct: Dispatch<SetStateAction<Iproduct>>
   productInput: any
-  showUpdate: any
+  showUpdate: boolean
 }
 
 function Buttons({
@@ -14,22 +15,21 @@ function Buttons({
   productInput,
   showUpdate
 }: props) {
+  //cancel showUpdate
   function disableEdit() {
     setProduct({
       id: 0,
-      category: "",
+      category: 0,
       name: "",
       mark: "",
-      price: "",
+      price: 0,
       description: "",
-      stock: ""
+      stock: 0
     })
     setshowUpdate(false)
     productInput?.current?.focus()
   }
 
-  // console.log("button", showUpdate)
-  // console.log("button", setProduct)
   return (
     <>
       <div className="d-flex">

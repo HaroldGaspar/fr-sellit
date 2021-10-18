@@ -30,5 +30,8 @@ export * from "./auth/signUp"
 export * from "./auth/singIn"
 export * from "./auth/logOutfx"
 export * from "./auth/login"
-export * from "./auth/persistEntity"
-export * from "./auth/findByField"
+
+//utils
+export * from "./utils/persistEntity"
+export * from "./utils/findByField"
+export * from "./utils/uploadImage"

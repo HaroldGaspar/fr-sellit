@@ -1,7 +1,16 @@
 import { useStoreProducts } from "hooks"
 import { Spinner } from "components"
-import React from "react"
+import React, { Dispatch, SetStateAction } from "react"
 import ProductSeller from "./ProductSeller"
+import { Iproduct } from "models/Product"
+
+interface Iprops {
+  setshowUpdate: Dispatch<SetStateAction<boolean>>
+  setProduct: Dispatch<SetStateAction<Iproduct>>
+  loading: boolean
+  products: Iproduct[]
+  setProducts: Dispatch<SetStateAction<Iproduct[]>>
+}
 
 function ProductsSeller({
   setshowUpdate,
@@ -9,7 +18,7 @@ function ProductsSeller({
   loading,
   products,
   setProducts
-}) {
+}: Iprops) {
   // const { loading, products, setProducts } = useStoreProducts()
 
   return (

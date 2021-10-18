@@ -1,9 +1,9 @@
-import React, { useRef, useState } from "react"
+import { useRef, useState } from "react"
 import ProductsSeller from "components/seller/ProductsSeller"
 import { useStoreProducts } from "hooks"
 import "./Product.css"
 import ProductForm from "components/seller/ProductForm"
-import { Iproduct } from "models/Product"
+import { IdfProduct, Iproduct } from "models/Product"
 
 export function Product() {
   const productInput = useRef()
@@ -16,7 +16,7 @@ export function Product() {
     stock: 0,
     photo: ""
   }) //register df values
-  const [dfProduct, setDfProduct] = useState({})
+  const [dfProduct, setDfProduct] = useState<IdfProduct>({})
 
   const [showUpdate, setshowUpdate] = useState<boolean>()
   const { loading, products, setProducts } = useStoreProducts()
@@ -26,7 +26,6 @@ export function Product() {
       <div className="container-sellerproducts">
         {/* <ProductContextProvider> */}
         <div className="product-mng">
-          {/* <div className="col-md-4"> */}
           <ProductForm
             productInput={productInput}
             showUpdate={showUpdate}
@@ -38,8 +37,6 @@ export function Product() {
             dfProduct={dfProduct}
             setDfProduct={setDfProduct}
           />
-          {/* </div>
-          <div className="col-md-8"> */}
           <ProductsSeller
             setshowUpdate={setshowUpdate}
             setProduct={setProduct}
@@ -47,7 +44,6 @@ export function Product() {
             products={products}
             loading={loading}
           />
-          {/* </div> */}
         </div>
         {/* </ProductContextProvider> */}
       </div>

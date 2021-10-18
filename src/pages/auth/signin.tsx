@@ -1,12 +1,13 @@
 import { NavLink, useHistory } from "react-router-dom"
 import { AuthInput } from "components"
 import { singIn } from "services"
+import React, { ChangeEvent } from "react"
 
-export function Singin({ user, setUser, setloading }) {
+export function Singin({ user, setUser, setloading }: any) {
   let history = useHistory()
   // const [user, setUser] = useState({});
 
-  const handleChange = (e) => {
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target
     setUser({ ...user, [name]: value })
   }

@@ -18,7 +18,10 @@
   margin-bottom: 0.3rem;
   padding: 0 auto;
   display: flex;
-  /* justify-content: center; */
+}
+.form__groupimg {
+  margin-bottom: 0.3rem;
+  justify-content: center;
 }
 
 input .form__control {

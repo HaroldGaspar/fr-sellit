@@ -1,37 +1,29 @@
-import React, {
-  Dispatch,
-  SetStateAction,
-  useEffect,
-  useRef,
-  useState
-} from "react"
-// import { Buttons } from "components"
-// import { handleIChange } from "utils"
-import {
-  addProduct,
-  getCategories,
-  // handleUploadFormSubmit,
-  updateProduct
-} from "services"
+import React, { Dispatch, SetStateAction, useEffect, useState } from "react"
+import { addProduct, getCategories, updateProduct } from "services"
 import { InputImage } from "components"
 
-import InputProduct from "components/extras/form/InputProduct"
-import Buttons from "components/extras/form/ProductFormButtons"
-import { Iproduct } from "models/Product"
+import InputProduct from "components/seller/seller-form/InputProduct"
+import Buttons from "components/seller/seller-form/ProductFormButtons"
+import { Icategory, IdfProduct, Iproduct } from "models/Product"
 
 import "./ProductForm.css"
 
 interface props {
-  setshowUpdate: any
-  setProduct: any
-  setProducts: any
-  products: any
+  setshowUpdate: Dispatch<SetStateAction<boolean>>
+  setProduct: Dispatch<SetStateAction<Iproduct>>
+  setProducts: Dispatch<SetStateAction<Iproduct[]>>
   product: Iproduct
+  products: Iproduct[]
   productInput: any
-  showUpdate: any
-  dfProduct: any
-  setDfProduct: any
+  showUpdate: boolean
+  dfProduct: IdfProduct
+  setDfProduct: Dispatch<SetStateAction<IdfProduct>>
 }
+
+type HandleInputChange =
+  | HTMLInputElement
+  | HTMLSelectElement
+  | HTMLTextAreaElement
 
 function ProductForm({
   setshowUpdate,
@@ -44,60 +36,47 @@ function ProductForm({
   dfProduct,
   setDfProduct
 }: props) {
-  const [imgid, setImgid] = useState()
-  const [categoris, setCategories] = useState([])
-
+  //update state which send to add/upd SERVICE
   const handleIChange = (
-    e: React.ChangeEvent<any>,
+    e: React.ChangeEvent<HandleInputChange>,
     product: Iproduct,
     setProduct: Dispatch<SetStateAction<Iproduct>>
   ) => {
     const { name, value } = e.target
     setProduct({ ...product, [name]: value })
   }
+  const [categoris, setCategories] = useState<string[]>([])
 
   useEffect(() => {
     getCategories(setCategories)
-    // setCategories(cat)
-    return () => {
-      console.log("UNMOUNT")
-    }
   }, [setCategories])
-
   return (
     <form
       onSubmit={
         showUpdate
-          ? (e) =>
+          ? (e) => {
+              e.preventDefault()
               updateProduct(
-                e,
                 product,
                 setProduct,
                 products,
                 setProducts,
-                productInput,
                 setshowUpdate
               )
-          : (e) =>
-              addProduct(
-                e,
-                product,
-                setProduct,
-                products,
-                setProducts,
-                productInput,
-                imgid,
-                dfProduct
-              )
+            }
+          : (e) => {
+              e.preventDefault()
+              addProduct(product, setProduct, products, setProducts, dfProduct)
+            }
       }
+      id="upload-form"
       className={showUpdate ? " form-addp form-editp" : "form-addp"}
     >
       <h2 className="form__title">
         {showUpdate ? "Modificar Producto" : "Agregar Producto"}
       </h2>
-      {/* image */}
-      {showUpdate ? null : <InputImage setImgid={setImgid} />}
-      {/* category */}
+
+      {showUpdate ? null : <InputImage />}
 
       <div className="form__group">
         <label className="form__label">
@@ -107,8 +86,8 @@ function ProductForm({
             onChange={(e) => handleIChange(e, product, setProduct)}
             className="form__control"
             value={product.category || 0} //?.id
-            autoFocus
             ref={productInput}
+            autoFocus
           >
             <option key={0} value={0}>
               sin categoria
@@ -121,6 +100,7 @@ function ProductForm({
           </select>
         </label>
       </div>
+
       <InputProduct
         name={"name"}
         label={"Nombre"}
@@ -140,7 +120,7 @@ function ProductForm({
       <InputProduct
         name={"price"}
         label={"Precio"}
-        number={true}
+        number={"decimal"}
         product={product}
         setProduct={setProduct}
         dfProduct={dfProduct}
@@ -149,7 +129,7 @@ function ProductForm({
       <InputProduct
         name={"stock"}
         label={"Stock"}
-        number={true}
+        number={"number"}
         product={product}
         setProduct={setProduct}
         dfProduct={dfProduct}
@@ -177,9 +157,4 @@ function ProductForm({
   )
 }
 
-export default React.memo(
-  ProductForm
-  // , (p, n) => { //
-  //return p.products !== n.products //avoid render form due deleteProduct setProducts()
-  // }
-)
+export default React.memo(ProductForm)

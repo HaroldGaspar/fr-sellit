@@ -1,19 +1,19 @@
-import React, { useState } from "react"
+import React, { ChangeEvent, MouseEventHandler, useState } from "react"
 import { NavLink, useHistory } from "react-router-dom"
 import { AuthInput } from "components"
 import { signUp } from "services"
 
-export function Singup({ user, setUser, setloading }) {
+export function Singup({ user, setUser, setloading }: any) {
   let history = useHistory()
   const [seller, setSeller] = useState(false)
 
   //handle
-  const handleChange = (e) => {
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target
     setUser({ ...user, [name]: value })
   }
 
-  const handleStore = (e) => {
+  const handleStore = () => {
     setSeller(!seller)
   }
 
@@ -43,7 +43,7 @@ export function Singup({ user, setUser, setloading }) {
             handleChange={handleChange}
           />
           <AuthInput
-            name={"password-confirm"}
+            name={"password_confirm"}
             label={"Confirma tu contraseña"}
             password={true}
             handleChange={handleChange}

@@ -1,12 +1,13 @@
 import React, { useState } from "react"
 import { Singin, Singup } from "pages"
 import { Spinner } from "components"
-import Footer from "components/extras/form/AuthFooter"
+import Footer from "components/extras/auth-form/AuthFooter"
 import "./Auth.css"
+import { Iuser } from "models/Product"
 
-export function Auth({ login }) {
-  const [loading, setloading] = useState()
-  const [user, setUser] = useState({})
+export function Auth({ login }: { login: boolean }) {
+  const [loading, setloading] = useState<boolean>()
+  const [user, setUser] = useState<Iuser>({ email: "", password: "" })
   return (
     <>
       <div className="container-home h-100">

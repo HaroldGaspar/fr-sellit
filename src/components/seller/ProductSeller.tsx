@@ -1,8 +1,17 @@
 import { Price } from "components"
+import { Iproduct } from "models/Product"
 import React, { useCallback } from "react"
 import { Link } from "react-router-dom"
 import { deleteProduct } from "services"
 import "./ProductSeller.css"
+
+interface props {
+  productMap: any
+  setshowUpdate: any
+  products: Iproduct[]
+  setProducts: any
+  setProduct: any
+}
 
 function ProductSeller({
   productMap,
@@ -10,7 +19,7 @@ function ProductSeller({
   products,
   setProducts,
   setProduct
-}) {
+}: props) {
   // const { setProduct } = useContext(ProductContext)
 
   const handleEdit = () => {

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react"
 // import { ProductHome } from "components"
 import { API_URL } from "services/settings"
 import { getPopularProducts } from "services"
-import { Spinner } from "components"
+import { ScrollItem, Spinner } from "components"
 import "./PopularProducts.css"
 import ProductHome from "./ProductHome"
 

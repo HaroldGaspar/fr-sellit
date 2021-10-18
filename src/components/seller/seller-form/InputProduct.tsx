@@ -3,29 +3,27 @@ import React, { useState } from "react"
 import { handleIChange } from "utils"
 import "./InputProduct.css"
 
-interface props{
-  name:any,
-  label:any,
-  number?:any,
-  autofocus?:any,
-  product:Iproduct,
-  setProduct:any,
-  dfProduct:any,
-  setDfProduct:any
+interface props {
+  name: any
+  label: any
+  number?: any
+  product: Iproduct
+  setProduct: any
+  dfProduct: any
+  setDfProduct: any
 }
 
 function InputProduct({
   name,
   label,
   number,
-  autofocus,
   product,
   setProduct,
   dfProduct,
   setDfProduct
-}:props) {
+}: props) {
   const [isSet, setIsSet] = useState(false)
-  const setField = (e:React.MouseEvent<HTMLButtonElement>, ev:string) => {
+  const setField = (e: React.MouseEvent<HTMLButtonElement>, ev: string) => {
     setIsSet(!isSet)
     if (!isSet) {
       setDfProduct({ ...dfProduct, [name]: eval(`product.${name}`) })
@@ -42,10 +40,9 @@ function InputProduct({
         <input
           type={number ? "number" : number ? number : "text"}
           name={name}
-          step={0.01}
+          step={number === "decimal" ? 0.01 : 1}
           onChange={(e) => handleIChange(e, product, setProduct)}
           value={eval(`product.${name}`)}
-          autoFocus={autofocus ? true : false}
           className="form__control"
           required
           readOnly={isSet ? true : false}
@@ -53,7 +50,7 @@ function InputProduct({
       </label>
       <button
         type="button"
-        onClick={(e) => setField(e,eval(`product.${name}`))}
+        onClick={(e) => setField(e, eval(`product.${name}`))}
         className="inputproduct__btn"
       >
         {isSet ? <b>fijado</b> : "fijar"}

@@ -4,9 +4,9 @@ import { Link } from "react-router-dom"
 import { addProductCart } from "services"
 import "./ProductHome.css"
 import { Price } from "components"
-function ProductHome({ product }) {
+import { Iproduct } from "models/Product"
+function ProductHome({ product }: { product: Iproduct }) {
   const handleEdit = () => {
-    console.log("palcarro", product.id)
     addProductCart(product.id)
   }
   return (

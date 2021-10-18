@@ -1,9 +1,10 @@
-import React, { useEffect } from "react"
-
-export function AuthInput({ name, label, password, autofocus, handleChange }) {
-  useEffect(() => {
-    console.log("Input component")
-  }, [])
+export function AuthInput({
+  name,
+  label,
+  password,
+  autofocus,
+  handleChange
+}: any) {
   return (
     <div className="form-group">
       <label htmlFor={name}>{label}</label>

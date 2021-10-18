@@ -1,12 +1,6 @@
-import { useEffect } from "react"
 import "./style.css"
 
-export const Price = ({ price, factor }) => {
-  let priceL
-  useEffect(() => {
-    // console.log(`pricing ${price} * ${factor}`)
-    priceL = factor ? factor * price : price
-  }, [])
+export const Price = ({ price, factor }: any) => {
   return (
     <p className="price">
       <span className="price__currency">S/</span>

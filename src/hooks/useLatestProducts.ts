@@ -1,4 +1,5 @@
 import ProductsContext from "context/ProductsContext"
+import { Iproduct } from "models/Product"
 import { useContext, useEffect, useState } from "react"
 import { getLatestProducts } from "services"
 
@@ -6,10 +7,10 @@ const INITIAL_PAGE = 0
 
 export function useLastestProducts() {
   //STATE HANDLER
-  const [products, setProducts] = useState([])
-  const [loading, setLoading] = useState(false) //new fx
+  const [products, setProducts] = useState<Iproduct[]>([])
+  const [loading, setLoading] = useState<boolean>(false) //new fx
 
-  const [loadingNextPage, setLoadingNextPage] = useState(false)
+  const [loadingNextPage, setLoadingNextPage] = useState<boolean>(false)
   const [page, setPage] = useState(INITIAL_PAGE)
 
   //LOGICA DF

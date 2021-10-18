@@ -16,7 +16,7 @@ GET http://hakhi.xyz:8000/categories
 GET http://hakhi.xyz:8000/products?category=1
 
 ###
-GET http://hakhi.xyz:8000/carts/16
+GET http://hakhi.xyz:8000/customers?user=16
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTMsImlhdCI6MTYzNDAwMDU2MywiZXhwIjoxNjM2NTkyNTYzfQ.8gIVUDLGwT2MQEKKvnk1K41bPb_7_RsMurM7jKQU_Qs
 
 ###

@@ -7,7 +7,7 @@ import "./LastProducts.css"
 import ProductHome from "./ProductHome"
 
 export function LastProducts() {
-  const { loading, products, setPage } = useLastestProducts()
+  const { loading, products, setPage, loadingNextPage } = useLastestProducts()
   const externalRef = useRef()
   const { isNearScreen } = useNearScreen({
     externalRef: loading ? null : externalRef,
@@ -37,6 +37,7 @@ export function LastProducts() {
             {products.map((product, id) => (
               <ProductHome product={product} key={id} />
             ))}
+            {loadingNextPage ? <h1>loading more products</h1> : null}
             <div id="pagination-ref" ref={externalRef}></div>
           </>
         )}
