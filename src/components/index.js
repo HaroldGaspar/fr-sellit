@@ -15,28 +15,31 @@ export * from "./seller/ProductsSeller"
 export * from "./seller/ProductSeller"
 export * from "./seller/ProductForm.tsx"
 
-//customer
+//public
 //--home
-export * from "./customer/home/ProductHome"
-export * from "./customer/home/PopularProducts"
-export * from "./customer/home/LastProducts"
-export * from "./customer/home/Detail"
-export * from "./customer/home/ScrollItem"
+export * from "./public/home/ProductHome"
+export * from "./public/home/PopularProducts"
+export * from "./public/home/LastProducts"
+export * from "./public/home/Detail"
+export * from "./public/home/ScrollItem"
+//--find
+export * from "./public/find/ProductDetail"
+export * from "./public/find/ProductsByCategory"
+export * from "./public/find/ProductCategory"
+export * from "./public/find/ProductsByStore"
+export * from "./public/find/ProductStore"
 //--search
-export * from "./customer/search/Nav"
-export * from "./customer/search/SearchBar"
-export * from "./customer/search/SearchResult"
+export * from "./public/search/Nav"
+export * from "./public/search/SearchBar"
+export * from "./public/search/SearchResult"
+
+//customer
 //--cart
 export * from "./customer/cart/ProductsCart"
 export * from "./customer/cart/ProductCart"
 export * from "./customer/cart/OrderCart"
 export * from "./customer/cart/InvoiceDetail"
-//--find
-export * from "./customer/find/ProductDetail"
-export * from "./customer/find/ProductsByCategory"
-export * from "./customer/find/ProductCategory"
-export * from "./customer/find/ProductsByStore"
-export * from "./customer/find/ProductStore"
+export * from "./customer/cart/Card"
 //--review
 export * from "./customer/review/ReviewForm"
 export * from "./customer/review/ReviewsList"

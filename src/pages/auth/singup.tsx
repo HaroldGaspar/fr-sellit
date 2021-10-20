@@ -2,6 +2,15 @@ import React, { ChangeEvent, MouseEventHandler, useState } from "react"
 import { NavLink, useHistory } from "react-router-dom"
 import { AuthInput } from "components"
 import { signUp } from "services"
+import {
+  Cardauth,
+  CardauthBtn,
+  CardauthTitle,
+  FormSubtitle,
+  FormTitle,
+  Iscustomer,
+  Qstn
+} from "./styles"
 
 export function Singup({ user, setUser, setloading }: any) {
   let history = useHistory()
@@ -18,58 +27,51 @@ export function Singup({ user, setUser, setloading }: any) {
   }
 
   return (
-    <div className="cardauth">
-      <span className="form__title">
-        Crear cuenta{" "}
-        {seller ? <span className="form__subtitle">vendedor</span> : null}{" "}
-      </span>
-      <div className="cardauth__body">
-        <form onSubmit={(e) => signUp(e, user, history, setloading)}>
+    <Cardauth>
+      <FormTitle>
+        Crear cuenta {seller ? <FormSubtitle>vendedor</FormSubtitle> : null}{" "}
+      </FormTitle>
+      <form onSubmit={(e) => signUp(e, user, history, setloading)}>
+        <AuthInput
+          name={"username"}
+          label={"Nombre de usuario"}
+          autofocus={true}
+          handleChange={handleChange}
+        />
+        <AuthInput name={"email"} label={"Email"} handleChange={handleChange} />
+        <AuthInput
+          name={"password"}
+          label={"Contraseña"}
+          password={true}
+          handleChange={handleChange}
+        />
+        <AuthInput
+          name={"password_confirm"}
+          label={"Confirma tu contraseña"}
+          password={true}
+          handleChange={handleChange}
+        />
+        <Qstn type="button" onClick={handleStore}>
+          {seller ? "Soy usuario" : "Eres vendedor?"}
+        </Qstn>
+        {seller ? (
           <AuthInput
-            name={"username"}
-            label={"Nombre de usuario"}
-            autofocus={true}
+            name={"store_name"}
+            label={"Nombre de tu tienda"}
             handleChange={handleChange}
           />
-          <AuthInput
-            name={"email"}
-            label={"Email"}
-            handleChange={handleChange}
-          />
-          <AuthInput
-            name={"password"}
-            label={"Contraseña"}
-            password={true}
-            handleChange={handleChange}
-          />
-          <AuthInput
-            name={"password_confirm"}
-            label={"Confirma tu contraseña"}
-            password={true}
-            handleChange={handleChange}
-          />
-          <button type="button" onClick={handleStore} className="qstn tss">
-            {seller ? "Soy usuario" : "Eres vendedor?"}
-          </button>
-          <span className={seller ? "isseller" : "iscustomer"}>
-            <AuthInput
-              name={"store_name"}
-              label={"Nombre de tu tienda"}
-              handleChange={handleChange}
-            />
-          </span>
-          <button className="cardauth__btn">
-            <span className="over">Registrate</span>
-          </button>
-        </form>
-        <hr />
-        <div className="form-footer">
-          <p>
-            <b>Ya estas registrado?</b> Haz click
-            <NavLink to="/login"> aqui</NavLink>
-          </p>
-        </div>
+        ) : null}
+        <CardauthBtn>
+          <span className="over">Registrate</span>
+        </CardauthBtn>
+      </form>
+      <hr />
+      <div className="form-footer">
+        <p>
+          <b>Ya estas registrado?</b> Haz click
+          <NavLink to="/login"> aqui</NavLink>
+        </p>
       </div>
-    </div>
+    </Cardauth>
   )
 }

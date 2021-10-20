@@ -35,9 +35,9 @@ export const addProduct = async (
   }
 
   //format
-  document.getElementById("preview-img")
-    ? document.getElementById("preview-img").remove()
-    : console.log("therisnt preview-img")
+  // document.getElementById("preview-img")
+  //   ? document.getElementById("preview-img").remove()
+  //   : console.log("therisnt preview-img")
 
   setProduct({
     category: product.category || 0,

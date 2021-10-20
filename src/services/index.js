@@ -1,21 +1,23 @@
 //customer
-//--home
-export * from "./customer/home/getLatestProducts"
-export * from "./customer/home/getPopularProducts"
-export * from "./customer/home/getCategories"
 //--cart
 // export * from "./customer/cart/getCartById"
 export * from "./customer/cart/getProductsDetailByCart"
 export * from "./customer/cart/addProductCart"
 export * from "./customer/cart/addCartWithOrderDetail"
 export * from "./customer/cart/updateProductDetail"
+
+//public
+//--home
+export * from "./public/home/getLatestProducts"
+export * from "./public/home/getPopularProducts"
+export * from "./public/home/getCategories"
 //--find
-export * from "./customer/find/getProduct"
-export * from "./customer/find/getProductsByCategory"
-export * from "./customer/find/getStore"
+export * from "./public/find/getProduct"
+export * from "./public/find/getProductsByCategory"
+export * from "./public/find/getStore"
+export * from "./public/find/searchProduct"
 // export * from "./customer/find/getProductsByStore" //alrready in seller fx
 
-export * from "./customer/searchProduct"
 export * from "./customer/cart/updateProductDetail"
 
 //seller

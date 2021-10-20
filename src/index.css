@@ -11,3 +11,37 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+body::-webkit-scrollbar {
+  width: 10px;
+  border-radius: 5px;
+  background-color: #5d5d5d;
+  transition-duration: 0s;
+}
+
+body::-webkit-scrollbar-button {
+  background-color: #5d5d5d;
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.7);
+  border-radius: 3px;
+}
+
+.popular-container {
+  min-height: 500px;
+  /* background-color: #ccc; */
+}
+
+.form-addp {
+  padding: 1.5rem;
+  /* word-wrap: break-word; */
+  border: 1px solid rgba(0, 0, 0, 0.125);
+  border-radius: 0.25rem;
+  height: fit-content;
+  width: fit-content;
+}
+
+.form-editp {
+  background: #f8f9fa;
+}

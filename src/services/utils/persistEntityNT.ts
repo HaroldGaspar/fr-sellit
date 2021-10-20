@@ -3,7 +3,6 @@ import { API_URL } from "../settings"
 //persist trought post, but if have an id its doing by put
 export async function persistEntityNT(entitiy: string, object: any) {
   //if send a authorization empty, the api return an unauthorization
-  console.log("object", object)
   const resCustomer = await fetch(`${API_URL}/${entitiy}`, {
     method: "post",
     headers: new Headers({

@@ -3,8 +3,6 @@ import React, { useEffect, useState } from "react"
 import { API_URL } from "services/settings"
 import { getPopularProducts } from "services"
 import { ScrollItem, Spinner } from "components"
-import "./PopularProducts.css"
-import ProductHome from "./ProductHome"
 
 export function PopularProducts() {
   const [homeProducts, sethomeProducts] = useState([])
@@ -83,3 +81,41 @@ export function PopularProducts() {
     </>
   )
 }
+
+// .popular {
+//   display: flex;
+//   color: #000;
+//   /* grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); */
+//   gap: 0 15px;
+//   align-items: center;
+// }
+// @media (max-width: 800px) {
+//   .popular {
+//     display: block;
+//   }
+// }
+
+// .popular__img {
+//   max-height: 80vh;
+// }
+
+// html {
+//   scroll-behavior: smooth;
+// }
+// .section__title {
+//   display: block;
+//   /* background-color: #b998c7; */
+//   padding: 7px;
+//   color: #888;
+// }
+
+// .popular__inv {
+//   background-color: rgba(185, 152, 199, 0.9);
+//   padding: 0.75em 0.85em;
+//   border-radius: 50%;
+// }
+
+// .carousel__text {
+//   color: #eee;
+//   background-color: rgba(139, 111, 151, 0.9);
+// }

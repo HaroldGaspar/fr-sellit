@@ -3,8 +3,23 @@ import { useLastestProducts } from "hooks"
 import { useNearScreen } from "hooks/useNearScreen"
 import debounce from "just-debounce-it"
 import { useCallback, useEffect, useRef } from "react"
-import "./LastProducts.css"
+import styled from "styled-components"
+
 import ProductHome from "./ProductHome"
+
+const ListLatest = styled.div`
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 0 15px;
+  /* min-height: 100vh; */
+  align-items: center;
+`
+
+const ListOfHomeItem = styled.div`
+  background-color: red;
+  /* display: inline-block; */
+  width: 100%;
+`
 
 export function LastProducts() {
   const { loading, products, setPage, loadingNextPage } = useLastestProducts()
@@ -29,7 +44,7 @@ export function LastProducts() {
   return (
     <>
       <h2>Ultimos Productos</h2>
-      <div className=" list-latest ">
+      <ListLatest>
         {loading ? (
           <Spinner />
         ) : (
@@ -42,7 +57,7 @@ export function LastProducts() {
           </>
         )}
         {/* <button onClick={handleNextPage}>Get next page</button> */}
-      </div>
+      </ListLatest>
     </>
   )
 }

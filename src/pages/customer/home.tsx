@@ -1,9 +1,21 @@
 import { API_URL } from "services/settings"
 import React, { useEffect, useState } from "react"
 import { Nav, LastProducts, Spinner } from "components"
-import "./Home.css"
-import Carousel from "components/customer/home/Carrousel"
+// import "./Home.css"
+import Carousel from "components/public/home/Carrousel"
 import { getPopularProducts } from "services"
+import styled from "styled-components"
+
+const ContainerHome = styled.div`
+  min-height: 100vh;
+  max-width: 1140px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 11px;
+  @media (max-width: 500px) {
+    display: grid;
+  }
+`
 
 export function Home() {
   const [homeProducts, sethomeProducts] = useState([])
@@ -19,8 +31,7 @@ export function Home() {
 
       <div className="nav__false"></div>
 
-      <div className="container-home">
-        {/* <PopularProducts /> */}
+      <ContainerHome>
         {loading ? (
           <div className="popular-container">
             <Spinner />
@@ -34,7 +45,7 @@ export function Home() {
         )}
 
         <LastProducts />
-      </div>
+      </ContainerHome>
       <div className="container">
         <button className="btn mx-auto">next page</button>
       </div>

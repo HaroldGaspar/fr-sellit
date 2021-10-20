@@ -13,8 +13,7 @@ import ProductContext from "context/ProductContext"
 import InputProduct from "components/seller/seller-form/InputProduct"
 import Buttons from "components/seller/seller-form/ProductFormButtons"
 import { Iproduct } from "models/Product"
-
-import "./ProductForm.css"
+import styled from "styled-components"
 
 interface props {
   productInput: any
@@ -29,6 +28,8 @@ function ProductForm({ productInput }: props) {
   const { products, setProducts }: any = useContext(ProductsContext)
   const { product, setProduct, showUpdate, setshowUpdate, dfProduct }: any =
     useContext(ProductContext)
+  const [categoris, setCategories] = useState<string[]>([])
+  const [imageSelectedPrevious, setImageSelectedPrevious] = useState<any>()
 
   //update state which send to add/upd SERVICE
   const handleIChange = (
@@ -39,7 +40,6 @@ function ProductForm({ productInput }: props) {
     const { name, value } = e.target
     setProduct({ ...product, [name]: value })
   }
-  const [categoris, setCategories] = useState<string[]>([])
 
   useEffect(() => {
     getCategories(setCategories)
@@ -60,6 +60,7 @@ function ProductForm({ productInput }: props) {
             }
           : (e) => {
               e.preventDefault()
+              setImageSelectedPrevious("") //remove image for another saved
               addProduct(product, setProduct, products, setProducts, dfProduct)
             }
       }
@@ -70,10 +71,15 @@ function ProductForm({ productInput }: props) {
         {showUpdate ? "Modificar Producto" : "Agregar Producto"}
       </h2>
 
-      {showUpdate ? null : <InputImage />}
+      {showUpdate ? null : (
+        <InputImage
+          imageSelectedPrevious={imageSelectedPrevious}
+          setImageSelectedPrevious={setImageSelectedPrevious}
+        />
+      )}
 
-      <div className="form__group">
-        <label className="form__label">
+      <FormGroup>
+        <div className="form__label">
           Categoria
           <select
             name="category"
@@ -92,8 +98,8 @@ function ProductForm({ productInput }: props) {
               </option>
             ))}
           </select>
-        </label>
-      </div>
+        </div>
+      </FormGroup>
 
       <InputProduct
         name={"name"}
@@ -122,7 +128,7 @@ function ProductForm({ productInput }: props) {
         setProduct={setProduct}
       />
 
-      <div className="form__group">
+      <FormGroup>
         <label className="form__label">
           Descripcion
           <textarea
@@ -132,10 +138,28 @@ function ProductForm({ productInput }: props) {
             value={product.description}
           ></textarea>
         </label>
-      </div>
+      </FormGroup>
       <Buttons productInput={productInput} />
     </form>
   )
 }
 
 export default React.memo(ProductForm)
+
+// import "./ProductForm.css"
+const FormGroup = styled.div`
+  margin-bottom: 0.3rem;
+  padding: 0 auto;
+  display: flex;
+  .form__label {
+    margin-bottom: 0.1rem;
+    font-weight: 700;
+  }
+  .form__control {
+    display: block;
+    width: 100%;
+    padding: 0.25rem 0.5rem;
+    border: 1px solid #ced4da;
+    border-radius: 0.25rem;
+  }
+`

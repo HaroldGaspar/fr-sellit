@@ -1,6 +1,4 @@
-import { API_URL } from "services/settings"
 import { useEffect, useState } from "react"
-import { getPopularProducts } from "services"
 import styled from "styled-components"
 
 const CarouselImg = styled.img`

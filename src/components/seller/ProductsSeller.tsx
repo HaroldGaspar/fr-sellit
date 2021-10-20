@@ -3,6 +3,22 @@ import { Spinner } from "components"
 import React, { Dispatch, SetStateAction } from "react"
 import ProductSeller from "./ProductSeller"
 import { Iproduct } from "models/Product"
+import styled from "styled-components"
+
+const ListSeller = styled.div`
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  gap: 0 15px;
+  /* min-height: 100vh; */
+  align-items: center;
+  padding: 0;
+
+  height: 85vh;
+  overflow: auto;
+  @media (max-height: 770px) {
+    height: 670px;
+  }
+`
 
 interface Ihook {
   loading: boolean
@@ -14,7 +30,7 @@ function ProductsSeller() {
   const { loading, products }: Ihook = useStoreProducts()
 
   return (
-    <div className="list-seller">
+    <ListSeller>
       {loading ? (
         <Spinner />
       ) : (
@@ -22,7 +38,7 @@ function ProductsSeller() {
           <ProductSeller productMap={productMap} key={id} />
         ))
       )}
-    </div>
+    </ListSeller>
   )
 }
 export default React.memo(ProductsSeller)

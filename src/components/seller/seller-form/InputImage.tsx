@@ -1,11 +1,11 @@
-import React, { ChangeEvent, useState } from "react"
-import "./InputImage.css"
+import { ChangeEvent } from "react"
 import styled from "styled-components"
 
-export function InputImage() {
-  const [imageSelectedPrevious, setImageSelectedPrevious] = useState<any>()
-  // let files:
-  //===================================================
+export function InputImage({
+  imageSelectedPrevious,
+  setImageSelectedPrevious
+}: any) {
+  //========= Show img preview =======================
   function changeImageInput(e: ChangeEvent<HTMLInputElement>) {
     e.preventDefault()
     if (e.target.files[0] !== undefined) {
@@ -25,7 +25,6 @@ export function InputImage() {
         Imagen <small className="text-danger">*selecciona una imagen</small>{" "}
         <StyleDragArea>
           <div className="image-upload-wrap">
-            {/* <form id="upload-form"> */}
             <input
               type="file"
               name="files"
@@ -34,16 +33,13 @@ export function InputImage() {
               required
               className="file-upload-input"
             />
-            {/* </form> */}
             <div className="text-information">
               <h3>Selecciona tu archivo</h3>
             </div>
           </div>
-          <div
-            id="preview-img"
-            className={imageSelectedPrevious ? "center" : "dnino"}
-          >
+          <div className={imageSelectedPrevious ? "center" : "dnino"}>
             <img
+              id="preview-img"
               src={imageSelectedPrevious?.toString()}
               alt=""
               height="80px"

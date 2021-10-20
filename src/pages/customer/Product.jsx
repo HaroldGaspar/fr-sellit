@@ -4,9 +4,7 @@ export function Product() {
   return (
     <>
       <Nav />
-      <div className="container-home">
-        <ProductDetail />
-      </div>
+      <ProductDetail />
     </>
   )
 }
