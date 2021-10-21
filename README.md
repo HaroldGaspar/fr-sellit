@@ -33,3 +33,7 @@ docker run --rm -it -p 3000:3000 react
 docker build -f Dockerfile.prod -t reactprod .
 
 docker run --rm -it -p 80:80 reactprod
+
+### `raise`
+
+docker-compose app exec sh
