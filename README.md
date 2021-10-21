@@ -18,3 +18,18 @@ docker run -dp 5432:5432 \
  postgres
 
 ### `yarn start`
+
+docker-compose run --rm app yarn install
+docker-compose up
+
+### `build and run a image`
+
+docker build -f Dockerfile -t react .
+
+docker run --rm -it -p 3000:3000 react
+
+### `build and run a image for production`
+
+docker build -f Dockerfile.prod -t reactprod .
+
+docker run --rm -it -p 80:80 reactprod

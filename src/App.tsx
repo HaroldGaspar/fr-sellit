@@ -30,13 +30,11 @@ function App() {
         <Route path="/about">"about"</Route>
         <Route path="/contact">"Users"</Route>
         <Route path="/search/:keyword" exact component={SearchResults} />
-
         <Route path="/product/:id" exact component={ProductDetail} />
         <Route path="/store/:id" exact component={Store} />
         {/* <Route path="/test" exact component={Store} /> */}
         <Route path="/category/:id" exact component={Category} />
         {/* </Suspense> */}
-
         {/* THIRD SPRINT */}
       </Switch>
     </Router>
