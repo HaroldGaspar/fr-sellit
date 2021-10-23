@@ -3,9 +3,11 @@ version: "3.5"
 services:
   app:
     image: node:12-alpine
+    # build: .
+    # dont get the workdir
     volumes:
       - ./:/app:cached
     working_dir: /app
     ports:
-      - 3000:3000
-    command: npm start
+      - 3000:3008
+    command: yarn start

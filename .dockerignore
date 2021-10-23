@@ -1,0 +1,14 @@
+node_modules
+Dockerfile
+Dockerfile.*
+nginx.conf
+api.rest
+docker-compose.yml
+
+
+.git
+.gitignore
+.prettierignore
+.prettierrc.json
+.dockerignore
+# .env

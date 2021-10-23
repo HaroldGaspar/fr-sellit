@@ -1,41 +1,24 @@
+import { API_URL } from "services/settings"
+import { Iproduct } from "models/Product"
 import { useEffect, useState } from "react"
+import { Link } from "react-router-dom"
 import styled from "styled-components"
-
-const CarouselImg = styled.img`
-  min-height: 500px;
-  max-width: 500px;
-  width: 100%;
-  height: auto;
-  opacity: 0;
-  transition: 1s;
-  &.loaded {
-    opacity: 1;
-  }
-`
-
-const CarouselButtonContainer = styled.div`
-  display: flex;
-  align-content: center;
-  flex-direction: row;
-  margin-top: 15px;
-`
-
-const CarouselButton = styled.button`
-  color: white;
-  background-color: #eb118a;
-  padding: 8px;
-  margin: 0 5px;
-`
 
 interface props {
   images: string[]
+  products: any[]
   autoPlay?: boolean
   showButtons?: boolean
 }
 
-export default function Carousel({ showButtons, images, autoPlay }: props) {
+export default function Carousel({
+  showButtons,
+  images,
+  autoPlay,
+  products
+}: props) {
   const [selectedIndex, setSelectedIndex] = useState(0)
-  const [selectedImage, setSelectedImage] = useState(images[0])
+  const [selectedProduct, setSelectedProduct] = useState<any[]>()
   const [loaded, setLoaded] = useState(false)
 
   useEffect(() => {
@@ -51,43 +34,72 @@ export default function Carousel({ showButtons, images, autoPlay }: props) {
     setLoaded(false)
     setTimeout(() => {
       const condition = next
-        ? selectedIndex < images.length - 1
+        ? selectedIndex < products.length - 2
         : selectedIndex > 0
       const nextIndex = next
         ? condition
-          ? selectedIndex + 1
+          ? selectedIndex + 2
           : 0
         : condition
-        ? selectedIndex - 1
-        : images.length - 1
-      setSelectedImage(images[nextIndex])
+        ? selectedIndex - 2
+        : products.length - 2
+      setSelectedProduct([products[nextIndex], products[nextIndex + 1]])
       setSelectedIndex(nextIndex)
     }, 500)
   }
 
   const previous = () => {
-    selectNewImage(selectedIndex, images, false)
+    selectNewImage(selectedIndex, products, false)
   }
 
   const next = () => {
-    selectNewImage(selectedIndex, images)
+    selectNewImage(selectedIndex, products)
   }
   return (
     <>
-      {selectedImage ? (
-        <CarouselImg
-          src={selectedImage}
-          alt=""
-          className={loaded ? "loaded" : ""}
-          onLoad={() => setLoaded(true)}
-        />
+      {selectedProduct ? (
+        <>
+          <Link
+            to={`/product/${selectedProduct[0].id}`}
+            className="Product-link"
+          >
+            <CarouselImg
+              src={`${API_URL}${selectedProduct[0].photo}`}
+              alt=""
+              className={loaded ? "loaded" : ""}
+              onLoad={() => setLoaded(true)}
+            />
+          </Link>
+          <Link
+            to={`/product/${selectedProduct[1].id}`}
+            className="Product-link"
+          >
+            <CarouselImg
+              src={`${API_URL}${selectedProduct[1].photo}`}
+              alt=""
+              className={loaded ? "loaded" : ""}
+              onLoad={() => setLoaded(true)}
+            />
+          </Link>
+        </>
+      ) : products ? (
+        <>
+          <CarouselImg
+            src={`${API_URL}${products[0]?.photo}`}
+            // src={images[0]}
+            alt=""
+            className={loaded ? "loaded" : ""}
+            onLoad={() => setLoaded(true)}
+          />
+          <CarouselImg
+            src={`${API_URL}${products[1]?.photo}`}
+            alt=""
+            className={loaded ? "loaded" : ""}
+            onLoad={() => setLoaded(true)}
+          />
+        </>
       ) : (
-        <CarouselImg
-          src={images[0]}
-          alt=""
-          className={loaded ? "loaded" : ""}
-          onLoad={() => setLoaded(true)}
-        />
+        <></>
       )}
 
       <CarouselButtonContainer>
@@ -103,3 +115,35 @@ export default function Carousel({ showButtons, images, autoPlay }: props) {
     </>
   )
 }
+const CarouselImg = styled.img`
+  min-height: 500px;
+  max-width: 500px;
+  width: 100%;
+  height: auto;
+  opacity: 0;
+  transition: 1s;
+  &.loaded {
+    opacity: 1;
+  }
+`
+
+const CarouselButtonContainer = styled.div`
+  text-align: center;
+  margin-top: 15px;
+`
+
+const CarouselButton = styled.button`
+  color: white;
+  background-color: #d47fae;
+  padding: 0.75em 2em;
+  margin: 0 5px;
+  border: none;
+  border-radius: 4%;
+  transition: 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55) all;
+  &:hover {
+    background-color: #b45f8e;
+  }
+  &:focus {
+    background-color: #a46f7e;
+  }
+`

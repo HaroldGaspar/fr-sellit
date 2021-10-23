@@ -39,6 +39,7 @@ export function Home() {
         ) : (
           <Carousel
             images={homeProducts.map((p) => `${API_URL}${p.photo}`)}
+            products={homeProducts}
             // autoPlay={true}
             showButtons={true}
           />

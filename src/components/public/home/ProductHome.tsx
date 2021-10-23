@@ -17,10 +17,11 @@ function ProductHome({ product }: { product: Iproduct }) {
           <div className="card__img">
             <img
               src={
-                product.photo
-                  ? API_URL + product.photo
-                  : API_URL + "/uploads/nia_33d10d0dba.jpg"
+                !product.photo
+                  ? "http://hakhi.xyz:8000/uploads/nia_33d10d0dba.jpg"
+                  : API_URL + product.photo
               }
+              onError={(e:any)=>{e.target.onerror = ""; e.target.src="http://hakhi.xyz:8000/uploads/enfi_288c1b64fa.png"}}
               alt=""
               height="120"
               loading={"lazy"}

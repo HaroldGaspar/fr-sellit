@@ -50,7 +50,7 @@ export function OrderCart() {
           </button>
         </div>
       </div>
-      <Card />
+      {/* <Card /> */}
     </OrdrCart>
   )
 }

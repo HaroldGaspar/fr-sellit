@@ -24,11 +24,12 @@ docker-compose up
 
 ### `build and run a image`
 
-docker build -f Dockerfile -t react .
+docker build -f Dockerfile -t reactdev .
 
-docker run --rm -it -p 3000:3000 react
+docker run --rm -it -p 3000:3000 reactdev
 
 ### `build and run a image for production`
+sudo update-rc.d nginx disable -> disable nginx local service
 
 docker build -f Dockerfile.prod -t reactprod .
 
