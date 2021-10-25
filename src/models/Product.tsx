@@ -57,7 +57,7 @@ export interface Icart {
 }
 
 export interface IproductDetail {
-  id: number
+  productDetailId: number
   qty: string
   productPrice: number
   totalPrice: number

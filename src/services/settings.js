@@ -1,5 +1,7 @@
-export const API_URL = "http://hakhi.xyz:8000"
-// export const API_URL = "http://localhost:8000"
+// export const API_URL = "http://hakhi.xyz:8000"
+export const API_URL = "http://localhost:8000"
+// export const API_URL = 'api_host:8000'
+console.log(process.env.api_host)
 require("dotenv").config() //{ path: "./.e" })
 
 // export const port = process.env.PORT

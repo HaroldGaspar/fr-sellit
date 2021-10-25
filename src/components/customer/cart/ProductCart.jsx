@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react"
 import { API_URL } from "services/settings"
 import { Price } from "components"
-import { updateProductDetail } from "services"
+import { deleteProductCart, updateProductDetail } from "services"
 import styled from "styled-components"
 
 export function ProductCart({
@@ -33,6 +33,12 @@ export function ProductCart({
 
     updateProductDetail(pdtlLess)
   }
+
+  const handleDelete =(id)=>{
+    console.log(id)
+    deleteProductCart(id,productsDetail,setProductsDetail)
+  }
+
   useEffect(() => {}, [productsDetail])
 
   // console.log("product dt ", productDetail)
@@ -62,7 +68,10 @@ export function ProductCart({
             </button>
           </div>
           <div className="cardt__end">
-            <button className="card__delete">eliminar</button>
+            <button 
+            className="card__delete" 
+            onClick={()=>handleDelete(productDetail.productDetailId) }>
+              eliminar</button>
             <Price price={productDetail.totalPrice} />
           </div>
         </div>
