@@ -12,9 +12,11 @@ export async function singIn(e, history, user, setloading) {
 
   //findCustomer ByUserId
   const customerD = await findByField("customers", "user", userId, json.jwt)
-
+  console.log("cus", customerD)
   //findActualCart & set in LocalStorage
+  // const cartD = await findByField("carts","customer",customerD.id, json.jwt)
   const cartsF = customerD[0].carts.filter((c) => c.is_actual === true)
+  // console.log("carts", cartD)
   localStorage.setItem("cart", cartsF[0].id)
 
   //setStoreId in LocalStorage

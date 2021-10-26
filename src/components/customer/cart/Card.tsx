@@ -8,7 +8,7 @@ import { loadStripe, Stripe } from "@stripe/stripe-js"
 import axios from "axios"
 import React, { FormEvent, ReactElement, useEffect } from "react"
 import { useHistory } from "react-router"
-import { downCart, parseJwt, persistEntity } from "services"
+import { downCart, findByField, parseJwt, persistEntity } from "services"
 
 const stripeP: Promise<Stripe> = loadStripe(
   "pk_test_51InWuAAKNmSLq2ZCeW7npcDuqy6ra8c1QF11EF70nG4XsYJ7sffTPAm0pZLTyzd0qshIVTfI7mLcyVGsCNtHkQZg00qZzv0DW8"
@@ -41,7 +41,7 @@ function CheckoutForm({ handleSellCart, productsDetail }: any): ReactElement {
           "http://localhost:8000/checkout",
           {
             id: paymentMethod.id,
-            amount: totalPrice * 100
+            amount: totalPrice.toFixed(2) * 100
           },
           {
             headers: {
@@ -62,9 +62,11 @@ function CheckoutForm({ handleSellCart, productsDetail }: any): ReactElement {
     downCart()
 
     //replace cart
+    const customer = await findByField("customers", "user", userId, token)
+    console.log("id", customer)
     const cart = {
       is_actual: true,
-      customer: userId
+      customer: customer[0].id
     }
     const cartD = await persistEntity("carts", cart)
     //refresh cart
