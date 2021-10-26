@@ -6,6 +6,7 @@ export * from "./customer/cart/addProductCart"
 export * from "./customer/cart/addCartWithOrderDetail"
 export * from "./customer/cart/updateProductDetail"
 export * from "./customer/cart/deleteProductCart"
+export * from "./customer/cart/downCart"
 
 //public
 //--home

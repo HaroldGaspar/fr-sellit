@@ -1,6 +1,6 @@
 import React, { Suspense } from "react"
 import { Route, BrowserRouter as Router, Switch } from "react-router-dom"
-import { Home, Cart, Category } from "pages"
+import { Home, Cart, Category, Invoice } from "pages"
 import { Auth } from "pages"
 import { ProductsDtContextProvider } from "context"
 import { ProductContextProvider } from "context/ProductContext"
@@ -34,6 +34,7 @@ function App() {
         <Route path="/store/:id" exact component={Store} />
         {/* <Route path="/test" exact component={Store} /> */}
         <Route path="/category/:id" exact component={Category} />
+        <Route path="/invoice" exact component={Invoice} />
         {/* </Suspense> */}
         {/* THIRD SPRINT */}
       </Switch>

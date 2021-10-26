@@ -2,7 +2,7 @@ import { Price } from "components"
 import styled from "styled-components"
 // import "./Invoice.css"
 
-export function InvoiceDetail({ productDetail, setProductDetail }) {
+export function InvoiceDetail({ productDetail }) {
   return (
     <Invoicecard>
       <div className="cardt__name">

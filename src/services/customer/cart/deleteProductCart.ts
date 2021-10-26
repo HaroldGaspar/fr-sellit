@@ -1,4 +1,4 @@
-import { Iproduct, IproductDetail } from "models/Product"
+import { IproductDetail } from "models/Product"
 import { Dispatch, SetStateAction } from "react"
 import { API_URL } from "services/settings"
 

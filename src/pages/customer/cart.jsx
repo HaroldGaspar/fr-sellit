@@ -2,6 +2,25 @@ import { Nav, ProductsCart, OrderCart } from "components"
 import { ProductsDtContextProvider } from "context"
 import styled from "styled-components"
 // import "./Cart.css"
+
+export function Cart() {
+  return (
+    <>
+      <Nav />
+      <ProductsDtContextProvider>
+        <CartContainer>
+          <CartCardls>
+            <CartH2>Carrito</CartH2>
+            <ProductsCart />
+          </CartCardls>
+          <div className="order">
+            <OrderCart />
+          </div>
+        </CartContainer>
+      </ProductsDtContextProvider>
+    </>
+  )
+}
 const CartContainer = styled.div`
   display: grid;
   max-width: 1200px;
@@ -31,21 +50,3 @@ const CartH2 = styled.h2`
   padding: 10px;
   background-color: #b998c7;
 `
-export function Cart() {
-  return (
-    <>
-      <Nav />
-      <ProductsDtContextProvider>
-        <CartContainer>
-          <CartCardls>
-            <CartH2>Carrito</CartH2>
-            <ProductsCart />
-          </CartCardls>
-          <div className="order">
-            <OrderCart />
-          </div>
-        </CartContainer>
-      </ProductsDtContextProvider>
-    </>
-  )
-}

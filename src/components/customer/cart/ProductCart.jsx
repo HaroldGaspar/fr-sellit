@@ -35,7 +35,6 @@ export function ProductCart({
   }
 
   const handleDelete =(id)=>{
-    console.log(id)
     deleteProductCart(id,productsDetail,setProductsDetail)
   }
 

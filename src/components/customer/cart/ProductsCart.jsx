@@ -12,7 +12,7 @@ export function ProductsCart() {
       {loading ? (
         <Spinner />
       ) : (
-        productsDetail.map((productDetail, id) => (
+        productsDetail.length===0?"there'snt a product yet":productsDetail.map((productDetail, id) => (
           <ProductCart
             productDetail={productDetail}
             productsDetail={productsDetail}

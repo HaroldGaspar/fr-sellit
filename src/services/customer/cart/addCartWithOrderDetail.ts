@@ -7,10 +7,13 @@ export async function addCartWithOrderDetail(tp: number, pm: string) {
     pay_method: pm
   }
   console.log("sending to updt ", toUpd)
+
+
   const resFetch = await fetch(`${API_URL}/carts/${cart}`, {
     method: "put",
     headers: new Headers({
-      Authorization: `Bearer ${token}`
+      Authorization: `Bearer ${token}`,
+      "Content-Type": "application/json"
     }),
     body: JSON.stringify(toUpd)
   })

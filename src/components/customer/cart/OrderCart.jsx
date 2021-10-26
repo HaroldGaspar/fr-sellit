@@ -1,5 +1,5 @@
 import ProductContext from "context/ProductsDtContex"
-import { useContext, useEffect } from "react"
+import { useContext, useEffect, useState } from "react"
 import { Card, InvoiceDetail, Price } from "components"
 import { addCartWithOrderDetail } from "services"
 import styled from "styled-components"
@@ -8,18 +8,16 @@ import styled from "styled-components"
 
 export function OrderCart() {
   const { productsDetail, setProductsDetail } = useContext(ProductContext)
+  const [showCard, setShowCard] = useState(false)
 
   const handleSellCart = async () => {
-    const num =
-      productsDetail.length === 0
-        ? "0"
-        : productsDetail.map((p) => p.totalPrice).reduce((p, n) => p + n)
+    const num =productsDetail.map((p) => p.totalPrice).reduce((p, n) => p + n)
 
     // const tp = parseFloat(num).toFixed(2)
     const res = await addCartWithOrderDetail(num, "credit_card")
     console.log("res updt cart to: ", res)
+    return num
   }
-
   console.log("lengt", productsDetail.length)
   return (
     <OrdrCart>
@@ -45,12 +43,15 @@ export function OrderCart() {
                     .reduce((p, n) => p + n)
             }
           />
-          <button onClick={() => handleSellCart()} className="order__btn">
-            Comprar ahora
-          </button>
+           {showCard? "":
+          <button onClick={() => setShowCard(st=>!st)} className="order__btn">
+          Comprar ahora
+          </button>}
         </div>
       </div>
-      {/* <Card /> */}
+      {showCard?
+      <Card handleSellCart={handleSellCart} productsDetail={productsDetail}/>
+      :null}
     </OrdrCart>
   )
 }
