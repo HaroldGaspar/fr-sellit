@@ -1,6 +1,27 @@
 import React, { useState } from "react"
 import { useHistory } from "react-router"
 import styled from "styled-components"
+
+
+export function SearchBar() {
+  const [keyword, setKeyword] = useState("")
+  const history = useHistory()
+
+  const handleSearch = (e) => {
+    history.push(`/search/${keyword}`)
+  }
+
+  return (
+    <Search onSubmit={(e) => handleSearch(e)} className="search">
+      <SearchInput
+        type="text"
+        placeholder="Que estas buscando..."
+        onChange={(e) => setKeyword(e.target.value)}
+      />
+      <SearchBtn>Buscar</SearchBtn>
+    </Search>
+  )
+}
 const SearchInput = styled.input`
   height: 2.5em;
   padding: 0.375rem 0.75rem;
@@ -35,23 +56,3 @@ const SearchBtn = styled.button`
 const Search = styled.form`
   text-align: center;
 `
-
-export function SearchBar() {
-  const [keyword, setKeyword] = useState("")
-  const history = useHistory()
-
-  const handleSearch = (e) => {
-    history.push(`/search/${keyword}`)
-  }
-
-  return (
-    <Search onSubmit={(e) => handleSearch(e)} className="search">
-      <SearchInput
-        type="text"
-        placeholder="Que estas buscando..."
-        onChange={(e) => setKeyword(e.target.value)}
-      />
-      <SearchBtn>Buscar</SearchBtn>
-    </Search>
-  )
-}

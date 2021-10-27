@@ -33,6 +33,7 @@ export * from "./auth/signUp"
 export * from "./auth/singIn"
 export * from "./auth/logOutfx"
 export * from "./auth/login"
+export * from "./auth/sendMailConfirmation"
 
 //utils
 export * from "./utils/persistEntity"

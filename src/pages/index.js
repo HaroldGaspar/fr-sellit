@@ -2,6 +2,7 @@
 export * from "./auth/signin"
 export * from "./auth/singup"
 export * from "./auth/auth"
+export * from "./auth/Mailcr"
 
 //customer
 export * from "./customer/home"

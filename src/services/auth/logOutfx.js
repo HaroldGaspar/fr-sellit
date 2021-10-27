@@ -3,5 +3,6 @@ export function logOutfx(e, setlogout) {
   localStorage.removeItem("store")
   localStorage.removeItem("cart")
   console.log("logout")
-  setlogout(false)
+  if(setlogout)
+    setlogout(false)
 }

@@ -1,4 +1,4 @@
-import { login, parseJwt, persistEntity, persistEntityNT } from "services"
+import { login, logOutfx, parseJwt, persistEntity, persistEntityNT, sendMailConfirmation } from "services"
 
 /** Create entities user->customer=>cart[] &-> store */
 export async function signUp(e, user, history, setloading) {
@@ -12,7 +12,8 @@ export async function signUp(e, user, history, setloading) {
     identifier: user.email
   }
   console.log("usertoRegister: ", user)
-  const json = await login(user)
+  const json = await login(user, null, true)
+  console.log(json)
   console.log("jsonWT", parseJwt(json.jwt))
 
   //persist customer
@@ -41,6 +42,10 @@ export async function signUp(e, user, history, setloading) {
     localStorage.setItem("store", storeD.id)
   }
 
+  sendMailConfirmation(json.user.email)
+  logOutfx()
   setloading(false)
-  history.push("/")
+  history.push("/mailconfimation-required")
 }
+
+

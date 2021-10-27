@@ -1,6 +1,6 @@
 import React, { Suspense } from "react"
 import { Route, BrowserRouter as Router, Switch } from "react-router-dom"
-import { Home, Cart, Category, Invoice } from "pages"
+import { Home, Cart, Category, Invoice, Mailcr } from "pages"
 import { Auth } from "pages"
 import { ProductsDtContextProvider } from "context"
 import { ProductContextProvider } from "context/ProductContext"
@@ -35,6 +35,8 @@ function App() {
         {/* <Route path="/test" exact component={Store} /> */}
         <Route path="/category/:id" exact component={Category} />
         <Route path="/invoice" exact component={Invoice} />
+        <Route path="/mailconfimation-required" exact component={Mailcr} />
+        <Route path="/vtfm/:tk" exact component={Mailcr} />
         {/* </Suspense> */}
         {/* THIRD SPRINT */}
       </Switch>
