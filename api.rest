@@ -1,6 +1,15 @@
 ###
-GET http://hakhi.xyz:8000/products
+GET http://hakhi.xyz:8000/products/74
 
+###
+GET http://hakhi.xyz:8000/products?category=${id}
+
+
+###
+GET http://hakhi.xyz:8000/products?store=${id}
+
+###
+GET http://hakhi.xyz:8000/reviews?product=${id}
 ###
 GET http://localhost:8000/products?name=first
 
