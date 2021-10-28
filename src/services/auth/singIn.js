@@ -6,12 +6,12 @@ export async function singIn(e, history, user, setloading) {
   setloading(true)
 
   //login
-  const  json = await login(user,history)
-  if(json===undefined | Error){
-    // console.log('no confimed, no login', json)
+  const json = await login(user, history)
+  if ((json === undefined) | Error) {
+    console.log("no confimed, no login", json)
     return
-  }    
-  console.log('json',json)
+  }
+  console.log("json", json)
   const userId = parseJwt(json.jwt).id
 
   //findCustomer ByUserId

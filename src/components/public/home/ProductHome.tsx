@@ -18,10 +18,14 @@ function ProductHome({ product }: { product: Iproduct }) {
             <img
               src={
                 !product.photo
-                  ? "http://hakhi.xyz:8000/uploads/nia_33d10d0dba.jpg"
+                  ? `${API_URL}/uploads/nia_33d10d0dba.jpg`
                   : API_URL + product.photo
               }
-              onError={(e:any)=>{e.target.onerror = ""; e.target.src="http://hakhi.xyz:8000/uploads/enfi_288c1b64fa.png"}}
+              //http://localhost:8000/uploads/enfi_455ecace47.jpg
+              onError={(e: any) => {
+                e.target.onerror = ""
+                e.target.src = `${API_URL}/uploads/enfi_288c1b64fa.png`
+              }}
               alt=""
               height="120"
               loading={"lazy"}
