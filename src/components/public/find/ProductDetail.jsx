@@ -26,8 +26,8 @@ export function ProductDetail() {
         {/* {loading ? ( */}
         <div className="container">
           <div className="productdetail">
-            <h2 className="productdetail__title">Detail of product</h2>
-            <div className="productdetail__img">product photo</div>
+            <h2 className="productdetail__title">Detail of product detail percy</h2>
+            <div className="productdetail__img">{productDetail?.photo}</div>
             <div className="productdetail__name">{productDetail?.name}</div>
           </div>
           <div className="productreview">
