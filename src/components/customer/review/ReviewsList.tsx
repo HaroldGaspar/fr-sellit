@@ -1,16 +1,21 @@
 import { IReview } from "models/Product"
 import { Cardauth } from "pages/auth/styles"
 import React, { useEffect, useState } from "react"
-import { getReviewByProduct } from "services/customer/reviews/getReviewByProduct"
 import Review from "./Review"
 
-export function ReviewsList({ reviews }: { reviews: IReview[] }) {
+export function ReviewsList({
+  reviews,
+  reviewLength
+}: {
+  reviews: IReview[]
+  reviewLength: number
+}) {
   return (
     <>
       <Cardauth>
-        <h2>Comentarios</h2>
-        {[1, 2, 3].map((e) => (
-          <Review key={e} id={e} />
+        <h2> {reviewLength} Comentarios</h2>
+        {reviews.map((review) => (
+          <Review review={review} />
         ))}
       </Cardauth>
     </>

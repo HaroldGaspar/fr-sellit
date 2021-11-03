@@ -16,6 +16,9 @@ export interface Iproduct {
   stock: number
   photo?: string
   rating?: number
+
+  storeName?: string
+  storeId?: number
 }
 
 export interface IdfProduct {
@@ -24,6 +27,19 @@ export interface IdfProduct {
   price?: number
   description?: string
   stock?: number
+}
+export interface IproductDetail {
+  productDetailId: number
+  qty: string
+  productPrice: number
+  totalPrice: number
+  mark: string
+  productName: string
+  productPhoto: string
+  productId: number
+
+  storeName: string
+  storeId: number
 }
 
 export interface Icategory {
@@ -56,20 +72,10 @@ export interface Icart {
   customerId: number
 }
 
-export interface IproductDetail {
-  productDetailId: number
-  qty: string
-  productPrice: number
-  totalPrice: number
-  mark: string
-  productName: string
-  productPhoto: string
-  productId: number
-}
-
 export interface IReview {
   product: number
   stars?: number
   comment?: string
   pdRating?: number
+  customer?: string
 }

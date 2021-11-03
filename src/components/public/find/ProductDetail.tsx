@@ -3,32 +3,77 @@ import styled from "styled-components"
 import { Price } from "components"
 import { API_URL } from "services/settings"
 import { Iproduct } from "models/Product"
+import { useHistory } from "react-router-dom"
+import { addProductCart } from "services"
 
 export function ProductDetail({
   productDetail,
-  loading
+  loading,
+  reviewLength
 }: {
   productDetail: Iproduct
   loading: any
+  reviewLength: number
 }) {
+  const history = useHistory()
+
+  const handleEdit = () => {
+    addProductCart(productDetail.id)
+  }
+
+  const goStore = () => {
+    history.push(`/store/${productDetail.storeId}`)
+  }
+
   return (
-    <div className="productdt">
+    <Productdt>
       <h2 className="productdt__title">{productDetail.name}</h2>
       <div className="productdt__img">
-        <img src={productDetail ? API_URL + productDetail.photo : ""} alt="" />
+        <img
+          src={
+            productDetail.photo
+              ? API_URL + productDetail.photo
+              : "http://hakhi.xyz:8000/uploads/enfi_288c1b64fa.png"
+          }
+          onError={(e: any) => {
+            e.target.src = "http://hakhi.xyz:8000/uploads/enfi_288c1b64fa.png"
+          }}
+          alt=""
+        />
       </div>
       <div className="card__subtitle">
-        <div className="card__stars">{"★".repeat(productDetail.rating)}</div>
+        <div className="card__stars">
+          {"★".repeat(productDetail.rating / reviewLength)}
+        </div>
         <div className="card__nostars">
-          {"★".repeat(5 - productDetail.rating)}
+          {"★".repeat(Math.ceil(5 - productDetail.rating / reviewLength) || 5)}
         </div>
         <span className="card__mark">{productDetail.mark}</span>
       </div>
+      Tienda:{" "}
+      <button className="productdt__store" onClick={goStore}>
+        {productDetail.storeName}
+      </button>
       <div className="productdt__name">{productDetail.description}</div>
       <p className="text-right">
         Precio: <Price price={productDetail.price} />{" "}
       </p>
       <p>{productDetail.description}</p>
-    </div>
+      <button onClick={() => handleEdit()} className="btn btn-block btn-info">
+        Añadir al carrito
+      </button>
+    </Productdt>
   )
 }
+
+const Productdt = styled.div`
+  .productdt__store {
+    border: none;
+    background: transparent;
+  }
+
+  .productdt__store:hover {
+    text-decoration: underline;
+    color: blue;
+  }
+`

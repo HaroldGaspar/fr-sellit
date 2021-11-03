@@ -51,7 +51,6 @@ export function Home() {
             name="category"
             onChange={(e) => handleIChange(e)}
             className="form__control"
-            // value={product.category || 0} //?.id
             autoFocus
           >
             <option key={0} value={0}>

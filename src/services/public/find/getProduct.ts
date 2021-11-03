@@ -9,12 +9,15 @@ export async function getProduct(
   setReviews?: Dispatch<SetStateAction<any>>
 ) {
   if (id === null) return
-  setloading(true)
   const resProduct = await fetch(`${API_URL}/products/${id}`)
 
-  const resD = await resProduct.json()
+  let resD = await resProduct.json()
+  resD = {
+    ...resD,
+    storeName: resD.store.name,
+    storeId: resD.store.id,
+    rating: resD.rating | 0
+  }
   console.log("detail", resD)
   setactualProduct(resD)
-  setloading(false)
-  if (setReviews) setReviews(getReviewByProduct(resD.id))
 }

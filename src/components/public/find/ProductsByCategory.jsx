@@ -20,14 +20,16 @@ export function ProductsByCategory() {
 
   return (
     <>
-      <div>ProductsByCategory</div>
-      {!loading
-        ? //si ya no esta cargando renderiza
-          productsByCategory.map((oneproduct) => (
-            <ProductCategory product={oneproduct} />
-          ))
-        : //si esta cargando=true no renderices -> err no data founded
-          "...cargando"}
+      <h1>ProductsByCategory</h1>
+      <div className="container d-flex">
+        {!loading
+          ? //si ya no esta cargando renderiza
+            productsByCategory.map((oneproduct, i) => (
+              <ProductCategory key={i} product={oneproduct} />
+            ))
+          : //si esta cargando=true no renderices -> err no data founded
+            "...cargando"}
+      </div>
     </>
   )
 }
