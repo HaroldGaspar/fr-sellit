@@ -7,7 +7,7 @@ import { ProductContextProvider } from "context/ProductContext"
 import { SearchResults } from "components"
 import "./App.css"
 import { Store } from "pages/customer/store"
-import { ProductDetail } from "components/public/find/ProductDetail"
+import { Product as ProductDT } from "pages/customer/Product"
 import { Product } from "pages/seller/product"
 
 // const Product = React.lazy(() => import("pages"))
@@ -30,7 +30,7 @@ function App() {
         <Route path="/about">"about"</Route>
         <Route path="/contact">"Users"</Route>
         <Route path="/search/:keyword" exact component={SearchResults} />
-        <Route path="/product/:id" exact component={ProductDetail} />
+        <Route path="/product/:id" exact component={ProductDT} />
         <Route path="/store/:id" exact component={Store} />
         {/* <Route path="/test" exact component={Store} /> */}
         <Route path="/category/:id" exact component={Category} />

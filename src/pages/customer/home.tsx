@@ -36,7 +36,7 @@ export function Home() {
   //update state which send to add/upd SERVICE
   const handleIChange = (e: ChangeEvent<HandleInputChange>) => {
     const { value } = e.target
-    history.push(`/category/:${value}`)
+    history.push(`/category/${value}`)
   }
   return (
     <>
@@ -64,6 +64,8 @@ export function Home() {
             ))}
           </select>
         </div>
+
+        {/* PRODUCTOS POPULARES */}
         {loading ? (
           <div className="popular-container">
             <Spinner />

@@ -104,9 +104,7 @@ const PrdHome = styled.div`
     background-clip: border-box;
     border-radius: 0.25rem 0.25rem 0 0;
   }
-  .card__subtitle {
-    display: flex;
-  }
+
   .card__mark {
     margin-left: auto;
   }
@@ -120,6 +118,9 @@ const PrdHome = styled.div`
 
   .d__none {
     color: transparent;
+  }
+  .card__subtitle {
+    display: flex;
   }
   .card__stars {
     color: gold;

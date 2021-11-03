@@ -66,3 +66,10 @@ export interface IproductDetail {
   productPhoto: string
   productId: number
 }
+
+export interface IReview {
+  product: number
+  stars?: number
+  comment?: string
+  pdRating?: number
+}
