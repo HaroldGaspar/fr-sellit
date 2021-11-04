@@ -38,7 +38,7 @@ function CheckoutForm({ handleSellCart, productsDetail }: any): ReactElement {
     if (!error) {
       try {
         const { data } = await axios.post(
-          "http://localhost:8000/checkout",
+          "http://hakhi.xyz:8000/checkout",
           {
             id: paymentMethod.id,
             amount: totalPrice.toFixed(2) * 100

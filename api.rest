@@ -2,6 +2,21 @@
 GET http://hakhi.xyz:8000/products
 
 ###
+<<<<<<< HEAD
+=======
+GET http://hakhi.xyz:8000/products?category=${id}
+
+
+###
+GET http://hakhi.xyz:8000/products?store=${id}
+
+###
+GET http://hakhi.xyz:8000/reviews?product=${id}
+###
+GET http://hakhi.xyz:8000/reviews?stars=4
+
+###
+>>>>>>> 6995be564acff5cd1d3b5d38cbd70c7dd322a9c5
 GET http://localhost:8000/products?name=first
 
 ###

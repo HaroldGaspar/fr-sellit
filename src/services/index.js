@@ -16,6 +16,7 @@ export * from "./public/home/getCategories"
 //--find
 export * from "./public/find/getProduct"
 export * from "./public/find/getProductsByCategory"
+export * from "./public/find/getProductsBySmmt"
 export * from "./public/find/getStore"
 export * from "./public/find/searchProduct"
 // export * from "./customer/find/getProductsByStore" //alrready in seller fx

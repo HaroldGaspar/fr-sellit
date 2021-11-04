@@ -1,11 +1,11 @@
-import { Nav, ProductsByCategory } from "components"
+import { Nav, ProductsBySmmt } from "components"
 
 export function Category() {
   return (
     <>
       <Nav />
       <div className="container-home">
-        <ProductsByCategory />
+        <ProductsBySmmt entity={"products"} field={"category"} />
       </div>
     </>
   )

@@ -44,9 +44,9 @@ function ProductHome({ product }: { product: Iproduct }) {
             <div className="err">without name</div>
           )}
           <div className="card__subtitle">
-            <div className="card__stars">{"★".repeat(product.rating)}</div>
+            {/* <div className="card__stars">{"★".repeat(product.rating)}</div> */}
             <div className="card__nostars">
-              {"★".repeat(5 - product.rating)}
+              {/* {"★".repeat(5 - product.rating)} */}
             </div>
             <span className="card__mark">{product.mark}</span>
           </div>
@@ -57,13 +57,13 @@ function ProductHome({ product }: { product: Iproduct }) {
           ) : (
             <div className="d__none">_</div>
           )}
-
+          {/* 
           <button
             onClick={() => handleEdit()}
             className="btn btn-block btn-info"
           >
             Añadir
-          </button>
+          </button> */}
         </div>
       </div>
     </PrdHome>
@@ -104,9 +104,7 @@ const PrdHome = styled.div`
     background-clip: border-box;
     border-radius: 0.25rem 0.25rem 0 0;
   }
-  .card__subtitle {
-    display: flex;
-  }
+
   .card__mark {
     margin-left: auto;
   }
@@ -120,6 +118,9 @@ const PrdHome = styled.div`
 
   .d__none {
     color: transparent;
+  }
+  .card__subtitle {
+    display: flex;
   }
   .card__stars {
     color: gold;
