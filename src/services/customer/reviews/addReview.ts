@@ -5,6 +5,7 @@ const token = localStorage.getItem("token")
 
 export function addReview(
   reviewObj: IReview,
+  setReview: any,
   reviewLength: number,
   pdRating: number,
   setProductDetail: any,
@@ -32,6 +33,7 @@ export function addReview(
   //CHANGE STARS IN COMPONENT: totalstars / reviewsQuantity
   setProductDetail({ ...productDetail, rating: newsstars })
   console.log("new product rating: ", newsstars)
+  setReview({ ...reviewObj, comment: "" })
 }
 
 async function updateProduct(entitiy: any, id: number, newRating: number) {

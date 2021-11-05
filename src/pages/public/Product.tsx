@@ -43,7 +43,6 @@ export function Product() {
           <div className="productreview">
             <ReviewsList reviews={reviews} reviewLength={reviews.length | 0} />
             <ReviewForm
-              loading={loading}
               idProduct={productDetail.id}
               reviewLength={reviews.length | 0}
               pdRating={productDetail.rating | 0}

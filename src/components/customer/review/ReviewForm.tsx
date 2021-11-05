@@ -1,13 +1,10 @@
-import InputProduct from "components/seller/seller-form/InputProduct"
 import { IReview } from "models/Product"
-import { Cardauth } from "pages/auth/styles"
-import React, { FormEvent, FormEventHandler, useState } from "react"
+import React, { FormEvent, MutableRefObject, useRef, useState } from "react"
 import { addReview } from "services/customer/reviews/addReview"
 import styled from "styled-components"
 
 export function ReviewForm({
   idProduct,
-  loading,
   reviewLength,
   pdRating,
   setProductDetail,
@@ -15,20 +12,25 @@ export function ReviewForm({
   setReviews,
   reviews
 }: props) {
+  const starRef = useRef<HTMLInputElement>()
   const [review, setReview] = useState<IReview>({
     product: idProduct,
     pdRating,
-    stars: 0
+    stars: 1
   })
 
   const hdlChng = (e: any) => {
     const { name, value } = e.target
     setReview({ ...review, [name]: value })
   }
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = (
+    e: FormEvent<HTMLFormElement>,
+    starRef: MutableRefObject<HTMLInputElement>
+  ) => {
     e.preventDefault()
     addReview(
       review,
+      setReview,
       reviewLength,
       pdRating,
       setProductDetail,
@@ -36,12 +38,13 @@ export function ReviewForm({
       reviews,
       setReviews
     )
+    starRef.current.click()
   }
   return (
     <>
       <ReviewFormStyle>
         <h2>Comentar:</h2>
-        <form onSubmit={(e) => handleSubmit(e)}>
+        <form onSubmit={(e) => handleSubmit(e, starRef)}>
           <label className="form__label">
             Estrellas:
             <StarClasification>
@@ -82,6 +85,8 @@ export function ReviewForm({
                 type="radio"
                 name="stars"
                 value="1"
+                ref={starRef}
+                checked={true}
                 onChange={(e) => hdlChng(e)}
               />
               <label htmlFor="radio5">★</label>
@@ -93,6 +98,7 @@ export function ReviewForm({
               className="form__control"
               name="comment"
               onChange={(e) => hdlChng(e)}
+              value={review.comment}
             ></textarea>
           </label>
           <button className="btn-comment">Comentar</button>
@@ -163,7 +169,6 @@ const ReviewFormStyle = styled.div`
 
 interface props {
   idProduct: number
-  loading: boolean
   reviewLength: number
   pdRating: number
   setProductDetail: any

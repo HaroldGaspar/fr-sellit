@@ -1,11 +1,10 @@
 import { API_URL } from "services/settings"
-import React, { ChangeEvent, useEffect, useState } from "react"
+import React, { useEffect, useState } from "react"
 import { Nav, LastProducts, Spinner, CategoriesList } from "components"
 // import "./Home.css"
 import Carousel from "components/public/home/Carrousel"
-import { getCategories, getPopularProducts } from "services"
+import { getPopularProducts } from "services"
 import styled from "styled-components"
-import { useHistory } from "react-router"
 
 export function Home() {
   const [homeProducts, sethomeProducts] = useState([])
@@ -56,7 +55,3 @@ const ContainerHome = styled.div`
     display: grid;
   }
 `
-type HandleInputChange =
-  | HTMLInputElement
-  | HTMLSelectElement
-  | HTMLTextAreaElement
