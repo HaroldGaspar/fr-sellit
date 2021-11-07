@@ -24,15 +24,17 @@ function CheckoutForm({ handleSellCart, productsDetail }: any): ReactElement {
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault()
 
-    //persist cart
-    const totalPrice = await handleSellCart()
-
     //persist stripe
     const token = localStorage.getItem("token")
     const { error, paymentMethod } = await stripe.createPaymentMethod({
       type: "card",
       card: elements.getElement(CardElement)
     })
+
+    //persist cart
+    const totalPrice = await handleSellCart(paymentMethod.id)
+
+    //update stock by product
 
     //validate
     if (!error) {
@@ -50,6 +52,7 @@ function CheckoutForm({ handleSellCart, productsDetail }: any): ReactElement {
           }
         )
         console.log("id of the transaction ", paymentMethod.id)
+
         console.log("dataStrapi ", data)
         //redirect
         history.push({ pathname: "/invoice", state: { data, productsDetail } })

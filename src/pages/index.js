@@ -7,6 +7,7 @@ export * from "./auth/Mailcr"
 //customer
 export * from "./customer/cart"
 export * from "./customer/invoice"
+export * from "./customer/profile"
 //public
 export * from "./public/home"
 export * from "./public/category"

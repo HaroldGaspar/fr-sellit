@@ -69,7 +69,7 @@ const InpProduct = styled.div`
   }
 
   .form__control {
-    display: block;
+    // display: block;
     width: 100%;
     padding: 0.25rem 0.5rem;
     border: 1px solid #ced4da;

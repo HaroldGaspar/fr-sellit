@@ -4,7 +4,7 @@ import { API_URL } from "../settings"
 export async function persistEntity(entitiy: string, object: any, id?: number) {
   //if send a authorization empty, the api return an unauthorization
   const token: string = await localStorage.getItem("token") //PROBLEM WITH TOKEN UNDEFINED REUIN THE STACK OF OP TO SIGNUP
-
+  // console.log("persisting entity with tk ", token)
   const resCustomer = await fetch(
     id ? `${API_URL}/${entitiy}/${id}` : `${API_URL}/${entitiy}`,
     {

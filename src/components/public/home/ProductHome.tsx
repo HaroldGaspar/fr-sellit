@@ -55,7 +55,9 @@ function ProductHome({ product }: { product: Iproduct }) {
           {product.stock < 1 ? (
             <div className="err">agotado</div>
           ) : (
-            <div className="d__none">_</div>
+            <div className="">
+              <i>{product.stock} en stock</i>
+            </div>
           )}
           {/* 
           <button

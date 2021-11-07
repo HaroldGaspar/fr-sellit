@@ -22,7 +22,8 @@ export function InputImage({
   return (
     <div className="form__groupimg">
       <label className="form__label">
-        Imagen <small className="text-danger">*selecciona una imagen</small>{" "}
+        <b>Imagen</b>{" "}
+        <small className="text-danger">*selecciona una imagen</small>{" "}
         <StyleDragArea>
           <div className="image-upload-wrap">
             <input

@@ -43,3 +43,7 @@ export * from "./customer/cart/Card"
 export * from "./customer/review/ReviewForm"
 export * from "./customer/review/ReviewsList"
 export * from "./customer/review/Review"
+//--store
+export * from "./customer/profile/StoreDetail"
+export * from "./customer/profile/InvoiceByCustomer"
+export * from "./customer/profile/UserDetail"

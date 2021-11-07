@@ -68,7 +68,7 @@ function ProductForm({ productInput }: props) {
       className={showUpdate ? " form-addp form-editp" : "form-addp"}
     >
       <h2 className="form__title">
-        {showUpdate ? "Modificar Producto" : "Agregar Producto"}
+        {showUpdate ? "Modificar producto" : "Agregar producto"}
       </h2>
 
       {showUpdate ? null : (
@@ -150,14 +150,15 @@ export default React.memo(ProductForm)
 const FormGroup = styled.div`
   margin-bottom: 0.3rem;
   padding: 0 auto;
-  display: flex;
+  // display: flex;
+  width: 100%;
   .form__label {
     margin-bottom: 0.1rem;
     font-weight: 700;
   }
   .form__control {
-    display: block;
     width: 100%;
+    // display: block;
     padding: 0.25rem 0.5rem;
     border: 1px solid #ced4da;
     border-radius: 0.25rem;

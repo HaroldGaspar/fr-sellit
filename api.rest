@@ -2,8 +2,6 @@
 GET http://hakhi.xyz:8000/products
 
 ###
-<<<<<<< HEAD
-=======
 GET http://hakhi.xyz:8000/products?category=${id}
 
 
@@ -16,19 +14,25 @@ GET http://hakhi.xyz:8000/reviews?product=${id}
 GET http://hakhi.xyz:8000/reviews?stars=4
 
 ###
->>>>>>> 6995be564acff5cd1d3b5d38cbd70c7dd322a9c5
 GET http://localhost:8000/products?name=first
 
 ###
-GET http://localhost:8000/products?store=1
+GET http://hakhi.xyz:8000/carts/81
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTMsImlhdCI6MTYzNDAwMDU2MywiZXhwIjoxNjM2NTkyNTYzfQ.8gIVUDLGwT2MQEKKvnk1K41bPb_7_RsMurM7jKQU_Qs
 
 ###
-GET http://hakhi.xyz:8000/products?_q=first
+PUT http://hakhi.xyz:8000/carts/81
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTMsImlhdCI6MTYzNDAwMDU2MywiZXhwIjoxNjM2NTkyNTYzfQ.8gIVUDLGwT2MQEKKvnk1K41bPb_7_RsMurM7jKQU_Qs
+Content-Type: application/json
 
+{
+    "total_price": 2.99,
+    "transaction": "pm_1JsdAlAKNmSLq2ZCAYTXyRx1"
+}
 ###
-GET http://hakhi.xyz:8000/categories
+GET http://hakhi.xyz:8000/stores?customer=6
 ###
-GET http://hakhi.xyz:8000/products?category=1
+GET http://localhost:8000/products?category=1
 
 ###
 GET http://hakhi.xyz:8000/customers?user=13

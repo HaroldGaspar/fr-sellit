@@ -2,6 +2,7 @@ import { IReview } from "models/Product"
 import React, { FormEvent, MutableRefObject, useRef, useState } from "react"
 import { addReview } from "services/customer/reviews/addReview"
 import styled from "styled-components"
+const user: string = localStorage.getItem("user")
 
 export function ReviewForm({
   idProduct,
@@ -16,7 +17,8 @@ export function ReviewForm({
   const [review, setReview] = useState<IReview>({
     product: idProduct,
     pdRating,
-    stars: 1
+    stars: 1,
+    slug: user.split('"')[5]
   })
 
   const hdlChng = (e: any) => {
@@ -28,6 +30,7 @@ export function ReviewForm({
     starRef: MutableRefObject<HTMLInputElement>
   ) => {
     e.preventDefault()
+    setReview({ ...review })
     addReview(
       review,
       setReview,
@@ -141,7 +144,7 @@ const ReviewFormStyle = styled.div`
 
   .btn-comment {
     border: none;
-    background: #3179aab;
+    background: #ededed;
     padding: 0.5em;
     width: 100%;
     font-weight: 700;

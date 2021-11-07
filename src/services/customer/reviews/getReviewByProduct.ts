@@ -11,7 +11,8 @@ export async function getReviewByProduct(id: number, setReviews: any) {
       comment: rev.Coment,
       stars: rev.stars,
       product: rev.product.id,
-      customer: rev
+      customer: rev,
+      slug: rev.slug
     }
   })
 

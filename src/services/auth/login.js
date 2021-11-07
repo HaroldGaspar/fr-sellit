@@ -14,14 +14,16 @@ export async function login(user, history, register) {
 
   //set token in LocalStorage
   const json = await res.json()
+  if (json.statusCode === 400) {
+    console.log("Error to login ", json.statusCode)
+    return json
+  }
   //si esta registrando, permitir la obtecion del token
-  if(!register){
+  if (!register) {
     //si no esta confirmada
-    if(json.user.confirmed!== true) {
-      console.log(json)
-      history.push("/mailconfimation-required")    
-      const error=Error("Mail confirmation required")
-      return error
+    if (json.user.confirmed === null) {
+      history.push("/mailconfimation-required")
+      return json
     }
   }
   localStorage.setItem("token", json.jwt)

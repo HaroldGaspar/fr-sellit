@@ -7,17 +7,17 @@ export function Cart() {
   return (
     <>
       <Nav />
-      <ProductsDtContextProvider>
-        <CartContainer>
-          <CartCardls>
-            <CartH2>Carrito</CartH2>
-            <ProductsCart />
-          </CartCardls>
-          <div className="order">
-            <OrderCart />
-          </div>
-        </CartContainer>
-      </ProductsDtContextProvider>
+      {/* <ProductsDtContextProvider> */}
+      <CartContainer>
+        <CartCardls>
+          <CartH2>Carrito</CartH2>
+          <ProductsCart />
+        </CartCardls>
+        <div className="order">
+          <OrderCart />
+        </div>
+      </CartContainer>
+      {/* </ProductsDtContextProvider> */}
     </>
   )
 }

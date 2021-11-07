@@ -6,6 +6,7 @@ import { SearchBar } from "components"
 import { logOutfx } from "services"
 // import "./Nav.css"
 import styled from "styled-components"
+let user
 export function Nav(props) {
   const [logout, setlogout] = useState()
   const [store, setstore] = useState(false)
@@ -13,7 +14,7 @@ export function Nav(props) {
   useEffect(() => {
     setlogout(localStorage.getItem("token"))
     setstore(localStorage.getItem("store"))
-
+    user = localStorage.getItem("user")
     // console.log("logout", logout)
   }, [logout, store])
   return (
@@ -50,10 +51,20 @@ export function Nav(props) {
             <span className="mlefu-auto">
               {logout ? (
                 <div className="nav__sub">
-                  <NavLink className="nav__a" to="/products">
-                    CUENTA{" "}
+                  <NavLink className="nav__a" to="/user">
+                    <img
+                      src={process.env.PUBLIC_URL + "/img/user.png"}
+                      alt="cart"
+                      className="logo"
+                    />
+                    {user.split('"')[5].toUpperCase()}
                   </NavLink>
                   <NavLink className="nav__a" to="/cart">
+                    <img
+                      src={process.env.PUBLIC_URL + "/img/cart.svg"}
+                      alt="cart"
+                      className="logo"
+                    />
                     CARRITO{" "}
                   </NavLink>
                   <NavLink
@@ -61,6 +72,7 @@ export function Nav(props) {
                     to="/"
                     onClick={(e) => logOutfx(e, setlogout)}
                   >
+                    <img src="" alt="" className="logo" />
                     LOGOUT{" "}
                   </NavLink>
                   {/* <input value="Cancelar" type="button" className="nav-item" /> */}
@@ -90,6 +102,9 @@ const NavStyle = styled.div`
     flex-direction: row;
     width: 100%;
   }
+  .logo {
+    height: 40px;
+  }
 
   .nav__sub {
     color: aliceblue;
@@ -105,6 +120,9 @@ const NavStyle = styled.div`
     padding-left: 9px;
     padding-right: 9px;
     transition: ease 0.4s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
   .nav__a:hover {
     color: #444;

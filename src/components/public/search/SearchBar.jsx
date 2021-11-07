@@ -2,7 +2,6 @@ import React, { useState } from "react"
 import { useHistory } from "react-router"
 import styled from "styled-components"
 
-
 export function SearchBar() {
   const [keyword, setKeyword] = useState("")
   const history = useHistory()
@@ -18,7 +17,15 @@ export function SearchBar() {
         placeholder="Que estas buscando..."
         onChange={(e) => setKeyword(e.target.value)}
       />
-      <SearchBtn>Buscar</SearchBtn>
+      <SearchBtn>
+        <ImgSvg>
+          <img
+            src={process.env.PUBLIC_URL + "/img/find.svg"}
+            alt="cart"
+            // height="40"
+          />
+        </ImgSvg>
+      </SearchBtn>
     </Search>
   )
 }
@@ -39,8 +46,20 @@ const SearchInput = styled.input`
     outline: none;
   }
 `
+const ImgSvg = styled.div`
+  // background: #aaa;
+  img {
+    margin-top: -0.3em;
+    height: 40px;
+    width: 35px;
+  }
+  &:hover {
+    color: #eee;
+  }
+`
 const SearchBtn = styled.button`
   margin-right: 1em;
+  padding-top: -0.5em;
   font-size: 1.1em;
   height: 2.5em;
   background-color: #cad2b5;

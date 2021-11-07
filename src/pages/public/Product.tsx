@@ -11,7 +11,7 @@ import { useParams } from "react-router"
 import { getProduct } from "services"
 import { getReviewByProduct } from "services/customer/reviews/getReviewByProduct"
 import styled from "styled-components"
-
+const user = localStorage.getItem("user")
 export function Product() {
   const { id } = useParams<any>()
 
@@ -42,15 +42,21 @@ export function Product() {
           />
           <div className="productreview">
             <ReviewsList reviews={reviews} reviewLength={reviews.length | 0} />
-            <ReviewForm
-              idProduct={productDetail.id}
-              reviewLength={reviews.length | 0}
-              pdRating={productDetail.rating | 0}
-              setProductDetail={setProductDetail}
-              productDetail={productDetail}
-              reviews={reviews}
-              setReviews={setReviews}
-            />
+            {user ? (
+              <ReviewForm
+                idProduct={productDetail.id}
+                reviewLength={reviews.length | 0}
+                pdRating={productDetail.rating | 0}
+                setProductDetail={setProductDetail}
+                productDetail={productDetail}
+                reviews={reviews}
+                setReviews={setReviews}
+              />
+            ) : (
+              <div className="text-center mt-4 pt-4">
+                <b>logeate para comentar</b>
+              </div>
+            )}
           </div>
         </ContainerDetail>
       )}
@@ -58,10 +64,10 @@ export function Product() {
   )
 }
 
-const ContainerDetail = styled.div`
+export const ContainerDetail = styled.div`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 0 15 px;
+  gap: 15px;
   max-width: 1000px;
   margin: 1em auto;
   padding: 0 15px;

@@ -2,6 +2,7 @@ import { IReview } from "models/Product"
 import { persistEntity } from "services"
 import { API_URL } from "services/settings"
 const token = localStorage.getItem("token")
+const user = localStorage.getItem("user")
 
 export function addReview(
   reviewObj: IReview,
@@ -13,7 +14,7 @@ export function addReview(
   reviews: any,
   setReviews: any
 ) {
-  const { stars, comment, product } = reviewObj
+  const { stars, comment, product, slug } = reviewObj
   console.log("reviewLength", reviewLength)
 
   //PERSIST REVIEW
@@ -21,6 +22,7 @@ export function addReview(
     stars,
     Coment: comment,
     product,
+    slug,
     customer: JSON.parse(atob(token.split(".")[1])).id
   }
   persistEntity("reviews", review)

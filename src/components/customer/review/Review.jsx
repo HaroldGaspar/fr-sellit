@@ -7,10 +7,12 @@ export default function Review({ review }) {
       <ReviewCard>
         <div className="review__starts">
           <div className="card__subtitle">
-            <span className="card__mark">{}</span>
             <div className="card__stars">{"★".repeat(review.stars)}</div>
             <div className="card__nostars">{"★".repeat(5 - review.stars)}</div>
           </div>
+          <small>
+            <b>{review.slug}</b>
+          </small>
         </div>
         <div className="review__comment"> {review.comment} </div>
       </ReviewCard>
@@ -24,4 +26,8 @@ const ReviewCard = styled.div`
   border-radius: 0.15em;
   margin: 0.25em 0;
   padding: 0.3em 0.5em;
+  .review__starts {
+    display: flex;
+    justify-content: space-between;
+  }
 `

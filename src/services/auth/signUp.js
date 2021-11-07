@@ -1,12 +1,33 @@
-import { login, logOutfx, parseJwt, persistEntity, persistEntityNT, sendMailConfirmation } from "services"
+import {
+  login,
+  logOutfx,
+  parseJwt,
+  persistEntity,
+  persistEntityNT,
+  sendMailConfirmation
+} from "services"
 
 /** Create entities user->customer=>cart[] &-> store */
 export async function signUp(e, user, history, setloading) {
   e.preventDefault()
   setloading(true)
 
+  //confirm password
+  if (user.password !== user.password_confirm) {
+    alert("las contraseñas no coinciden")
+    setloading(false)
+    return
+  }
+
   //persist user & login
   const userD = await persistEntityNT("users", user)
+  //valide
+  if (userD.statusCode === 400) {
+    console.log("Error to register ", userD.statusCode)
+    alert(userD.message[0].messages[0].message)
+    setloading(false)
+    return
+  }
   user = {
     ...user,
     identifier: user.email
@@ -47,5 +68,3 @@ export async function signUp(e, user, history, setloading) {
   setloading(false)
   history.push("/mailconfimation-required")
 }
-
-

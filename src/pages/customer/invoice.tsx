@@ -12,13 +12,13 @@ export function Invoice({ location }: any) {
         <div className="card">
           <div className="card-body">
             <h2>Compra exitosa</h2>
-            <p>
+            <div>
               codigo de transaccion:
               <div className="ml-auto text-right">{location.state.data.id}</div>
-            </p>
-            <p>
+            </div>
+            <div>
               pago realizado: <Price price={location.state.data.amount / 100} />{" "}
-            </p>
+            </div>
             <p>productos:</p>
             {location.state.productsDetail.map(
               (productDetail: any, id: number) => (

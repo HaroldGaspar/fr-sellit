@@ -10,11 +10,11 @@ export function OrderCart() {
   const { productsDetail, setProductsDetail } = useContext(ProductContext)
   const [showCard, setShowCard] = useState(false)
 
-  const handleSellCart = async () => {
-    const num =productsDetail.map((p) => p.totalPrice).reduce((p, n) => p + n)
+  const handleSellCart = async (idTransaccion) => {
+    const num = productsDetail.map((p) => p.totalPrice).reduce((p, n) => p + n)
 
     // const tp = parseFloat(num).toFixed(2)
-    const res = await addCartWithOrderDetail(num, "credit_card")
+    const res = await addCartWithOrderDetail(num, "credit_card", idTransaccion)
     console.log("res updt cart to: ", res)
     return num
   }
@@ -43,15 +43,21 @@ export function OrderCart() {
                     .reduce((p, n) => p + n)
             }
           />
-           {showCard? "":
-          <button onClick={() => setShowCard(st=>!st)} className="order__btn">
-          Comprar ahora
-          </button>}
+          {showCard ? (
+            ""
+          ) : (
+            <button
+              onClick={() => setShowCard((st) => !st)}
+              className="order__btn"
+            >
+              Comprar ahora
+            </button>
+          )}
         </div>
       </div>
-      {showCard?
-      <Card handleSellCart={handleSellCart} productsDetail={productsDetail}/>
-      :null}
+      {showCard ? (
+        <Card handleSellCart={handleSellCart} productsDetail={productsDetail} />
+      ) : null}
     </OrdrCart>
   )
 }

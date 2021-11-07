@@ -1,6 +1,7 @@
 import { API_URL } from "services/settings"
-export async function getProductsDetailByCart(setState) {
+export async function getProductsDetailByCart(setState: any) {
   const cart = localStorage.getItem("cart")
+  if (!cart) return
   const token = localStorage.getItem("token")
   const resFetch = await fetch(
     `${API_URL}/product-details?cart=${cart}?_sort=created_at:ASC`,
@@ -12,11 +13,10 @@ export async function getProductsDetailByCart(setState) {
     }
   )
 
-  const resD = await resFetch.json()
+  const resD: any[] = await resFetch.json()
 
   //adapter
-
-  let resFormat = resD.map((resU) => {
+  const resFormat = resD.map((resU) => {
     return {
       qty: resU.qty,
       productPrice: resU.product.price,

@@ -79,4 +79,5 @@ export interface IReview {
   comment?: string
   pdRating?: number
   customer?: string
+  slug?: string
 }

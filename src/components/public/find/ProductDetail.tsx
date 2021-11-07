@@ -5,6 +5,9 @@ import { API_URL } from "services/settings"
 import { Iproduct } from "models/Product"
 import { useHistory } from "react-router-dom"
 import { addProductCart } from "services"
+import { useEffect, useState } from "react"
+import { useCartProducts } from "hooks"
+const cart = localStorage.getItem("cart")
 
 export function ProductDetail({
   productDetail,
@@ -13,11 +16,14 @@ export function ProductDetail({
   productDetail: Iproduct
   reviewLength: number
 }) {
-  console.log("reviewLength", reviewLength, productDetail.rating)
+  // console.log("reviewLength", reviewLength, productDetail.rating)
+  // console.log("productsDetail", productsDetail)
   const history = useHistory()
+  const [isAdded, setIsAdded] = useState(false)
 
   const handleEdit = () => {
     addProductCart(productDetail.id)
+    setIsAdded(true)
   }
 
   const goStore = (whe: string) => {
@@ -27,6 +33,15 @@ export function ProductDetail({
       history.push(`/category/${productDetail.category}`)
     }
   }
+  const { loading, productsDetail, setProductsDetail } = useCartProducts()
+  useEffect(() => {
+    if (cart) {
+      const id = productDetail.id
+      const pf = productsDetail.filter((pd: any) => pd.productId === id)
+      if (pf.length > 0) setIsAdded(true)
+      console.log("filters", pf)
+    }
+  }, [productsDetail, productDetail.id])
 
   return (
     <Productdt>
@@ -80,12 +95,35 @@ export function ProductDetail({
       <div className="text-right">
         Precio: <Price price={productDetail.price} />{" "}
       </div>
-      <button onClick={() => handleEdit()} className="btn btn-block btn-info">
-        Añadir al carrito
-      </button>
+      <BtnDetail onClick={() => handleEdit()} disabled={isAdded ? true : false}>
+        {isAdded ? "Añadido" : "Añadir al carrito"}
+      </BtnDetail>
     </Productdt>
   )
 }
+
+export const BtnDetail = styled.button`
+  width: 100%;
+  background: #5a5a5a;
+  color: #ededed;
+  text-align: center;
+  vertical-align: middle;
+  padding: 0.5em;
+  border: 1px solid transparent;
+  border-radius: 0.2em;
+  transition: 0.3s cubic-bezier(0.4, 0, 1, 1) all;
+  font-weight: 700;
+  &:hover {
+    background: #c3c3c3;
+    color: #444;
+    border: 1px solid black;
+  }
+  &:disabled {
+    color: #444;
+    background: #c3c3c3;
+    border: 1px solid transparent;
+  }
+`
 
 const Productdt = styled.div`
   background: #fbfbfb;
