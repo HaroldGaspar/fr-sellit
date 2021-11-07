@@ -7,7 +7,7 @@ import { useHistory } from "react-router-dom"
 import { addProductCart } from "services"
 import { useEffect, useState } from "react"
 import { useCartProducts } from "hooks"
-const cart = localStorage.getItem("cart")
+// const cart = localStorage.getItem("cart")
 
 export function ProductDetail({
   productDetail,
@@ -35,7 +35,7 @@ export function ProductDetail({
   }
   const { loading, productsDetail, setProductsDetail } = useCartProducts()
   useEffect(() => {
-    if (cart) {
+    if (localStorage.getItem("cart")) {
       const id = productDetail.id
       const pf = productsDetail.filter((pd: any) => pd.productId === id)
       if (pf.length > 0) setIsAdded(true)

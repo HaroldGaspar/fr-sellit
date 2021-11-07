@@ -11,7 +11,6 @@ import { useParams } from "react-router"
 import { getProduct } from "services"
 import { getReviewByProduct } from "services/customer/reviews/getReviewByProduct"
 import styled from "styled-components"
-const user = localStorage.getItem("user")
 export function Product() {
   const { id } = useParams<any>()
 
@@ -42,7 +41,7 @@ export function Product() {
           />
           <div className="productreview">
             <ReviewsList reviews={reviews} reviewLength={reviews.length | 0} />
-            {user ? (
+            {localStorage.getItem("user") ? (
               <ReviewForm
                 idProduct={productDetail.id}
                 reviewLength={reviews.length | 0}
