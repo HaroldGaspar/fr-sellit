@@ -1,43 +1,38 @@
-import { Price } from "components"
+import { InvoiceDetailView, Price } from "components"
+import { Icart } from "models/Product"
 import React, { useEffect, useState } from "react"
 import { getByField } from "services"
 import styled from "styled-components"
 
 export default function InvoiceByCustomer() {
-  const [cart, setCart] = useState<any>()
+  const [carts, setCarts] = useState<any[]>()
   const [loading, setLoading] = useState<boolean>(true)
-  const idUser = localStorage.getItem("user").split(":")[1].split(",")[0]
+  // const idUser = localStorage.getItem("user").split(":")[1].split(",")[0]
   const idCustomer = localStorage.getItem("customer")
 
   useEffect(() => {
-    getByField("carts", "customer", idCustomer, setCart, setLoading, false)
+    getByField("carts", "customer", idCustomer, setCarts, setLoading, false)
   }, [])
   return (
     <InvoicesByCustomerStyles>
-      <h1>FACTURAS</h1>
+      <h3>
+        <big>
+          <i>FACTURAS</i>
+        </big>
+      </h3>
       {loading ? (
         "loading"
       ) : (
         <List>
-          {cart.map((c: any, i: number) => {
-            if (c.is_actual === false)
-              return (
-                <div className="invoicecard" key={i}>
-                  <div>Id de transaccion: {c.transaction}</div>
-                  <div>Fecha: {c.updated_at}</div>
-                  <div>
-                    Compraste{" "}
-                    {c.product_details
-                      .map((pd: any) => pd.qty)
-                      .reduce((p: number, n: number) => p + n, 0)}{" "}
-                    unidades de {c.product_details.length} productos
-                  </div>
-                  <button>ver detalle</button>
-                  <Price price={c.total_price} />
-                </div>
-              )
-            else return ""
-          })}
+          {carts.length === 1 ? (
+            <div className="mssg">you have'nt made a purchase yet</div>
+          ) : (
+            carts.map((cart: any, id: number) => {
+              if (cart.is_actual === false)
+                return <InvoiceDetailView cart={cart} key={id} />
+              else return ""
+            })
+          )}
         </List>
       )}
     </InvoicesByCustomerStyles>
@@ -46,22 +41,76 @@ export default function InvoiceByCustomer() {
 
 const InvoicesByCustomerStyles = styled.div`
   border: 1px solid #ececec;
-  padding: 2em 1em;
-  background: #fafafa;
+  padding: 1.5em 1em;
+  background: #b998c7;
+  color: #444;
+  h3 {
+    color: #eaeaea;
+    text-align: end;
+    margin-right: 1em;
+    font-weight: 700;
+    text-decoration: underline;
+  }
   .invoicecard {
     margin: 0.5em 0;
-    padding: 0.5em;
+    padding: 0.75em 1.25em;
     border-radius: 0.25em;
     // border: 1px solid #eee;
-    background: #eaeaea;
+    background: #efddf6; //f6f2f2;
     // color: #eee;
+  }
+  .ell {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+  button {
+    border: none;
+    background: #8b659b;
+    color: #eee;
+    border-radius: 0.25em;
+    padding: 0.35em 0.5em;
+    transition: 0.3s ease all;
+  }
+  button:hover {
+    background: #b998c7;
+    color: #fff;
+  }
+  .id-cod {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    display: flex;
+    padding: 0.3em 0;
+    justify-content: space-between;
   }
 `
 
 const List = styled.div`
-  height: 50vh;
+  .mssg {
+    // text-align: center;
+    // height: 100%;
+    // display: flex;
+    // align-items: center;
+    // content-align: center;
+    // justify-content: center;
+    font-style: italic;
+    font-weight: 700;
+  }
+  height: 70vh;
   overflow: auto;
-  .invoicecard {
-    padding: 0.5em 1.25em;
+  @media (max-height: 650px) {
+    height: 60vh;
+  }
+
+  ::-webkit-scrollbar {
+    width: 10px;
+    border-radius: 5px;
+    background-color: #858585;
+    transition-duration: 0s;
+  }
+  ::-webkit-scrollbar-thumb {
+    background-color: #444;
+    border-radius: 3px;
   }
 `

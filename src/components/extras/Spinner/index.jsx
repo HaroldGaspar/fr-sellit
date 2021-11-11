@@ -5,7 +5,9 @@ import styled from "styled-components"
 export function Spinner() {
   return (
     <LdsRing>
-      <div></div>
+      <div className="lds-ring">
+        <div></div>
+      </div>
     </LdsRing>
   )
 }

@@ -9,6 +9,7 @@ import axios from "axios"
 import React, { FormEvent, ReactElement, useEffect } from "react"
 import { useHistory } from "react-router"
 import { downCart, findByField, parseJwt, persistEntity } from "services"
+import styled from "styled-components"
 
 const stripeP: Promise<Stripe> = loadStripe(
   "pk_test_51InWuAAKNmSLq2ZCeW7npcDuqy6ra8c1QF11EF70nG4XsYJ7sffTPAm0pZLTyzd0qshIVTfI7mLcyVGsCNtHkQZg00qZzv0DW8"
@@ -79,27 +80,42 @@ function CheckoutForm({ handleSellCart, productsDetail }: any): ReactElement {
   return (
     <form onSubmit={(e) => handleSubmit(e)}>
       <CardElement />
-
       <button>buy</button>
     </form>
   )
 }
 
-export function Card({ handleSellCart, productsDetail }: any) {
+export function Card({ handleSellCart, productsDetail, setShowCard }: any) {
   useEffect(() => {
     console.log("iniciating")
     console.log(productsDetail)
   })
   return (
     <>
-      <div className="card card-body">
+      <StylesCard>
         <Elements stripe={stripeP}>
           <CheckoutForm
             handleSellCart={handleSellCart}
             productsDetail={productsDetail}
           />
-        </Elements>
-      </div>
+        </Elements>{" "}
+      </StylesCard>
     </>
   )
 }
+
+const StylesCard = styled.div`
+  button {
+    width: 100%;
+    padding: 0.5em;
+    margin: 0.35em 0;
+    border: 1px solid #bbb;
+    border-radius: 0.25em;
+    transition: 0.5s ease all;
+    font-weight: 700;
+  }
+  button:hover {
+    background: #444;
+    color: #eee;
+  }
+`

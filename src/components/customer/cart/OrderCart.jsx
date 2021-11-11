@@ -1,10 +1,8 @@
 import ProductContext from "context/ProductsDtContex"
-import { useContext, useEffect, useState } from "react"
-import { Card, InvoiceDetail, Price } from "components"
+import { useContext, useState } from "react"
+import { Card, InvoiceDetail, ModalHC, Price } from "components"
 import { addCartWithOrderDetail } from "services"
 import styled from "styled-components"
-
-// import "./Order.css"
 
 export function OrderCart() {
   const { productsDetail, setProductsDetail } = useContext(ProductContext)
@@ -47,17 +45,28 @@ export function OrderCart() {
             ""
           ) : (
             <button
-              onClick={() => setShowCard((st) => !st)}
+              onClick={() => {
+                setShowCard((st) => !st)
+              }}
               className="order__btn"
+              id="open-modal"
             >
               Comprar ahora
             </button>
           )}
         </div>
       </div>
-      {showCard ? (
-        <Card handleSellCart={handleSellCart} productsDetail={productsDetail} />
-      ) : null}
+      <ModalHC
+        component={
+          <Card
+            handleSellCart={handleSellCart}
+            productsDetail={productsDetail}
+            setShowCard={setShowCard}
+          />
+        }
+        show={showCard}
+        setShow={setShowCard}
+      />
     </OrdrCart>
   )
 }

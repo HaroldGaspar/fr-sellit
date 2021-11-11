@@ -14,7 +14,7 @@ export function InvoiceDetail({ productDetail }) {
   )
 }
 
-const Invoicecard = styled.div`
+export const Invoicecard = styled.div`
   margin-top: 0.25em;
   padding: 0.5em 1em;
   border: 1px solid #ebebeb;

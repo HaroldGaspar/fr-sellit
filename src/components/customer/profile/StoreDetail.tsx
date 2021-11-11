@@ -1,8 +1,7 @@
-import { BtnDetail } from "components"
+import { BtnDetail, ModalHC } from "components"
 import { Store } from "pages"
 import React, { useEffect, useState } from "react"
-import { getByField, getById, persistEntity } from "services"
-import styled from "styled-components"
+import { getById, persistEntity } from "services"
 
 export function StoreDetail() {
   const [store, setStore] = useState<any>()
@@ -44,43 +43,57 @@ export function StoreDetail() {
       ) : (
         <>
           <hr />
-          <h4>Informacion de tu tienda</h4>
-          <div> Tienda: {store?.name.toUpperCase()}</div>
-          <div> Direccion: {store?.address}</div>
-          <div> Telefono: {store?.phone_number}</div>
-          <div> Acerca de la tienda: {store?.description}</div>
-          {editando ? (
-            <form className="formstore" onSubmit={(e) => updateStore(e)}>
-              <h5>Editar informacion</h5>
-              <LabelForm
-                hdlChng={hdlChng}
-                label={"Nombre"}
-                name={"name"}
-                store={store}
-              />
-              <LabelForm
-                hdlChng={hdlChng}
-                label={"Direccion"}
-                name={"address"}
-                store={store}
-              />
-              <LabelForm
-                hdlChng={hdlChng}
-                label={"Telefono"}
-                name={"phone_number"}
-                store={store}
-              />
-              <LabelForm
-                hdlChng={hdlChng}
-                label={"Acerca de la tienda"}
-                name={"description"}
-                store={store}
-              />
-              <BtnDetail>Guardar</BtnDetail>
-            </form>
-          ) : (
-            ""
-          )}
+          <h5>
+            <i>Informacion de tu tienda</i>
+          </h5>
+          <div className="padd">
+            <div> Tienda: {store?.name?.toUpperCase()}</div>
+            <div> Direccion: {store?.address}</div>
+            <div> Telefono: {store?.phone_number}</div>
+            <div> Acerca de la tienda: {store?.description}</div>
+          </div>
+          <ModalHC
+            component={
+              <form className="formstore" onSubmit={(e) => updateStore(e)}>
+                <h2>
+                  <b>Editar informacion</b>
+                </h2>
+                <br />
+                <LabelForm
+                  hdlChng={hdlChng}
+                  label={"Nombre"}
+                  name={"name"}
+                  store={store}
+                />
+                <LabelForm
+                  hdlChng={hdlChng}
+                  label={"Direccion"}
+                  name={"address"}
+                  store={store}
+                />
+                <LabelForm
+                  hdlChng={hdlChng}
+                  label={"Telefono"}
+                  name={"phone_number"}
+                  store={store}
+                />
+                <label className="form__label">
+                  Acerca de la tienda:
+                  <textarea
+                    className="form__control"
+                    name="description"
+                    onChange={(e) => hdlChng(e)}
+                    value={store.description}
+                  />
+                </label>
+                <br />
+                <BtnDetail>Guardar</BtnDetail>
+              </form>
+            }
+            show={editando}
+            setShow={setEditando}
+          ></ModalHC>
+          <br />
           <BtnDetail
             onClick={() => handleEdit()}
             style={{ width: "100px", float: "right" }}

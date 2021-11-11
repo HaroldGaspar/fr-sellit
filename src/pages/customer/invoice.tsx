@@ -22,7 +22,7 @@ export function Invoice({ location }: any) {
             <p>productos:</p>
             {location.state.productsDetail.map(
               (productDetail: any, id: number) => (
-                <InvoiceDetail productDetail={productDetail} key={id} />
+                <InvoiceDetail key={id} productDetail={productDetail} />
               )
             )}
             <button onClick={() => history.push("/")}>return</button>

@@ -1,6 +1,7 @@
 //
 export * from "./extras/Spinner"
 export * from "./extras/Price"
+export * from "./extras/ModalHC"
 //--auth_form
 export * from "./extras/auth-form/AuthInput"
 export * from "./extras/auth-form/AuthFooter"
@@ -47,3 +48,6 @@ export * from "./customer/review/Review"
 export * from "./customer/profile/StoreDetail"
 export * from "./customer/profile/InvoiceByCustomer"
 export * from "./customer/profile/UserDetail"
+export * from "./customer/profile/InvoiceDetailView"
+export * from "./customer/profile/InvoiceDetailModal"
+export * from "./customer/profile/ProductDetailModal"

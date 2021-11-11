@@ -7,7 +7,8 @@ import { useHistory } from "react-router-dom"
 import { addProductCart } from "services"
 import { useEffect, useState } from "react"
 import { useCartProducts } from "hooks"
-// const cart = localStorage.getItem("cart")
+//SEQUEDA EN CHACHE Y NO ES PARTE DEL COMPONENTE = no se renderiza
+//const cart = localStorage.getItem("cart")
 
 export function ProductDetail({
   productDetail,
@@ -16,6 +17,7 @@ export function ProductDetail({
   productDetail: Iproduct
   reviewLength: number
 }) {
+  const cart = localStorage.getItem("cart")
   // console.log("reviewLength", reviewLength, productDetail.rating)
   // console.log("productsDetail", productsDetail)
   const history = useHistory()
@@ -95,9 +97,18 @@ export function ProductDetail({
       <div className="text-right">
         Precio: <Price price={productDetail.price} />{" "}
       </div>
-      <BtnDetail onClick={() => handleEdit()} disabled={isAdded ? true : false}>
-        {isAdded ? "Añadido" : "Añadir al carrito"}
-      </BtnDetail>
+      {cart ? (
+        <BtnDetail
+          onClick={() => handleEdit()}
+          disabled={isAdded ? true : false}
+        >
+          {isAdded ? "Añadido" : "Añadir al carrito"}
+        </BtnDetail>
+      ) : (
+        <BtnDetail onClick={() => history.push("/login")}>
+          Logeate para comprar
+        </BtnDetail>
+      )}
     </Productdt>
   )
 }
@@ -109,14 +120,14 @@ export const BtnDetail = styled.button`
   text-align: center;
   vertical-align: middle;
   padding: 0.5em;
-  border: 1px solid transparent;
+  border: 2.3px solid transparent;
   border-radius: 0.2em;
-  transition: 0.3s cubic-bezier(0.4, 0, 1, 1) all;
+  transition: 0.4s cubic-bezier(0.4, 0, 1, 1) all;
   font-weight: 700;
   &:hover {
-    background: #c3c3c3;
-    color: #444;
-    border: 1px solid black;
+    background: transparent;
+    color: #888;
+    border: 2.3px solid #888;
   }
   &:disabled {
     color: #444;

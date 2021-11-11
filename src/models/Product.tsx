@@ -67,10 +67,13 @@ export interface Istore {
 
 export interface Icart {
   id: number
-  totalPrice: number
+  total_price: number
   payMethod: string
-  isActual: boolean
+  is_actual: boolean
   customerId: number
+  product_details: any[]
+  updated_at: string
+  transaction: string
 }
 
 export interface IReview {

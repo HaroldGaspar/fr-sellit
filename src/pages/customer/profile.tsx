@@ -1,11 +1,10 @@
 import { Nav, StoreDetail, UserDetail } from "components"
 import InvoiceByCustomer from "components/customer/profile/InvoiceByCustomer"
-import { ContainerDetail } from "pages"
 import styled from "styled-components"
 
 export function Profile() {
   return (
-    <div>
+    <>
       <Nav />
       <ContainerDetail>
         <>
@@ -16,16 +15,34 @@ export function Profile() {
           <InvoiceByCustomer />
         </>
       </ContainerDetail>
-    </div>
+    </>
   )
 }
+
+const ContainerDetail = styled.div`
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
+  max-width: 1000px;
+  margin: 2em auto 0 auto;
+  height: 80vh;
+  padding: 0 15px;
+  @media (max-width: 700px) {
+    grid-template-columns: repeat(1, 1fr);
+  }
+`
 const StoreDetailStyle = styled.div`
-  border: 1px solid #dedede;
   border-radius: 0.25em;
-  padding: 2em 1.5em;
+  padding: 2em;
   margin: 0 auto;
   width: 100%;
-  height: fit-content;
+  // height: fit-content;
+  // min-height: -webkit-fill-available;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
 
   h2,
   h5,
@@ -40,13 +57,10 @@ const StoreDetailStyle = styled.div`
     width: 100%;
   }
   // background: #f4f4f4;
-  background: #fafafa;
   .formstore {
-    background: #fff;
-    margin: 1em;
-    padding: 1em 2em;
-    border: 1px solid #eee;
-    border-radius: 0.5em;
+    color: #776;
+    margin: 1em 2em;
+    // padding: 1em 2em;
   }
   .form__control {
     width: 100%;
@@ -56,5 +70,14 @@ const StoreDetailStyle = styled.div`
   }
   .form__control:focus {
     outline-color: #aaa;
+  }
+  .mssg {
+    // min-height: 300px;
+    // display: flex;
+    // align-items: center;
+  }
+  .padd {
+    padding: 0 1.5em;
+    width: 100%;
   }
 `

@@ -2,7 +2,6 @@ import { IReview } from "models/Product"
 import React, { FormEvent, MutableRefObject, useRef, useState } from "react"
 import { addReview } from "services/customer/reviews/addReview"
 import styled from "styled-components"
-const user: string = localStorage.getItem("user")
 
 export function ReviewForm({
   idProduct,
@@ -14,6 +13,7 @@ export function ReviewForm({
   reviews
 }: props) {
   const starRef = useRef<HTMLInputElement>()
+  const user: string = localStorage.getItem("user")
   const [review, setReview] = useState<IReview>({
     product: idProduct,
     pdRating,
@@ -102,6 +102,7 @@ export function ReviewForm({
               name="comment"
               onChange={(e) => hdlChng(e)}
               value={review.comment}
+              required={true}
             ></textarea>
           </label>
           <button className="btn-comment">Comentar</button>
@@ -158,6 +159,9 @@ const ReviewFormStyle = styled.div`
 
   label {
     font-weight: 600;
+  }
+  .form__label {
+    width: 100%;
   }
   .form__control {
     width: 100%;

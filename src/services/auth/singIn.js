@@ -7,11 +7,42 @@ export async function singIn(e, history, user, setloading) {
 
   //login
   const json = await login(user, history)
+  if (json.statusCode === 400) {
+    //due to incorrect password, must be first
+    setloading(false)
+    alert(json.message[0].messages[0].message)
+    return json
+  }
   if (json.user.confirmed === null) {
     console.log("no confimed, no login", json)
     return json
   }
   if (json.statusCode === 400) {
+    //due to incorrect password, must be first
+    setloading(false)
+    alert(json.message[0].messages[0].message)
+    return json
+  }
+  if (json.statusCode === 400) {
+    //due to incorrect password, must be first
+    setloading(false)
+    alert(json.message[0].messages[0].message)
+    return json
+  }
+  if (json.statusCode === 400) {
+    //due to incorrect password, must be first
+    setloading(false)
+    alert(json.message[0].messages[0].message)
+    return json
+  }
+  if (json.statusCode === 400) {
+    //due to incorrect password, must be first
+    setloading(false)
+    alert(json.message[0].messages[0].message)
+    return json
+  }
+  if (json.statusCode === 400) {
+    //due to incorrect password, must be first
     setloading(false)
     alert(json.message[0].messages[0].message)
     return json
