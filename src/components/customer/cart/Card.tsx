@@ -6,16 +6,28 @@ import {
 } from "@stripe/react-stripe-js"
 import { loadStripe, Stripe } from "@stripe/stripe-js"
 import axios from "axios"
+import { IproductDetail } from "models/Product"
 import React, { FormEvent, ReactElement, useEffect } from "react"
 import { useHistory } from "react-router"
-import { downCart, findByField, parseJwt, persistEntity } from "services"
+import {
+  downCart,
+  findByField,
+  parseJwt,
+  persistEntity,
+  persistEntityNT
+} from "services"
 import styled from "styled-components"
 
 const stripeP: Promise<Stripe> = loadStripe(
   "pk_test_51InWuAAKNmSLq2ZCeW7npcDuqy6ra8c1QF11EF70nG4XsYJ7sffTPAm0pZLTyzd0qshIVTfI7mLcyVGsCNtHkQZg00qZzv0DW8"
 )
 
-function CheckoutForm({ handleSellCart, productsDetail }: any): ReactElement {
+interface props {
+  handleSellCart: any
+  productsDetail: IproductDetail[]
+}
+
+function CheckoutForm({ handleSellCart, productsDetail }: props): ReactElement {
   const stripe = useStripe()
   const elements = useElements()
   const history = useHistory()
@@ -36,6 +48,20 @@ function CheckoutForm({ handleSellCart, productsDetail }: any): ReactElement {
     const totalPrice = await handleSellCart(paymentMethod.id)
 
     //update stock by product
+    productsDetail.forEach((pd: IproductDetail) => {
+      const product2Upd = { stock: pd.stock - pd.qty }
+      console.log(
+        "new stock for ",
+        pd.productName,
+        " is ",
+        product2Upd.stock,
+        "|",
+        pd.stock,
+        "-",
+        pd.qty
+      )
+      persistEntity("products", product2Upd, pd.productId)
+    })
 
     //validate
     if (!error) {
@@ -66,11 +92,11 @@ function CheckoutForm({ handleSellCart, productsDetail }: any): ReactElement {
     downCart()
 
     //replace cart
-    const customer = await findByField("customers", "user", userId, token)
+    const customer = await findByField("customers", "user", userId, true, true)
     console.log("id", customer)
     const cart = {
       is_actual: true,
-      customer: customer[0].id
+      customer: customer.id
     }
     const cartD = await persistEntity("carts", cart)
     //refresh cart
@@ -79,7 +105,13 @@ function CheckoutForm({ handleSellCart, productsDetail }: any): ReactElement {
 
   return (
     <form onSubmit={(e) => handleSubmit(e)}>
-      <CardElement />
+      <p>
+        Solo falta pagar, te enviaremos un comprobante a tu correo. Con toda la
+        informacion de tu compra
+      </p>
+      <h4>Paga con VISA o MASTERCARD</h4>
+      <hr />
+      <CardElement className="inp" />
       <button>buy</button>
     </form>
   )
@@ -105,6 +137,9 @@ export function Card({ handleSellCart, productsDetail, setShowCard }: any) {
 }
 
 const StylesCard = styled.div`
+  .inp {
+    padding: 0.5em 0;
+  }
   button {
     width: 100%;
     padding: 0.5em;

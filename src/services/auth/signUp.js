@@ -10,21 +10,25 @@ import {
 /** Create entities user->customer=>cart[] &-> store */
 export async function signUp(e, user, history, setloading) {
   e.preventDefault()
-  setloading(true)
 
   //confirm password
   if (user.password !== user.password_confirm) {
     alert("las contraseñas no coinciden")
-    setloading(false)
+    // setloading(false)
     return
   }
+  setloading(true)
 
   //persist user & login
   const userD = await persistEntityNT("users", user)
   //valide
   if (userD.statusCode === 400) {
-    console.log("Error to register ", userD.statusCode)
-    alert(userD.message[0].messages[0].message)
+    if (userD.message[0].messages[0].id === "Auth.form.error.username.taken")
+      alert("El usuario ya existe, elige otro")
+    if (userD.message[0].messages[0].id === "Auth.form.error.email.taken")
+      alert("El email ya existe, elige otro")
+
+    console.log("Error to register ", userD.message[0].messages[0].message)
     setloading(false)
     return
   }

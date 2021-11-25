@@ -56,7 +56,7 @@ const CategoriesListStyle = styled.div`
     cursor: pointer;
     padding: 0.15em 1em;
   }
-  margin: 0.25em 0;
+  margin: 0.25em 0 0.25em auto;
   appearance: none;
   border: 1px solid #ccc;
   background-color: transparent;

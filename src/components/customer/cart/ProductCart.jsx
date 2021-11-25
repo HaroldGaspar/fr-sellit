@@ -15,16 +15,11 @@ export function ProductCart({
   const handleQty = (vv) => {
     //rebuild the current productDt
     const pdtlLess = {
+      ...productDetail,
       qty: vv ? productDetail.qty + 1 : productDetail.qty - 1,
-      productPrice: productDetail.productPrice,
       totalPrice: vv
         ? productDetail.totalPrice + productDetail.productPrice
-        : productDetail.totalPrice - productDetail.productPrice,
-      productDetailId: productDetail.productDetailId,
-      productId: productDetail.productId,
-      mark: productDetail.mark,
-      productName: productDetail.productName,
-      photo: productDetail.photo
+        : productDetail.totalPrice - productDetail.productPrice
     }
 
     //replace my current productDetail changed with the original
@@ -34,8 +29,8 @@ export function ProductCart({
     updateProductDetail(pdtlLess)
   }
 
-  const handleDelete =(id)=>{
-    deleteProductCart(id,productsDetail,setProductsDetail)
+  const handleDelete = (id) => {
+    deleteProductCart(id, productsDetail, setProductsDetail)
   }
 
   useEffect(() => {}, [productsDetail])
@@ -67,10 +62,12 @@ export function ProductCart({
             </button>
           </div>
           <div className="cardt__end">
-            <button 
-            className="card__delete" 
-            onClick={()=>handleDelete(productDetail.productDetailId) }>
-              eliminar</button>
+            <button
+              className="card__delete"
+              onClick={() => handleDelete(productDetail.productDetailId)}
+            >
+              eliminar
+            </button>
             <Price price={productDetail.totalPrice} />
           </div>
         </div>

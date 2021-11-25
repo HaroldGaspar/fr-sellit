@@ -105,6 +105,9 @@ const PrdHome = styled.div`
     background-color: #fff;
     background-clip: border-box;
     border-radius: 0.25rem 0.25rem 0 0;
+    overflow: hidden;
+    height: 0;
+    padding-bottom: 100%;
   }
 
   .card__mark {

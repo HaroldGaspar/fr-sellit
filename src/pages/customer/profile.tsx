@@ -1,5 +1,5 @@
 import { Nav, StoreDetail, UserDetail } from "components"
-import InvoiceByCustomer from "components/customer/profile/InvoiceByCustomer"
+import InvoicesProfile from "components/customer/profile/InvoicesProfile"
 import styled from "styled-components"
 
 export function Profile() {
@@ -12,7 +12,7 @@ export function Profile() {
             <UserDetail />
             {localStorage.getItem("store") ? <StoreDetail /> : ""}
           </StoreDetailStyle>
-          <InvoiceByCustomer />
+          <InvoicesProfile />
         </>
       </ContainerDetail>
     </>

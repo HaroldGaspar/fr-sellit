@@ -25,12 +25,13 @@ export async function getProductsDetailByCart(setState: any) {
       productId: resU.product.id,
       mark: resU.product.mark,
       productName: resU.product.name,
-      photo: resU.product.photo
+      photo: resU.product.photo,
+      stock: resU.product.stock
     }
   })
 
   console.log("this cart have ", resD.length, "products")
-  console.log("res format", resFormat)
+  console.log("my products-detail", resFormat)
 
   return resFormat
 }

@@ -57,8 +57,9 @@ export default function Carousel({
   }
   return (
     <>
+      <h2 className="">Producto Populares</h2>
       {selectedProduct ? (
-        <>
+        <StyleCarousel>
           <Link
             to={`/product/${selectedProduct[0].id}`}
             className="Product-link"
@@ -81,23 +82,27 @@ export default function Carousel({
               onLoad={() => setLoaded(true)}
             />
           </Link>
-        </>
+        </StyleCarousel>
       ) : products ? (
-        <>
-          <CarouselImg
-            src={`${API_URL}${products[0]?.photo}`}
-            // src={images[0]}
-            alt=""
-            className={loaded ? "loaded" : ""}
-            onLoad={() => setLoaded(true)}
-          />
-          <CarouselImg
-            src={`${API_URL}${products[1]?.photo}`}
-            alt=""
-            className={loaded ? "loaded" : ""}
-            onLoad={() => setLoaded(true)}
-          />
-        </>
+        <StyleCarousel>
+          <Link to={`/product/${products[0]?.id}`} className="Product-link">
+            <CarouselImg
+              src={`${API_URL}${products[0]?.photo}`}
+              // src={images[0]}
+              alt=""
+              className={loaded ? "loaded" : ""}
+              onLoad={() => setLoaded(true)}
+            />
+          </Link>
+          <Link to={`/product/${products[1]?.id}`} className="Product-link">
+            <CarouselImg
+              src={`${API_URL}${products[1]?.photo}`}
+              alt=""
+              className={loaded ? "loaded" : ""}
+              onLoad={() => setLoaded(true)}
+            />
+          </Link>
+        </StyleCarousel>
       ) : (
         <></>
       )}
@@ -116,17 +121,25 @@ export default function Carousel({
   )
 }
 const CarouselImg = styled.img`
-  min-height: 500px;
-  max-width: 500px;
   width: 100%;
-  height: auto;
+
   opacity: 0;
   transition: 1s;
   &.loaded {
     opacity: 1;
   }
 `
+const StyleCarousel = styled.div`
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 0 15px;
 
+  a {
+    overflow: hidden;
+    height: 0;
+    padding-bottom: 100%;
+  }
+`
 const CarouselButtonContainer = styled.div`
   text-align: center;
   margin-top: 15px;

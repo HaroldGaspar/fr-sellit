@@ -10,16 +10,15 @@ export function OrderCart() {
 
   const handleSellCart = async (idTransaccion) => {
     const num = productsDetail.map((p) => p.totalPrice).reduce((p, n) => p + n)
-
-    // const tp = parseFloat(num).toFixed(2)
     const res = await addCartWithOrderDetail(num, "credit_card", idTransaccion)
     console.log("res updt cart to: ", res)
     return num
   }
+
   console.log("lengt", productsDetail.length)
   return (
     <OrdrCart>
-      <div className="invoicecart">
+      <div className="center">
         <h2 className="order__title">Estas comprando</h2>
         <div className="order__invoicels">
           {productsDetail.map((productDetail, id) => (
@@ -41,21 +40,18 @@ export function OrderCart() {
                     .reduce((p, n) => p + n)
             }
           />
-          {showCard ? (
-            ""
-          ) : (
-            <button
-              onClick={() => {
-                setShowCard((st) => !st)
-              }}
-              className="order__btn"
-              id="open-modal"
-            >
-              Comprar ahora
-            </button>
-          )}
         </div>
+        <button
+          onClick={() => {
+            setShowCard((st) => !st)
+          }}
+          className="order__btn"
+          id="open-modal"
+        >
+          Comprar ahora
+        </button>
       </div>
+
       <ModalHC
         component={
           <Card
@@ -72,58 +68,65 @@ export function OrderCart() {
 }
 
 const OrdrCart = styled.div`
+  height: -webkit-fill-available;
+  margin: 1em 0;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
   .order {
     /* position: relative; */
   }
   .order__title {
     text-align: center;
-  }
-  .invoicecart {
-    background-color: #fbfbfb;
-    margin: 1em 0;
-    padding: 0.5em 1em;
-    border: 1px solid rgba(0, 0, 0, 0.125);
-    border-radius: 4px;
+    padding: 0.4em;
+    font-weight: 400;
+    text-decoration: underline;
+    color: #ebebeb;
+    font-style: italic;
+    font-size: 40px;
   }
 
   .order__invoicels {
-    height: 45vh;
+    height: 300px;
     overflow: auto;
-  }
-
-  @media (max-height: 650px) {
-    .order__invoicels {
-      height: 40vh;
-    }
   }
 
   .tt {
     padding-top: 1.3em;
-    text-align: center;
     font-size: 1.5em;
-    height: 170px;
+    margin: auto 1.5em;
+    display: grid;
+    grid-auto-flow: column;
+    justify-content: end;
   }
 
   .tt .price {
-    display: flex;
-    margin: 0 auto;
-    width: 3em;
     font-size: 30px;
   }
 
   .order__btn {
-    background: #b998c7;
-    color: #fbfbfb;
+    background: #d9b8e6;
+    color: #8b6f97;
     font-weight: 700;
     border-radius: 4px;
     border: none;
     padding: 0.35em 0.5em;
     transition: 0.5s ease all;
     margin: 0 auto;
+    font-size: 24px;
+    width: 100%;
   }
 
   .order__btn:hover {
     color: #b998c7;
-    background: #fbfbfb;
+    background: #efddf6;
+  }
+
+  .center {
+    background-color: #b998c7;
+    padding: 2.5em 1em 1.5em 1em;
+    border-radius: 4px;
   }
 `

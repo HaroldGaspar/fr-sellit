@@ -2,15 +2,7 @@ import React, { ChangeEvent, MouseEventHandler, useState } from "react"
 import { NavLink, useHistory } from "react-router-dom"
 import { AuthInput } from "components"
 import { signUp } from "services"
-import {
-  Cardauth,
-  CardauthBtn,
-  CardauthTitle,
-  FormSubtitle,
-  FormTitle,
-  Iscustomer,
-  Qstn
-} from "./styles"
+import { Cardauth, CardauthBtn, FormSubtitle, FormTitle, Qstn } from "./styles"
 
 export function Singup({ user, setUser, setloading }: any) {
   let history = useHistory()

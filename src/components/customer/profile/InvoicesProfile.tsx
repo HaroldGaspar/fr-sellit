@@ -4,14 +4,18 @@ import React, { useEffect, useState } from "react"
 import { getByField } from "services"
 import styled from "styled-components"
 
-export default function InvoiceByCustomer() {
+export default function InvoicesProfile() {
   const [carts, setCarts] = useState<any[]>()
   const [loading, setLoading] = useState<boolean>(true)
-  // const idUser = localStorage.getItem("user").split(":")[1].split(",")[0]
   const idCustomer = localStorage.getItem("customer")
 
+  const init = async () => {
+    await getByField("carts", "customer", idCustomer, setCarts, setLoading)
+    setTimeout(() => console.log("carritos", carts), 500)
+  }
+
   useEffect(() => {
-    getByField("carts", "customer", idCustomer, setCarts, setLoading, false)
+    init()
   }, [])
   return (
     <InvoicesByCustomerStyles>
@@ -25,7 +29,7 @@ export default function InvoiceByCustomer() {
       ) : (
         <List>
           {carts.length === 1 ? (
-            <div className="mssg">you have'nt made a purchase yet</div>
+            <div className="mssg">you haven't made a purchase yet</div>
           ) : (
             carts.map((cart: any, id: number) => {
               if (cart.is_actual === false)
@@ -88,12 +92,12 @@ const InvoicesByCustomerStyles = styled.div`
 
 const List = styled.div`
   .mssg {
-    // text-align: center;
-    // height: 100%;
-    // display: flex;
-    // align-items: center;
-    // content-align: center;
-    // justify-content: center;
+    text-align: center;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    content-align: center;
+    justify-content: center;
     font-style: italic;
     font-weight: 700;
   }

@@ -6,15 +6,15 @@ import { SearchBar } from "components"
 import { logOutfx } from "services"
 // import "./Nav.css"
 import styled from "styled-components"
-let user
+// let user
 export function Nav(props) {
   const [logout, setlogout] = useState()
   const [store, setstore] = useState(false)
 
   useEffect(() => {
-    setlogout(localStorage.getItem("token"))
-    setstore(localStorage.getItem("store"))
-    user = localStorage.getItem("user")
+    // setlogout(localStorage.getItem("token"))
+    // setstore(localStorage.getItem("store"))
+    // user = localStorage.getItem("user")
     // console.log("logout", logout)
   }, [logout, store])
   return (
@@ -41,7 +41,7 @@ export function Nav(props) {
               SURPRISE ME{" "}
             </NavLink>
 
-            {store ? (
+            {localStorage.getItem("store") ? (
               <NavLink className="nav__a" to="/products">
                 PRODUCTS{" "}
               </NavLink>
@@ -49,7 +49,7 @@ export function Nav(props) {
               ""
             )}
             <span className="mlefu-auto">
-              {logout ? (
+              {localStorage.getItem("token") ? (
                 <div className="nav__sub">
                   <NavLink className="nav__a" to="/user">
                     <img
@@ -57,7 +57,7 @@ export function Nav(props) {
                       alt="cart"
                       className="logo"
                     />
-                    {user.split('"')[5].toUpperCase()}
+                    {localStorage.getItem("user").split('"')[5].toUpperCase()}
                   </NavLink>
                   <NavLink className="nav__a" to="/cart">
                     <img

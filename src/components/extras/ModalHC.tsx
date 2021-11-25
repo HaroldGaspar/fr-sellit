@@ -82,7 +82,7 @@ const StylesModal = styled.div`
   .modal__content {
     position: relative;
 
-    padding: 2.6rem 1rem 1rem 1rem;
+    padding: 3.6rem 2.6rem 2.6rem 2.6rem;
     border-radius: 1rem 1rem 0 0;
     transition: all 0.3s;
   }
@@ -92,10 +92,10 @@ const StylesModal = styled.div`
     background-color: #f00;
     border-radius: 0.25rem;
     color: #fff;
-    font-size: 1.5rem;
+    font-size: 2rem;
     position: absolute;
-    top: 0.75rem;
-    right: 0.75rem;
+    top: 1rem;
+    right: 1rem;
     cursor: pointer;
     transition: 0.3s ease all;
   }
@@ -107,7 +107,7 @@ const StylesModal = styled.div`
   @media screen and (min-width: 576px) {
     .modal__content {
       margin: auto;
-      width: 400px;
+      width: 540px;
       border-radius: 0.25rem;
     }
   }

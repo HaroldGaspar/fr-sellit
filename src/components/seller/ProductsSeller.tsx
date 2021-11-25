@@ -9,9 +9,9 @@ const ListSeller = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
   gap: 0 15px;
-  /* min-height: 100vh; */
-  align-items: center;
-  padding: 0;
+  // align-items: center;
+  // background: #b998c7;
+  padding: 0.5em;
 
   height: 85vh;
   overflow: auto;

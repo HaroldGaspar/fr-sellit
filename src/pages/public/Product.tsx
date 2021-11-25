@@ -21,7 +21,8 @@ export function Product() {
   const init = async () => {
     setloading(true)
     await getProduct(id, setProductDetail)
-    await getReviewByProduct(parseInt(id), setReviews)
+    await getReviewByProduct(id, setReviews)
+    // productDetail.reviews.map()
     setloading(false)
   }
   useEffect(() => {

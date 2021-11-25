@@ -120,14 +120,15 @@ function ProductForm({ productInput }: props) {
         product={product}
         setProduct={setProduct}
       />
-      <InputProduct
-        name={"stock"}
-        label={"Stock"}
-        number={"number"}
-        product={product}
-        setProduct={setProduct}
-      />
-
+      {showUpdate ? null : (
+        <InputProduct
+          name={"stock"}
+          label={"Stock"}
+          number={"number"}
+          product={product}
+          setProduct={setProduct}
+        />
+      )}
       <FormGroup>
         <label className="form__label">
           Descripcion

@@ -18,7 +18,7 @@ export function ReviewForm({
     product: idProduct,
     pdRating,
     stars: 1,
-    slug: user.split('"')[5]
+    slug: JSON.parse(user).username
   })
 
   const hdlChng = (e: any) => {
@@ -116,6 +116,7 @@ const StarClasification = styled.p`
   direction: rtl;
   unicode-bidi: bidi-override;
   label:hover {
+    cursor: pointer;
     color: orange;
   }
   label:hover ~ label {

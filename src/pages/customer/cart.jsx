@@ -7,17 +7,13 @@ export function Cart() {
   return (
     <>
       <Nav />
-      {/* <ProductsDtContextProvider> */}
       <CartContainer>
         <CartCardls>
-          <CartH2>Carrito</CartH2>
+          <CartH2>CARRITO</CartH2>
           <ProductsCart />
         </CartCardls>
-        <div className="order">
-          <OrderCart />
-        </div>
+        <OrderCart />
       </CartContainer>
-      {/* </ProductsDtContextProvider> */}
     </>
   )
 }
@@ -26,8 +22,9 @@ const CartContainer = styled.div`
   max-width: 1200px;
   margin: 0 auto;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 0 3em;
+  gap: 0 2em;
   padding: 0 15px;
+
   @media (max-width: 800px) {
     max-width: 500px;
     grid-template-columns: 1fr;
@@ -47,6 +44,11 @@ const CartCardls = styled.div`
   /* border-radius: 4px; */
 `
 const CartH2 = styled.h2`
-  padding: 10px;
-  background-color: #b998c7;
+  padding: 0.6em 1.2em;
+  // background-color: #b998c7;
+  text-align: center;
+  // color: #ececec;
+  // text-decoration: underline;
+  font-weight: 700;
+  font-style: italic;
 `

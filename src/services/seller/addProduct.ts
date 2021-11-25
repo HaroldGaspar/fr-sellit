@@ -22,7 +22,8 @@ export const addProduct = async (
     stock: product.stock | 0,
     description: product.description,
     store: localStorage.getItem("store"),
-    photo: imgUrl
+    photo: imgUrl,
+    rating: 0
   }
   console.log("saving ", newProduct, " with ") //, document.getElementById("iii"))
 

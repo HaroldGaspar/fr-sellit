@@ -16,6 +16,7 @@ export interface Iproduct {
   stock: number
   photo?: string
   rating?: number
+  reviews?: any[]
   categoryName?: string
 
   storeName?: string
@@ -31,7 +32,8 @@ export interface IdfProduct {
 }
 export interface IproductDetail {
   productDetailId: number
-  qty: string
+  qty: number
+  stock: number
   productPrice: number
   totalPrice: number
   mark: string

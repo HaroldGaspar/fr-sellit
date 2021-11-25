@@ -81,6 +81,8 @@ const PdSeller = styled.div`
     border: 1px solid rgba(0, 0, 0, 0.125);
     border-radius: 0.25rem;
     margin-bottom: 1em;
+    max-width: 350px;
+    background: #b998c7;
   }
 
   .productseller__stock {

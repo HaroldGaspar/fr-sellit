@@ -41,7 +41,6 @@ export function ProductDetail({
       const id = productDetail.id
       const pf = productsDetail.filter((pd: any) => pd.productId === id)
       if (pf.length > 0) setIsAdded(true)
-      console.log("filters", pf)
     }
   }, [productsDetail, productDetail.id])
 
@@ -94,15 +93,19 @@ export function ProductDetail({
         ACERCA DEL PRODUCTO <br />{" "}
         {productDetail.description || "no hay descripcion"}
       </div>
-      <div className="text-right">
-        Precio: <Price price={productDetail.price} />{" "}
+      <div>
+        Stock: {productDetail.stock} <Price price={productDetail.price} />{" "}
       </div>
       {cart ? (
         <BtnDetail
           onClick={() => handleEdit()}
-          disabled={isAdded ? true : false}
+          disabled={productDetail.stock < 1 ? true : isAdded ? true : false}
         >
-          {isAdded ? "Añadido" : "Añadir al carrito"}
+          {productDetail.stock < 1
+            ? "Agotado"
+            : isAdded
+            ? "Añadido"
+            : "Añadir al carrito"}
         </BtnDetail>
       ) : (
         <BtnDetail onClick={() => history.push("/login")}>
@@ -124,6 +127,7 @@ export const BtnDetail = styled.button`
   border-radius: 0.2em;
   transition: 0.4s cubic-bezier(0.4, 0, 1, 1) all;
   font-weight: 700;
+
   &:hover {
     background: transparent;
     color: #888;

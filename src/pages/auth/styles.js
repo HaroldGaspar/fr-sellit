@@ -4,6 +4,7 @@ export const SpinnerGlobainer = styled.span`
   height: 100vh;
   display: grid;
   align-items: center;
+  text-align: center;
   margin: 0 auto;
 `
 export const TextSpiner = styled.span`

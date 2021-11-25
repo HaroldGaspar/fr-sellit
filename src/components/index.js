@@ -46,7 +46,7 @@ export * from "./customer/review/ReviewsList"
 export * from "./customer/review/Review"
 //--store
 export * from "./customer/profile/StoreDetail"
-export * from "./customer/profile/InvoiceByCustomer"
+// export * from "./customer/profile/InvoicesProfile"
 export * from "./customer/profile/UserDetail"
 export * from "./customer/profile/InvoiceDetailView"
 export * from "./customer/profile/InvoiceDetailModal"

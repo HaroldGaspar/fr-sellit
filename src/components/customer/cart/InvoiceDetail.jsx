@@ -20,5 +20,5 @@ export const Invoicecard = styled.div`
   border: 1px solid #ebebeb;
   background: #fff;
   border-radius: 4px;
-  background: #fff;
+  background: #efddf6;
 `

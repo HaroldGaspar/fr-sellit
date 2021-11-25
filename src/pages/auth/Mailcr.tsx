@@ -1,24 +1,29 @@
 import { Nav } from "components"
 import React, { useEffect } from "react"
 import { useHistory, useParams } from "react-router"
-import { updateUser } from "services"
+import { parseJwt, updateUser } from "services"
 import styled from "styled-components"
 
 export function Mailcr() {
   const history = useHistory()
   const { tk }: any = useParams()
-  const suss = "mail sucessfuly verified"
   useEffect(() => {
     if (tk) {
-      const id = JSON.parse(atob(tk.split(".")[1])).id
+      const id = parseJwt(tk).id
       updateUser(id, history)
     }
-  }, [])
+  }, [tk, history])
   return (
     <div>
       <Nav />
       <Cent>
-        {tk ? suss || "verifing your account" : "Mail confimation is required"}
+        {tk ? (
+          <b>Correo satisfactoriamente verificado</b> || (
+            <b>verifing your account</b>
+          )
+        ) : (
+          <b>Es necesario confimar el correo</b>
+        )}
       </Cent>
     </div>
   )
