@@ -23,6 +23,9 @@ const ProductMng = styled.div`
   @media (min-width: 750px) {
     grid-template-columns: 1fr 2fr;
   }
+  #upload-form {
+    margin: auto;
+  }
 `
 
 export function Product() {

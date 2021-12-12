@@ -37,8 +37,8 @@ export function Nav(props) {
         </button>
         <div className="collapse navbar-collapse nab__sub" id="navbarNav">
           <ul className="nav__sub navbar-nav">
-            <NavLink className="nav__a" to="/contact">
-              SURPRISE ME{" "}
+            <NavLink className="nav__a" to="/privacy-policy">
+              POLITICA DE PRIVACIDAD{" "}
             </NavLink>
 
             {localStorage.getItem("store") ? (

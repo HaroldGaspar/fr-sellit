@@ -14,7 +14,7 @@ export function Mailcr() {
     }
   }, [tk, history])
   return (
-    <div>
+    <VhHy>
       <Nav />
       <Cent>
         {tk ? (
@@ -22,18 +22,33 @@ export function Mailcr() {
             <b>verifing your account</b>
           )
         ) : (
-          <b>Es necesario confimar el correo</b>
+          <div className="caa">
+            <p>Te hemos enviado un mail, revisa tu bandeja de entrada</p>
+            <b>Es necesario confimar el correo</b>
+          </div>
         )}
       </Cent>
-    </div>
+    </VhHy>
   )
 }
 
 const Cent = styled.div`
-  font-size: 2em;
-  padding: 15px;
+  p {
+    font-size: 0.7em;
+  }
+  font-size: 1.6em;
   display: flex;
-  height: 100vh;
+  height: 90%;
   align-items: center;
+  text-align: center;
   justify-content: center;
+  .caa {
+    border-radius: 0.25em;
+    border: solid 1px #ccc;
+    padding: 2rem;
+    background: #efefef;
+  }
+`
+const VhHy = styled.div`
+  height: 100vh;
 `

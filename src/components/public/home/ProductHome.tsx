@@ -35,10 +35,11 @@ function ProductHome({ product }: { product: Iproduct }) {
         </Link>
         <div className="card__data">
           {product.name ? (
-            <h5>
-              {product.name.length > 16
+            <h5 className="ellipsis">
+              {product.name}
+              {/* {product.name.length > 16
                 ? product.name.substr(0, 14).concat("...")
-                : product.name}
+                : product.name} */}
             </h5>
           ) : (
             <div className="err">without name</div>
@@ -76,6 +77,13 @@ export default React.memo(ProductHome)
 const PrdHome = styled.div`
   .Product-link {
     text-decoration: none;
+  }
+
+  .ellipsis {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    font-weight: 600;
   }
 
   .cardls {
@@ -116,7 +124,7 @@ const PrdHome = styled.div`
 
   .err {
     color: #f55;
-    text-align: end;
+    // text-align: end;
     font-style: oblique;
     margin: 1.2px 0;
   }

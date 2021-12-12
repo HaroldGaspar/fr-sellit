@@ -29,43 +29,50 @@ function InputProduct({ name, label, number, product, setProduct }: props) {
   }
   return (
     <InpProduct>
-      <div className="form__group">
-        <label className="form__label">
+      {/* <div className="form__group"> */}
+      <label className="form__label">
+        <div className="form__oneline">
           {label}
-          <input
-            type={number ? "number" : number ? number : "text"}
-            name={name}
-            step={number === "decimal" ? 0.01 : 1}
-            onChange={(e) => handleIChange(e, product, setProduct)}
-            value={eval(`product.${name}`)}
-            className="form__control"
-            required
-            readOnly={isSet ? true : false}
-          />
-        </label>
-        <button
-          type="button"
-          onClick={(e) => setField(e, eval(`product.${name}`))}
-          className="inputproduct__btn"
-        >
-          {isSet ? <b>fijado</b> : "fijar"}
-        </button>
-      </div>
+          {isSet ? <small>fijado</small> : null}
+        </div>
+        <input
+          type={number ? "number" : number ? number : "text"}
+          name={name}
+          step={number === "decimal" ? 0.01 : 1}
+          onChange={(e) => handleIChange(e, product, setProduct)}
+          value={eval(`product.${name}`)}
+          className="form__control"
+          required
+          readOnly={isSet ? true : false}
+        />
+      </label>
+      <button
+        type="button"
+        onClick={(e) => setField(e, eval(`product.${name}`))}
+        className={isSet ? "inputproduct__btn boru" : "inputproduct__btn"}
+      >
+        <img
+          src={process.env.PUBLIC_URL + "/img/pin2.svg"}
+          alt="pin"
+          className={isSet ? "form__svg 120p" : "form__svg"}
+        />
+      </button>
+      {/* </div> */}
     </InpProduct>
   )
 }
 export default React.memo(InputProduct)
 
 const InpProduct = styled.div`
-  .form__group {
-    margin-bottom: 0.3rem;
-    padding: 0 auto;
-    display: flex;
-  }
-  /* input button */
+  margin-bottom: 0.3rem;
+  padding: 0 auto;
+  display: flex;
+  width: 100%;
+
   .form__label {
     margin-bottom: 0.1rem;
     font-weight: 700;
+    width: -webkit-fill-available;
   }
 
   .form__control {
@@ -83,7 +90,6 @@ const InpProduct = styled.div`
     outline: 0;
     box-shadow: 0 0 0 0.1rem rgb(70 50 255 / 45%);
   }
-
   .form__groupimg {
     margin-bottom: 0.3rem;
     justify-content: center;
@@ -99,14 +105,38 @@ const InpProduct = styled.div`
 
   .inputproduct__btn {
     border: none;
-    padding: 0.6em 1em;
-    margin: auto 0.3em 0.1em 0.3em;
     height: 100%;
     font-size: 13px;
+    align-self: end;
+    margin-left: 0.25rem;
+    margin-bottom: 0.1rem;
+    border-radius: 0.25rem;
+    background: none;
+  }
+
+  .form__svg {
+    height: 33px;
+    width: 100%;
+  }
+
+  .boru {
+    background-color: rgba(0, 0, 0, 0.4);
+    img {
+      // zoom: 110%;
+    }
   }
 
   .inputproduct__btn:hover {
     background-color: rgba(0, 0, 0, 0.4);
     color: #eee;
+  }
+  .form__oneline {
+    display: flex;
+    justify-content: space-between;
+    small {
+      font-style: italic;
+      color: darkmagenta;
+      align-self: center;
+    }
   }
 `

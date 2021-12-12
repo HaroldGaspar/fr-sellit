@@ -15,7 +15,7 @@ export async function login(user, history, register) {
   //set token in LocalStorage
   const json = await res.json()
   if (json.statusCode === 400) {
-    console.log("Error to login ", json.statusCode)
+    console.log("Error to login ", json)
     return json
   }
   //si esta registrando, permitir la obtecion del token

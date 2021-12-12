@@ -15,6 +15,7 @@ export function SearchBar() {
       <SearchInput
         type="text"
         placeholder="Que estas buscando..."
+        required="true"
         onChange={(e) => setKeyword(e.target.value)}
       />
       <SearchBtn>

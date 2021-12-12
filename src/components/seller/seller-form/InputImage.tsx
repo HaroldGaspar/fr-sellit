@@ -21,7 +21,7 @@ export function InputImage({
 
   return (
     <div className="form__groupimg">
-      <label className="form__label">
+      <label className="form__label" style={{ width: "100%" }}>
         <b>Imagen</b>{" "}
         <small className="text-danger">*selecciona una imagen</small>{" "}
         <StyleDragArea>
@@ -80,15 +80,21 @@ const StyleDragArea = styled.div`
     position: relative;
     height: 100px;
     border: 4px solid #d0d7de;
-    margin-left: 10px;
-    margin-right: 10px;
+    // margin-left: 10px;
+    // margin-right: 10px;
   }
   .image-upload-wrap:hover {
     background-color: transparent;
     border: 4px dashed #d0d7de;
   }
   .text-information {
-    margin-top: 10px;
     text-align: center;
+    padding: 1.5em;
+    //center
+    display: flex;
+    height: 100%;
+    h3 {
+      align-self: center;
+    }
   }
 `

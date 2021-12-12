@@ -67,9 +67,9 @@ function ProductForm({ productInput }: props) {
       id="upload-form"
       className={showUpdate ? " form-addp form-editp" : "form-addp"}
     >
-      <h2 className="form__title">
+      <FormTitle>
         {showUpdate ? "Modificar producto" : "Agregar producto"}
-      </h2>
+      </FormTitle>
 
       {showUpdate ? null : (
         <InputImage
@@ -164,4 +164,11 @@ const FormGroup = styled.div`
     border: 1px solid #ced4da;
     border-radius: 0.25rem;
   }
+`
+const FormTitle = styled.h2`
+  font-weight: 700;
+  text-align: center;
+  color: #444;
+  font-style: italic;
+  padding-bottom: 1rem;
 `

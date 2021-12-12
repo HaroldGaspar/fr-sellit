@@ -14,6 +14,7 @@ import "./App.css"
 import { Store } from "pages/public/store"
 import { Product as ProductDT } from "pages/public/Product"
 import { Product } from "pages/seller/product"
+import Privacy from "pages/public/privacy"
 
 // const Product = React.lazy(() => import("pages"))
 document.title = "sellit | store"
@@ -39,7 +40,7 @@ function App() {
           }}
         />
         <Route path="/about">"about"</Route>
-        <Route path="/contact">"Users"</Route>
+        <Route path="/privacy-policy" component={Privacy} />
         <Route path="/search/:keyword" exact component={SearchResults} />
         <Route path="/store/:id" exact component={Store} />
         <Route path="/category/:id" exact component={Category} />

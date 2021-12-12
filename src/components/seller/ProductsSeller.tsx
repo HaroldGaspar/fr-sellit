@@ -13,7 +13,7 @@ const ListSeller = styled.div`
   // background: #b998c7;
   padding: 0.5em;
 
-  height: 85vh;
+  height: fit-content;
   overflow: auto;
   @media (max-height: 770px) {
     height: 670px;

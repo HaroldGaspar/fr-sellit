@@ -1,3 +1,7 @@
+# About the project
+
+This project is displayed in http://sellit.hakhi.xyz/ for your test view
+
 # Frontend project for the sellit aplication
 
 This project considers to have active the API of sellit.
@@ -29,6 +33,7 @@ docker build -f Dockerfile -t reactdev .
 docker run --rm -it -p 3000:3000 reactdev
 
 ### `build and run a image for production`
+
 sudo update-rc.d nginx disable -> disable nginx local service
 
 docker build -f Dockerfile.prod -t reactprod .

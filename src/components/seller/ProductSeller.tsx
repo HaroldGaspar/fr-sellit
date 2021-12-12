@@ -26,43 +26,41 @@ function ProductSeller({ productMap }: props) {
   }
   return (
     <PdSeller>
-      <div className="productseller__card">
-        {productMap.name ? (
-          <Link to={`/product/${productMap.id}`} className="Product-link">
-            <h5 className="productseller__name">
-              {" "}
-              {productMap.name.length > 15
+      {/* <div className="productseller__card"> */}
+      {productMap.name ? (
+        <Link to={`/product/${productMap.id}`} className="Product-link">
+          <h5 className="productseller__name">
+            {productMap.name}
+            {/* {productMap.name.length > 15
                 ? productMap.name.substr(0, 12).concat("...")
-                : productMap.name}
-            </h5>
-          </Link>
-        ) : (
-          <div className="err">without name</div>
-        )}
-        {productMap.mark ? (
-          <h6 className="productseller__mark">{productMap.mark}</h6>
-        ) : (
-          <div className="err">without mark</div>
-        )}
-        <div className="row justify-content-between">
-          <span className="productseller__stock">
-            stock: {productMap.stock}
-          </span>
-          <span className="productseller__price">
-            <Price price={productMap.price} />
-          </span>
-        </div>
-
-        <button onClick={() => handleEdit()} className="list__btn-modify">
-          Modificar
-        </button>
-        <button
-          onClick={() => deleteProduct(productMap.id, products, setProducts)}
-          className="list__btn-delete"
-        >
-          Eliminar
-        </button>
+                : productMap.name} */}
+          </h5>
+        </Link>
+      ) : (
+        <div className="err">without name</div>
+      )}
+      {productMap.mark ? (
+        <h6 className="productseller__mark">{productMap.mark}</h6>
+      ) : (
+        <div className="err">without mark</div>
+      )}
+      <div className="row justify-content-between">
+        <span className="productseller__stock">stock: {productMap.stock}</span>
+        <span className="productseller__price">
+          <Price price={productMap.price} />
+        </span>
       </div>
+
+      <button onClick={() => handleEdit()} className="list__btn-modify">
+        Modificar
+      </button>
+      <button
+        onClick={() => deleteProduct(productMap.id, products, setProducts)}
+        className="list__btn-delete"
+      >
+        Eliminar
+      </button>
+      {/* </div> */}
     </PdSeller>
   )
 }
@@ -72,18 +70,19 @@ export default React.memo(ProductSeller, (p, n) => {
 })
 
 const PdSeller = styled.div`
-  .productseller__card {
-    padding: 1em;
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    word-wrap: break-word;
-    border: 1px solid rgba(0, 0, 0, 0.125);
-    border-radius: 0.25rem;
-    margin-bottom: 1em;
-    max-width: 350px;
-    background: #b998c7;
-  }
+  // .productseller__card {
+  padding: 1em;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  word-wrap: break-word;
+  border: 1px solid rgba(0, 0, 0, 0.125);
+  border-radius: 0.25rem;
+  margin-bottom: 1em;
+  max-width: 350px;
+  background: #b998c7;
+  height: fit-content;
+  // }
 
   .productseller__stock {
     padding-left: 1em;
@@ -132,5 +131,10 @@ const PdSeller = styled.div`
 
   .productseller__name {
     color: #444;
+    font-weight: 700;
+    //
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
   }
 `

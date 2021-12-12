@@ -6,8 +6,9 @@ export function InvoiceDetail({ productDetail }) {
   return (
     <Invoicecard>
       <div className="cardt__name">
-        {productDetail.productName || "noreceive name"} -
-        {productDetail.mark || "noreceive mark"} -<b> X {productDetail.qty}</b>
+        {productDetail.productName || "noreceive name"}
+        <small> "{productDetail.mark || "noreceive mark"}" </small>
+        <b>X {productDetail.qty}</b>
       </div>
       <Price price={productDetail.productPrice * productDetail.qty} />
     </Invoicecard>
